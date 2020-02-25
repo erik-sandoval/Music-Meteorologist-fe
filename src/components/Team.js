@@ -179,10 +179,6 @@ export default function Team() {
           </Grid>
 
           <Grid item xs={6} sm={3}>
-            {/* <CardMedia
-              component="img"
-              image="https://i.ibb.co/1bbn7hc/nicholas.jpg"
-            /> */}
             <CardMedia
               component="img"
               image="https://i.ibb.co/mSQ6kvt/joshua.jpg"
@@ -322,7 +318,7 @@ export default function Team() {
               <Grid item xs={12} sm={8}>
                 <Typography className={classes.name}>Xander Bennet</Typography>
                 <Typography className={classes.position}>
-                  Data Scientist
+                  Machine Learning Engineer
                 </Typography>
               </Grid>
               <Grid item xs={12} sm={4}>
@@ -347,7 +343,7 @@ export default function Team() {
               <Grid item xs={12} sm={8}>
                 <Typography className={classes.name}>Riley Pence</Typography>
                 <Typography className={classes.position}>
-                  Data Scientist
+                  Machine Learning Engineer
                 </Typography>
               </Grid>
               <Grid item xs={12} sm={4}>
@@ -374,7 +370,7 @@ export default function Team() {
                   Zhenya Warshavsky
                 </Typography>
                 <Typography className={classes.position}>
-                  Data Scientist
+                  Data Science Technical Lead
                 </Typography>
               </Grid>
               <Grid item xs={12} sm={4}>
