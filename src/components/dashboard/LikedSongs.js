@@ -32,9 +32,9 @@ class LikedSongs extends React.Component {
     return (
       <Grid container>
         <Grid id="songLD" item>
-          {console.log("this is props in likedsongs", this.props)}
+          {console.log("this is props in likedsongs", this.props.several_tracks.tracks)}
           {this.props.several_tracks.tracks &&
-            this.props.several_tracks.tracks.map(song => (
+            this.props.several_tracks.tracks.map(song => ( console.log("this is deviceid", this.props.deviceId),
               <Song song={song} id={song.id} key={song.id} deviceId={this.props.deviceId} tracks={this.props.several_tracks.tracks} />
             ))}
           {/* {this.props.playlistTracks &&
