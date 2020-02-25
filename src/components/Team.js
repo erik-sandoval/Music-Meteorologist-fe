@@ -1,7 +1,8 @@
 import React from "react";
 import styled from "styled-components";
-import MusicLogo from '../assets/sounddrip.svg';
-import '../App.css';
+import MusicLogo from "../assets/sounddrip.svg";
+import mobileNav from "./dashboard/element-styles/MobileNav.js";
+import "../App.css";
 import {
   Grid,
   Typography,
@@ -11,6 +12,7 @@ import {
   makeStyles
 } from "@material-ui/core";
 import ArrowForwardIcon from "@material-ui/icons/ArrowForward";
+import MobileNav from "./dashboard/element-styles/MobileNav.js";
 // import HomepageNav from "./HomepageNav.js"
 // import useMediaQuery from "@material-ui/core/useMediaQuery";
 
@@ -24,9 +26,12 @@ const HomepageNavbar = styled.nav`
   padding-top: 2%;
   margin-bottom: 2%;
   height: 60px;
-  width: 450px;
-  color: #9DA4AF;
+  width: 550px;
+  color: #9da4af;
   font-size: 19px;
+  @media (max-width: 576px) {
+    display: none;
+  }
 `;
 
 const Footer = styled.footer`
@@ -44,18 +49,18 @@ const Footer = styled.footer`
 `;
 
 const NavbarLinks = styled.a`
-    text-decoration: none;
-    color: #9DA4AF;
-    font-size: 18px;
+  text-decoration: none;
+  color: #9da4af;
+  font-size: 20px;
 
-    &:hover {
-        color: white;
-      }
+  &:hover {
+    color: white;
+  }
 `;
 
 const useStyles = makeStyles(theme => ({
   root: {
-    flexGrow: 1,
+    flexGrow: 1
     // margin: "50px 0"
   },
   paper: {
@@ -121,15 +126,22 @@ export default function Team() {
 
   return (
     <div className={classes.root}>
+      <div className="mobileNavWrap">
+        <MobileNav position />
+      </div>
       <HomepageNavbar>
-        <a href="/"><img src={MusicLogo}/></a>
+        <a href="/">
+          <img src={MusicLogo} />
+        </a>
         <NavbarLinks href="/about">How it works?</NavbarLinks>
         <NavbarLinks href="/team">Team</NavbarLinks>
-        <NavbarLinks href="https://github.com/Lambda-School-Labs/Music-Meteorologist-fe">Github</NavbarLinks>
+        <NavbarLinks href="https://github.com/Lambda-School-Labs/Music-Meteorologist-fe">
+          Github
+        </NavbarLinks>
       </HomepageNavbar>
       <Container maxWidth="md">
         <Grid container spacing={3}>
-          <Grid item xs={12} sm={4}>
+          <Grid className="teamContainer" item xs={12} sm={4}>
             <Typography className={classes.heading}>Our Team</Typography>
           </Grid>
           <Grid item xs={12} sm={8}>
@@ -178,7 +190,7 @@ export default function Team() {
             <Grid style={{ marginTop: "3px" }} container spacing={3}>
               <Grid item xs={12} sm={8}>
                 <Typography className={classes.name}>
-                  Johsua Edgerton
+                  Joshua Edgerton
                 </Typography>
                 <Typography className={classes.position}>
                   Web Developer
@@ -378,31 +390,7 @@ export default function Team() {
               </Grid>
             </Grid>
           </Grid>
-          <Grid item xs={6} sm={3}>
-            <CardMedia
-              component="img"
-              image="https://i.ibb.co/6BQwdSM/T4-JUEB3-ME-UMV7-CL10-D-15c133820281-512.jpg"
-            />
-            <Grid style={{ marginTop: "3px" }} container spacing={3}>
-              <Grid item xs={12} sm={8}>
-                <Typography className={classes.name}>Mugil Choi</Typography>
-                <Typography className={classes.position}>
-                  Data Scientist
-                </Typography>
-              </Grid>
-              <Grid item xs={12} sm={4}>
-                <Button
-                  className={classes.buttonArrow}
-                  variant="contained"
-                  color="secondary"
-                  href="https://www.linkedin.com/in/mugil-choi-941687194/"
-                >
-                  <span className={classes.buttonText}>Contact</span>
-                  <ArrowForwardIcon></ArrowForwardIcon>
-                </Button>
-              </Grid>
-            </Grid>
-          </Grid>
+
           <Grid item xs={6} sm={3}>
             <CardMedia
               component="img"
@@ -430,7 +418,9 @@ export default function Team() {
           </Grid>
         </Grid>
       </Container>
-      <Footer><p> © Copyright 2019, SoundDrip </p></Footer>
+      <Footer className="team-footer">
+        <p> © Copyright 2019, SoundDrip </p>
+      </Footer>
     </div>
   );
 }
