@@ -152,7 +152,6 @@ export default function Team() {
             </Typography>
           </Grid>
         </Grid>
-
         <Grid style={{ padding: "80px 0" }} container spacing={5}>
           <Grid item xs={6} sm={3}>
             <CardMedia
@@ -177,12 +176,7 @@ export default function Team() {
               </Grid>
             </Grid>
           </Grid>
-
           <Grid item xs={6} sm={3}>
-            {/* <CardMedia
-              component="img"
-              image="https://i.ibb.co/1bbn7hc/nicholas.jpg"
-            /> */}
             <CardMedia
               component="img"
               image="https://i.ibb.co/mSQ6kvt/joshua.jpg"
@@ -209,7 +203,6 @@ export default function Team() {
               </Grid>
             </Grid>
           </Grid>
-
           <Grid item xs={6} sm={3}>
             <CardMedia
               component="img"
@@ -235,7 +228,6 @@ export default function Team() {
               </Grid>
             </Grid>
           </Grid>
-
           <Grid item xs={6} sm={3}>
             <CardMedia
               component="img"
@@ -291,38 +283,13 @@ export default function Team() {
           <Grid item xs={6} sm={3}>
             <CardMedia
               component="img"
-              image="https://i.ibb.co/1bbn7hc/nicholas.jpg"
-            />
-            <Grid style={{ marginTop: "3px" }} container spacing={3}>
-              <Grid item xs={12} sm={8}>
-                <Typography className={classes.name}>Nick Truson</Typography>
-                <Typography className={classes.position}>
-                  Web Developer
-                </Typography>
-              </Grid>
-              <Grid item xs={12} sm={4}>
-                <Button
-                  className={classes.buttonArrow}
-                  variant="contained"
-                  color="secondary"
-                  href="https://www.linkedin.com/in/nicholas-truson-167599191/"
-                >
-                  <span className={classes.buttonText}>Contact</span>
-                  <ArrowForwardIcon></ArrowForwardIcon>
-                </Button>
-              </Grid>
-            </Grid>
-          </Grid>
-          <Grid item xs={6} sm={3}>
-            <CardMedia
-              component="img"
               image="https://i.ibb.co/Nr7Tyxp/Xander.jpg"
             />
             <Grid style={{ marginTop: "3px" }} container spacing={3}>
               <Grid item xs={12} sm={8}>
                 <Typography className={classes.name}>Xander Bennet</Typography>
                 <Typography className={classes.position}>
-                  Data Scientist
+                  Machine Learning Engineer
                 </Typography>
               </Grid>
               <Grid item xs={12} sm={4}>
@@ -347,7 +314,7 @@ export default function Team() {
               <Grid item xs={12} sm={8}>
                 <Typography className={classes.name}>Riley Pence</Typography>
                 <Typography className={classes.position}>
-                  Data Scientist
+                  Machine Learning Engineer
                 </Typography>
               </Grid>
               <Grid item xs={12} sm={4}>
@@ -374,7 +341,7 @@ export default function Team() {
                   Zhenya Warshavsky
                 </Typography>
                 <Typography className={classes.position}>
-                  Data Scientist
+                  Data Science Technical Lead
                 </Typography>
               </Grid>
               <Grid item xs={12} sm={4}>
