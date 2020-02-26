@@ -84,16 +84,18 @@ const Return = styled.a`
 const Logout = () => {
   return (
     <div>
-    <MobileNav/>
+      <div className="mobileNavWrap">
+        <MobileNav/>
+      </div>  
     <HomepageNav/>
     <Fullscreen>
-      <LogoutContainer>
+      <LogoutContainer className="lockScroll">
         <Gone>Gone so soon?</Gone>
         <Sentence>
           We hate to see you leave but hope you’ll come back for more fun. If
           you change your mind, you can log back in below.
         </Sentence>
-        <AuthButton
+          <AuthButton style={{zIndex: '0'}}
           noAbsolute={true}
           noTransform={true}
           as='a'
@@ -106,9 +108,9 @@ const Logout = () => {
         <Return as='a' href={"/"}>
           Return to Homepage
         </Return>
-      </LogoutContainer>
-      <Footer />
-    </Fullscreen>
+        </LogoutContainer>
+        <Footer />
+      </Fullscreen>
     </div>
   );
 };

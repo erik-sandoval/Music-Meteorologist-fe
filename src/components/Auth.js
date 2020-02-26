@@ -58,7 +58,9 @@ export class Auth extends Component {
 
     return (
       <div className='auth'>
-        <MobileNav/>
+        <div className="mobileNavWrap">
+          <MobileNav />
+        </div>
         <HomepageNav/>
         <div class='main-wrapper'>
           <div className='main-cta-spotify'>
@@ -73,7 +75,8 @@ export class Auth extends Component {
                   you like in your Spotify library.
                 </p>
                 <div class='cta-signup'>
-                  <ButtonAuth
+                  <ButtonAuth className="loginHover"
+                    style={{ zIndex: '0' }}
                     as='a'
                     href={`${authEndpoint}?client_id=${clientId}&redirect_uri=${redirectUri}&scope=${encodeURIComponent(
                       scopes
