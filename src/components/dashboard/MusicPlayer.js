@@ -233,7 +233,7 @@ class MusicPlayer extends Component {
   }
 
   render() {
-    console.log("debugging device id error", this.props);
+    console.log("this is several tracks", this.props.several_tracks);
     const {
       trackName,
       artistName,
