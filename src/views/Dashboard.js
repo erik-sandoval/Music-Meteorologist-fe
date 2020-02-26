@@ -2,7 +2,6 @@ import React from "react";
 import { connect } from "react-redux";
 import { Grid } from "@material-ui/core";
 import LoadingPage from "./LoadingPage.js"
-import WaitForSongs from "./WaitForSongs"
 import Button from "@material-ui/core/Button";
 import Paper from "@material-ui/core/Paper";
 import List from "@material-ui/core/List";
