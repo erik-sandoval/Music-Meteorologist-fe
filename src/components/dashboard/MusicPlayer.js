@@ -61,7 +61,6 @@ class MusicPlayer extends Component {
   }
 
   componentDidUpdate(prevProps) {
-    console.log("this is ds props songs", this.props.ds_songs);
     // if (this.props.song_id !== prevProps.song_id) {
     //   this.dsDelivery();
     // }
@@ -142,7 +141,6 @@ class MusicPlayer extends Component {
       if (state.track_window.current_track.id !== this.state.currentTrack) {
         this.currentSong();
         this.setState({ currentTrack: state.track_window.current_track.id });
-        console.log("Testing musicplayer", state.track_window.current_track.id);
         this.player.setVolume(0);
         setTimeout(() => {
           this.player.pause();
@@ -150,7 +148,6 @@ class MusicPlayer extends Component {
           this.player.setVolume(0.5);
         }, 2000);
         if (true) {
-          console.log("DS ARRAY called");
           this.getDataScienceSongArray();
         }
       }
@@ -177,7 +174,6 @@ class MusicPlayer extends Component {
 
   concatenateSongIds(array) {
     const concatString = array.map(song => song.values).join(",");
-    console.log("testing concat string", concatString);
     return concatString;
   }
   getCurrentSongFeatures = id => this.props.getTrackInfo(id);
@@ -189,10 +185,7 @@ class MusicPlayer extends Component {
   checkForPlayer() {
     const { token } = this.state;
 
-    console.log("spotify window", window.Spotify);
-
     if (window.Spotify !== undefined) {
-      console.log("spotify window called");
       clearInterval(this.playerCheckInterval);
 
       this.player = new window.Spotify.Player({
@@ -233,7 +226,6 @@ class MusicPlayer extends Component {
   }
 
   render() {
-    console.log("this is several tracks", this.props.several_tracks);
     const {
       trackName,
       artistName,
@@ -250,7 +242,6 @@ class MusicPlayer extends Component {
           userName={this.props.spotifyId.display_name}
           deviceId={this.state.deviceId}
         />
-        {console.log("all music player props", this.props)}
         <ElementContainer>
           <SideBar id="sideBarLD">
             <div id="sideBarLD1" className="music-player joyride-player-2">

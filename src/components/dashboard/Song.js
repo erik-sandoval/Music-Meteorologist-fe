@@ -32,8 +32,6 @@ class Song extends React.Component {
     const trackUris = this.props.tracks.map(track => track.uri)
     trackUris.unshift(this.props.song.uri)
     const changeSong = () => {
-      console.log("changeSong", this.props)
-      console.log("uri array", trackUris)
       axios.put(
         `https://api.spotify.com/v1/me/player/play?device_id=${this.props.deviceId}`,
         {
@@ -84,7 +82,6 @@ class Song extends React.Component {
               {this.props.song.artists[0].name}
             </Typography>
             <Typography style={{ fontSize: 13 }}>
-              {console.log("inside songjs", this.props)}
             </Typography>
             {/* <p>Audio Features: {loadingTf ? 'loading....' : tf.data.tempo}</p> */}
           </Grid>

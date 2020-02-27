@@ -64,9 +64,6 @@ class Dashboard extends React.Component {
   }
 
   componentDidUpdate(prevProps) {
-    // console.log('Previous Props', prevProps);
-    
-
     if (this.state.userDataFetching === false && this.props.spotifyUser.id) {
       this.props.getCurrentUser(this.props.spotifyUser.id);
       this.setState({
@@ -167,10 +164,7 @@ class Dashboard extends React.Component {
   };
 
   render() {
-    // console.log('getSpotifyAccountDetails ! _ 0', this.props);
-    console.log('Current songs', this.props.ds_songs);
-
-
+    // console.log('getSpotifyAccountDetails ! _ 0', this.props)
     const dsSongs = this.props.ds_songs;
     return (
       <div className="dashboard">

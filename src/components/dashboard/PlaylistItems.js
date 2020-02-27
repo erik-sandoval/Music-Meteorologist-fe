@@ -55,9 +55,6 @@ class PlaylistItems extends React.Component {
   }
 
   componentDidUpdate(prevProps) {
-    // console.log('Previous Props', prevProps);
-    console.log('Current Props', this.props);
-
     if (this.state.userDataFetching === false && this.props.spotifyUser.id) {
       this.props.getCurrentUser(this.props.spotifyUser.id);
       this.setState({
@@ -148,7 +145,6 @@ class PlaylistItems extends React.Component {
 
     return (
       <div className="dashboard">
-        {console.log("playlistitems props", this.props)}
         <div id="mainBarLD1">
           <List>
             <div
