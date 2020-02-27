@@ -58,7 +58,7 @@ class LikedSongs extends React.Component {
 
 const mapStateToProps = state => ({
   songs: state.likedSongsReducer,
-  spotifyUser: state.getUsersReducer.spotifyUser,
+  spotifyUser: state.getUserReducer.spotifyUser,
   several_tracks: state.queueReducer.several_tracks,
   playlistTracks: state.getPlaylistReducer,
   playlistId: state.createPlaylistReducer,

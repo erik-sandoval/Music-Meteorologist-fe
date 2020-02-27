@@ -1,5 +1,5 @@
 import { combineReducers } from 'redux';
-import getUsersReducer from './usersReducer';
+import getUserReducer from './userReducer';
 import likedSongsReducer from './likedSongsReducer';
 import getTrackInfoReducer from './getTrackInfoReducer';
 import currentSongReducer from './getCurrentSongReducer';
@@ -11,7 +11,7 @@ import addToPlaylistReducer from './addToPlaylistReducer';
 import removeTrackReducer from './removeTrackReducer';
 
 export default combineReducers({
-  getUsersReducer,
+  getUserReducer,
   likedSongsReducer,
   getTrackInfoReducer,
   currentSongReducer,

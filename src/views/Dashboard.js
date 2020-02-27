@@ -172,9 +172,9 @@ class Dashboard extends React.Component {
 }
 
 const mapStateToProps = state => ({
-  spotifyUser: state.getUsersReducer.spotifyUser,
+  spotifyUser: state.getUserReducer.spotifyUser,
   currentUser: state.getCurrentUserReducer.currentUser,
-  fetchingSpotifyUser: state.getUsersReducer.fetchingSpotifyUser,
+  fetchingSpotifyUser: state.getUserReducer.fetchingSpotifyUser,
   fetchingDsSongs: state.queueReducer.isFetchingDSSongs,
   ds_songs: state.queueReducer.ds_songs,
   several_tracks: state.queueReducer.several_tracks,

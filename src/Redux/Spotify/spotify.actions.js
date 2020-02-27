@@ -5,19 +5,19 @@ const url = "https://music-meteorology.herokuapp.com/";
 
 export const getUsers = () => dispatch => {
   dispatch({
-    type: SpotifyActionTypes.GET_USERS_FETCHING
+    type: SpotifyActionTypes.GET_USER_FETCHING
   });
   axios
     .get(`${url}v1/users`)
     .then(res => {
       dispatch({
-        type: SpotifyActionTypes.GET_USERS_SUCCESS,
+        type: SpotifyActionTypes.GET_USER_SUCCESS,
         payload: res.data
       });
     })
     .catch(err => {
       dispatch({
-        type: SpotifyActionTypes.GET_USERS_FAILURE,
+        type: SpotifyActionTypes.GET_USER_FAILURE,
         payload: err
       });
     });
@@ -81,6 +81,7 @@ export const getTrackInfo = id => dispatch => {
   axios
     .get(`https://api.spotify.com/v1/audio-features/${id}`, config)
     .then(res => {
+      console.log(res.data)
       dispatch({
         type: SpotifyActionTypes.GET_TRACK_INFO_SUCCESS,
         payload: res.data
