@@ -81,7 +81,7 @@ export const getTrackInfo = id => dispatch => {
   axios
     .get(`https://api.spotify.com/v1/audio-features/${id}`, config)
     .then(res => {
-      console.log(res.data)
+      console.log(res.data);
       dispatch({
         type: SpotifyActionTypes.GET_TRACK_INFO_SUCCESS,
         payload: res.data
@@ -95,12 +95,12 @@ export const getTrackInfo = id => dispatch => {
     });
 };
 
-export const getPlayStatus = (status) => dispatch => {
+export const getPlayStatus = status => dispatch => {
   dispatch({
     type: SpotifyActionTypes.GET_PLAY_STATUS,
     payload: status
-  })
-}
+  });
+};
 
 export const getSpotifyAccountDetails = () => dispatch => {
   dispatch({
@@ -158,11 +158,6 @@ export const persistUser = (spotifyUser, playlistId) => dispatch => {
   dispatch({
     type: SpotifyActionTypes.PERSIST_USER_FETCHING
   });
-  console.log(
-    "after inital dispatch persist user fetching",
-    spotifyUser,
-    playlistId
-  );
   axios
     .get(`${url}v1/users/spotify/${spotifyUser.id}`)
     .then(res => {
@@ -198,26 +193,19 @@ export const persistUser = (spotifyUser, playlistId) => dispatch => {
       console.log("inside err persist user", err);
       if (err.message === "Request failed with status code 404") {
         console.log("spotify user inside persist", spotifyUser, playlistId);
-        axios
-          .post(`${url}v1/users/register`, {
-            email: spotifyUser.email,
-            spotify_user_id: spotifyUser.id,
-            user_spotify_api_key: Math.floor(
-              Math.random() * 99999999999 + 1
-            ).toString(),
-            date_of_birth: "2019-07-29",
-            spotify_product_type: spotifyUser.product,
-            display_name: spotifyUser.display_name,
-            country: spotifyUser.country,
-            profile_image_url: "",
-            spotify_playlist_id: playlistId
-          })
-          .then(res => {
-            /* dispatch({ type: SpotifyActionTypes.PERSIST_USER_SUCCESS, payload: res.data }); */
-          })
-          .catch(err => {
-            /* dispatch({ type: SpotifyActionTypes.PERSIST_USER_SUCCESS, payload: err }); */
-          });
+        axios.post(`${url}v1/users/register`, {
+          email: spotifyUser.email,
+          spotify_user_id: spotifyUser.id,
+          user_spotify_api_key: Math.floor(
+            Math.random() * 99999999999 + 1
+          ).toString(),
+          date_of_birth: "2019-07-29",
+          spotify_product_type: spotifyUser.product,
+          display_name: spotifyUser.display_name,
+          country: spotifyUser.country,
+          profile_image_url: "",
+          spotify_playlist_id: playlistId
+        });
       }
       /* dispatch({ type: SpotifyActionTypes.PERSIST_USER_SUCCESS, payload: err }); */
     });
@@ -267,10 +255,6 @@ export const createPlaylist = spotifyId => dispatch => {
       playlistName,
       config
     )
-    //   console.log('CREATE PLAYLIST ACTION RES PAYLOAD', res.data);
-    //   axios.put(`${url}v1/users/spotify/${res.data.owner.id}`, {
-    //     spotify_playlist_id: res.data.id,
-    //   });
 
     .then(res => {
       dispatch({
