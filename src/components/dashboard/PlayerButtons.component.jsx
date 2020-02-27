@@ -6,55 +6,16 @@ import {
 } from "../../Redux/Spotify/spotify.actions";
 import LikeDislikeContainer from "../dashboard/element-styles/LikeDislikeContainer";
 
+import {
+  toggleDislikeButton,
+  onPlayClick,
+  onNextClick,
+  onPrevClick,
+  toggleLikeButton
+} from "../../playerActions/playerActions";
+
 const PlayerButtons = props => {
-
   const { player, playing } = props;
-
-  const onPrevClick = () => {
-    player.previousTrack();
-    player.setVolume(0);
-    player.setVolume(0.5);
-
-    var element = document.getElementById("like1");
-    element.classList.remove("fullHeart");
-  };
-
-  const onPlayClick = () => {
-    player.togglePlay();
-  };
-
-  const onNextClick = () => {
-    player.nextTrack();
-    player.setVolume(0);
-    player.playing && player.pause();
-
-    player.setVolume(0.5);
-
-    var element = document.getElementById("like1");
-    element.classList.remove("fullHeart");
-  };
-
-  let toggleLikeButton = () => {
-    props.saveLikedSong(props.song.id);
-
-    player.setVolume(0.5);
-
-    props.removeTrack(props.currentUser.spotify_playlist_id, props.song.id);
-    var element = document.getElementById("like1");
-    element.classList.add("fullHeart");
-  };
-
-  const toggleDislikeButton = () => {
-    player.nextTrack();
-    player.setVolume(0);
-    setTimeout(() => {
-      player.pause();
-      player.setVolume(0.5);
-    }, 2000);
-    props.removeTrack(props.currentUser.spotify_playlist_id, props.song.id);
-    var element = document.getElementById("like1");
-    element.classList.remove("fullHeart");
-  };
 
   return (
     <LikeDislikeContainer>
@@ -63,7 +24,7 @@ const PlayerButtons = props => {
           id="x"
           className="like-dislike dislike joyride-dislike-4"
           style={{ background: "none", border: "none", outline: "none" }}
-          onClick={toggleDislikeButton}
+          onClick={(props) => toggleDislikeButton(player, props)}
         >
           <a className="dislikeicon" style={{ maxHeight: 70 }} />
         </button>
@@ -75,7 +36,7 @@ const PlayerButtons = props => {
               border: "none",
               outline: "none"
             }}
-            onClick={() => onPrevClick()}
+            onClick={() => onPrevClick(player)}
           >
             <a className="previcon" style={{ maxHeight: 35 }} />
           </button>
@@ -87,7 +48,7 @@ const PlayerButtons = props => {
               border: "none",
               outline: "none"
             }}
-            onClick={() => onPlayClick()}
+            onClick={() => onPlayClick(player)}
           >
             {playing ? (
               <a className="pauseicon" style={{ maxHeight: 35 }} />
@@ -103,7 +64,7 @@ const PlayerButtons = props => {
               border: "none",
               outline: "none"
             }}
-            onClick={() => onNextClick()}
+            onClick={() => onNextClick(player)}
           >
             <a className="nexticon" style={{ maxHeight: 35 }} />
           </button>
@@ -112,7 +73,7 @@ const PlayerButtons = props => {
           id="heart"
           className="like-dislike like"
           style={{ background: "none", border: "none", outline: "none" }}
-          onClick={toggleLikeButton}
+          onClick={(props) => toggleLikeButton(player, props)}
         >
           <a className="likeicon" id="like1" style={{ maxHeight: 70 }} />
         </button>
@@ -122,7 +83,7 @@ const PlayerButtons = props => {
 };
 
 const mapStateToProps = state => ({
-  song: state.currentSongReducer.item,
+  song: state.currentSongReducer.item
 });
 
 export default connect(mapStateToProps, { saveLikedSong, removeTrack })(
