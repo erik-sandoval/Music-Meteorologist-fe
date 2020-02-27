@@ -49,8 +49,7 @@ const MenuListComposition = props => {
     localStorage.removeItem("ds_songs");
     props.history.push("/logout");
   };
-  // console.log("logout props", props)
-  // console.log("this.props.deviceid WTF", props.deviceid)
+
   // return focus to the button when we transitioned from !open -> open
   const prevOpen = React.useRef(open);
   React.useEffect(() => {

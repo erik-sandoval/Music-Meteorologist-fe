@@ -113,17 +113,14 @@ class Dashboard extends React.Component {
   };
 
   render() {
-    console.log("what it do", this.props);
-
-    const {dsSongs} = this.props
+    const { dsSongs } = this.props;
 
     return (
       <div className="dashboard">
         {dsSongs.songs ? (
           <Grid>
-          <MusicPlayer spotifyId={this.props.spotifyUser} />
-        </Grid>
-          
+            <MusicPlayer spotifyId={this.props.spotifyUser} />
+          </Grid>
         ) : (
           <LoadingPage />
         )}

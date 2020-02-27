@@ -9,7 +9,6 @@ import LikeDislikeContainer from "../dashboard/element-styles/LikeDislikeContain
 const PlayerButtons = props => {
 
   const { player, playing } = props;
-  console.log("playing state from Player Buttons", playing)
 
   const onPrevClick = () => {
     player.previousTrack();

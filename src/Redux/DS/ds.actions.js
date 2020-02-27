@@ -7,11 +7,9 @@ export const postDSSong = obj => dispatch => {
   dispatch({
     type: DsActionTypes.POST_DS_SONGS_FETCHING
   });
-  console.log("OBJ passed into postDSSong", JSON.stringify(obj));
   axios
     .post(`${url}/request`, obj)
     .then(res => {
-      console.log("success postDSSong");
       if (
         res.data.songs !== undefined &&
         res.data.songs !== null &&

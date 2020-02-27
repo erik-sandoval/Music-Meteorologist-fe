@@ -30,7 +30,6 @@ export const getCurrentUser = spotifyId => dispatch => {
   axios
     .get(`${url}v1/users/spotify/${spotifyId}`)
     .then(res => {
-      console.log("this is the spotify id", spotifyId);
       dispatch({
         type: SpotifyActionTypes.GET_LOGGED_IN_SUCCESS,
         payload: res.data
@@ -81,7 +80,6 @@ export const getTrackInfo = id => dispatch => {
   axios
     .get(`https://api.spotify.com/v1/audio-features/${id}`, config)
     .then(res => {
-      console.log(res.data);
       dispatch({
         type: SpotifyActionTypes.GET_TRACK_INFO_SUCCESS,
         payload: res.data
@@ -190,9 +188,7 @@ export const persistUser = (spotifyUser, playlistId) => dispatch => {
       }
     })
     .catch(err => {
-      console.log("inside err persist user", err);
       if (err.message === "Request failed with status code 404") {
-        console.log("spotify user inside persist", spotifyUser, playlistId);
         axios.post(`${url}v1/users/register`, {
           email: spotifyUser.email,
           spotify_user_id: spotifyUser.id,

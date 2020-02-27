@@ -121,7 +121,6 @@ class PlaylistInfo extends React.Component {
       const reducer = (accumulator, currentValue) => accumulator + currentValue;
       let songTime = trackslist.reduce(reducer);
       let total = this.msToTime(songTime);
-      console.log("songtime", total);
     };
 
     const addPlaylist = () => {
@@ -156,11 +155,8 @@ class PlaylistInfo extends React.Component {
             );
           });
       }
-
-      console.log("playlistinfo props", trackUris);
     };
 
-    console.log("playlistinfo props", this.props);
     return (
       <Container id="playInfoLD">
         <DivLeft>
