@@ -1,10 +1,10 @@
 import React from "react";
 import styled from "styled-components";
 import Button from "./dashboard/element-styles/AuthButton.js";
-import MobileNav from './dashboard/element-styles/MobileNav.js'
+import MobileNav from "./dashboard/element-styles/MobileNav.js";
 
 import "../views/styles/about.css";
-import HomepageNav from "./HomepageNav.js"
+import HomepageNav from "./HomepageNav.js";
 import AboutImage from "../assets/About-Image.svg";
 import ChartImage from "../assets/chart-image.svg";
 import SpotifyImage from "../assets/spotify-image.svg";
@@ -93,7 +93,6 @@ const Grid = styled.div`
     padding: 0%;
     height: 1500px;
   }
-
 `;
 
 // margin-left: 5%;
@@ -118,12 +117,11 @@ const InnerGrid = styled.div`
   }
 `;
 const InnerGridReverse = styled.div`
-  
-display: flex;
-justify-content: center;
-flex-direction: column;
-margin: 2%;
-padding: 10%;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  margin: 2%;
+  padding: 10%;
   @media (max-width: 576px) {
     display: none;
   }
@@ -148,12 +146,12 @@ const About = () => (
     <div className="mobileNavWrap">
       <MobileNav />
     </div>
-    <HomepageNav/>
-    <div className='about-image'>
-      <img className="desktop-about"src={AboutImage} />
+    <HomepageNav />
+    <div className="about-image">
+      <img className="desktop-about" src={AboutImage} />
       <img className="mobile-about" src={AboutImageMobile} />
     </div>
-    <div className='header-container'>
+    <div className="header-container">
       <Header>Sit back while we create a playlist of songs you'll love.</Header>
     </div>
     <Grid>
@@ -161,35 +159,35 @@ const About = () => (
         <SecondaryHeader>
           Songs picked just for your music taste.
         </SecondaryHeader>
-        <Sentence style={{zIndex: "-1"}}>
+        <Sentence style={{ zIndex: "-1" }}>
           We’ll put together a playlsit for you based on the musical traits of
           the songs you like.
         </Sentence>
       </InnerGrid>
       <InnerGrid>
-        <img className="about-images" src={ChartImage}/>
+        <img className="about-images" src={ChartImage} />
       </InnerGrid>
       <InnerGridReverse>
-        <img className="about-images" src={SpotifyImage}/>
-        </InnerGridReverse>
-        <InnerGridReverse>
-          <SecondaryHeader>
-            Our prediction model will do all the work.
-          </SecondaryHeader>
-          <Sentence style={{zIndex: "-1"}}>
-            We’ve got you covered, just join with your Spotify account and we’ll
-            take it from there.
-          </Sentence>
-        </InnerGridReverse>
+        <img className="about-images" src={SpotifyImage} />
+      </InnerGridReverse>
+      <InnerGridReverse>
+        <SecondaryHeader>
+          Our prediction model will do all the work.
+        </SecondaryHeader>
+        <Sentence style={{ zIndex: "-1" }}>
+          We’ve got you covered, just join with your Spotify account and we’ll
+          take it from there.
+        </Sentence>
+      </InnerGridReverse>
       <div className="reverse">
         <InnerGrid>
-        <img className="about-images" src={SpotifyImage}/>
+          <img className="about-images" src={SpotifyImage} />
         </InnerGrid>
         <InnerGrid>
           <SecondaryHeader>
             Our prediction model will do all the work.
           </SecondaryHeader>
-          <Sentence style={{zIndex: "-1"}}>
+          <Sentence style={{ zIndex: "-1" }}>
             We’ve got you covered, just join with your Spotify account and we’ll
             take it from there.
           </Sentence>
@@ -197,18 +195,19 @@ const About = () => (
       </div>
       <InnerGrid>
         <SecondaryHeader>Listen and enjoy!</SecondaryHeader>
-        <Sentence style={{zIndex: "-1"}}>
+        <Sentence style={{ zIndex: "-1" }}>
           Voila! Now you can add the playlist to your Spotify or enjoy in our
           music player.
         </Sentence>
       </InnerGrid>
       <InnerGrid>
-      <img className="about-images" src={SongImage}/>
+        <img className="about-images" src={SongImage} />
       </InnerGrid>
     </Grid>
-    <div className='button-container'>
-      <Button className="startedButton"
-        as='a'
+    <div className="button-container">
+      <Button
+        className="startedButton"
+        as="a"
         href={`${authEndpoint}?client_id=${clientId}&redirect_uri=${redirectUri}&scope=${encodeURIComponent(
           scopes
         )}&response_type=token&show_dialog=true`}
