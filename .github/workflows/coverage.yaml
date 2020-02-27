@@ -61,5 +61,5 @@ jobs:
           CC_TEST_REPORTER_ID: ${{ secrets.CodeClimateReporterId }}
           CI: true
         with:
-          coverageCommand: yarn --cwd music-app coverage
+          coverageCommand: yarn run coverage
           debug: true
