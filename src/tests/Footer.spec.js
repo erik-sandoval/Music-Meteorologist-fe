@@ -12,9 +12,10 @@ describe('Footer', () => {
     let store;
     beforeEach(() => {
         store = mockStore({
-            admin: {
-                isAdmin: false
-            }
+            // ---------->if we needed to login as an admin
+            // admin: {
+            //     isAdmin: false
+            // }
         })
     })
     it('should render without crashing', () => {
