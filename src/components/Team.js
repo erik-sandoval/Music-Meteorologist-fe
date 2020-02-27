@@ -179,10 +179,6 @@ export default function Team() {
           </Grid>
 
           <Grid item xs={6} sm={3}>
-            {/* <CardMedia
-              component="img"
-              image="https://i.ibb.co/1bbn7hc/nicholas.jpg"
-            /> */}
             <CardMedia
               component="img"
               image="https://i.ibb.co/mSQ6kvt/joshua.jpg"
@@ -320,7 +316,7 @@ export default function Team() {
             />
             <Grid style={{ marginTop: "3px" }} container spacing={3}>
               <Grid item xs={12} sm={8}>
-                <Typography className={classes.name}>Xander Bennet</Typography>
+                <Typography className={classes.name}>Xander Bennett</Typography>
                 <Typography className={classes.position}>
                   Data Scientist
                 </Typography>
