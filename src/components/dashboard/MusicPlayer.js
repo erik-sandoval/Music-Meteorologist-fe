@@ -11,6 +11,7 @@ import {
   removeTrack,
   getlikedSongs,
   saveLikedSong,
+  getPlayStatus
 } from "../../Redux/Spotify/spotify.actions";
 import { postDSSong } from "../../Redux/DS/ds.actions";
 import PlaylistItems from "./PlaylistItems";
@@ -65,8 +66,8 @@ class MusicPlayer extends Component {
 
   handleLogin() {
     if (this.state.token !== "") {
-      this.setState({ loggedIn: true })
-      this.playerCheckInterval = this.checkForPlayer()
+      this.setState({ loggedIn: true });
+      this.playerCheckInterval = this.checkForPlayer();
     }
   }
 
@@ -214,8 +215,6 @@ class MusicPlayer extends Component {
       imageSpotify
     } = this.state;
 
-    console.log("playing state from Music Player", playing);
-
     return (
       <div>
         <NavBar
@@ -309,7 +308,8 @@ const mapStateToProps = state => ({
   song_id: state.likedSongsReducer.song_id,
   savingLike: state.likedSongsReducer.savingLike,
   isFetchingSuccessful: state.queueReducer.isFetchingSuccessful,
-  isFetchingDSSongs: state.queueReducer.isFetchingDSSongs
+  isFetchingDSSongs: state.queueReducer.isFetchingDSSongs,
+  playing: state.currentSongReducer.playing
 });
 
 export default connect(mapStateToProps, {
@@ -317,10 +317,5 @@ export default connect(mapStateToProps, {
   getCurrentSong,
   postDSSong,
   getSeveralTracks,
-  createPlaylist,
-  addToPlaylist,
-  removeTrack,
-  getlikedSongs,
-  saveLikedSong,
-
+  getPlayStatus
 })(MusicPlayer);
