@@ -124,7 +124,6 @@ const PlayerButtons = props => {
 
 const mapStateToProps = state => ({
   song: state.currentSongReducer.item,
-  currentUser: state.getCurrentUserReducer.currentUser
 });
 
 export default connect(mapStateToProps, { saveLikedSong, removeTrack })(

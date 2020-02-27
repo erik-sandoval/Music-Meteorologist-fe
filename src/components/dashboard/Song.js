@@ -31,9 +31,6 @@ class Song extends React.Component {
 
     const trackUris = this.props.tracks.map(track => track.uri);
     trackUris.unshift(song.uri);
-
-    console.log("Song Component props", this.props);
-
     return (
       <div>
         <Grid

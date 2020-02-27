@@ -11,7 +11,6 @@ import {
   removeTrack,
   getlikedSongs,
   saveLikedSong,
-  getCurrentUser
 } from "../../Redux/Spotify/spotify.actions";
 import { postDSSong } from "../../Redux/DS/ds.actions";
 import PlaylistItems from "./PlaylistItems";
@@ -259,8 +258,7 @@ class MusicPlayer extends Component {
                   <AudioDetailsContainer traits={this.props.traits} />
                   <Grid item>
                     {window.Spotify !== undefined &&
-                      this.state.imageUrl !== "" &&
-                      artistName !== "Artist Name" && (
+                      this.state.imageUrl !== "" && (
                         <div className="album-art">
                           <h4 style={{ textAlign: "center" }}>Now Playing</h4>
                           <img
@@ -310,7 +308,6 @@ const mapStateToProps = state => ({
   playlistId: state.createPlaylistReducer.playlistId,
   song_id: state.likedSongsReducer.song_id,
   savingLike: state.likedSongsReducer.savingLike,
-  currentUser: state.getCurrentUserReducer.currentUser,
   isFetchingSuccessful: state.queueReducer.isFetchingSuccessful,
   isFetchingDSSongs: state.queueReducer.isFetchingDSSongs
 });
@@ -325,5 +322,5 @@ export default connect(mapStateToProps, {
   removeTrack,
   getlikedSongs,
   saveLikedSong,
-  getCurrentUser
+
 })(MusicPlayer);
