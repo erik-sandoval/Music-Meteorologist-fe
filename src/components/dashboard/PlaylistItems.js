@@ -190,11 +190,11 @@ class PlaylistItems extends React.Component {
                 overflow: "auto",
                 color: "white",
                 marginLeft: "45px",
-                marginRight: "45px",
+                overflowY: "scroll",
+                height: "73vh",
                 background: "transparent",
                 boxShadow: "none",
                 textAlign: "left",
-                height: "600px"
               }}
             >
               <LikedSongs deviceId={this.props.deviceId} />

@@ -682,9 +682,6 @@ body::-webkit-scrollbar {
   background: #121416;
 }
 
-.MuiGrid-container {
-  max-height: 600px;
-}
 
 .like-dislike-wrapper {
   display: flex;
