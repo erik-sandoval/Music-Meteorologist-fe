@@ -9,7 +9,7 @@ class Song extends React.Component {
   msToTime(s) {
     var minutes = Math.floor(s / 60000);
     var seconds = ((s % 60000) / 1000).toFixed(0);
-    return seconds == 60
+    return seconds === 60
       ? minutes + 1 + ":00"
       : minutes + ":" + (seconds < 10 ? "0" : "") + seconds;
   }
@@ -31,6 +31,8 @@ class Song extends React.Component {
 
     const trackUris = this.props.tracks.map(track => track.uri);
     trackUris.unshift(song.uri);
+  render() {
+    const { song, playing, id, currentSong, tracks } = this.props;
     return (
       <div>
         <Grid
@@ -50,13 +52,13 @@ class Song extends React.Component {
                 outline: "none"
               }}
             >
-              {"playing" ? (
-                <a
-                  onClick={() => this.changeSong(trackUris)}
-                  className="playicon2"
-                />
+              {playing && id === currentSong.id ? (
+                <div className="pauseicon2" />
               ) : (
-                <a className="playicon" style={{ maxHeight: 35 }} />
+                <div
+                  className="playicon2"
+                  onClick={() => this.changeSong(tracks, song.uri)}
+                />
               )}
             </button>
           </Grid>
@@ -116,6 +118,7 @@ class Song extends React.Component {
 
 const mapStateToProps = state => ({
   tracksInfo: state.getTrackInfoReducer,
+  currentSong: state.currentSongReducer.item,
   playing: state.currentSongReducer.playing
 });
 
