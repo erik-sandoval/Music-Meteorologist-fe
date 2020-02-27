@@ -30,10 +30,7 @@ class LikedSongs extends React.Component {
   }
 
   render() {
-    console.log("liked songs props", this.props);
-    console.log("liked songs state", this.state);
 
-    console.log();
     if (this.props.fetchingLikedSongs) {
       return <h1>Loading...</h1>;
     }
