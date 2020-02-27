@@ -36,7 +36,7 @@ class LikedSongs extends React.Component {
     return (
       <Grid container>
         <Grid id="songLD" item>
-          {this.props.several_tracks.tracks ? 
+          {this.props.several_tracks.tracks ? (
             this.props.several_tracks.tracks.map(song => (
               <Song
                 song={song}
@@ -45,7 +45,10 @@ class LikedSongs extends React.Component {
                 deviceId={this.props.deviceId}
                 tracks={this.props.several_tracks.tracks}
               />
-            )) : <h1>Loading...</h1>}
+            ))
+          ) : (
+            <h1>Loading...</h1>
+          )}
         </Grid>
       </Grid>
     );

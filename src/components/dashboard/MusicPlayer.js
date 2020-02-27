@@ -78,7 +78,7 @@ class MusicPlayer extends Component {
         .map(artist => artist.name)
         .join(", ");
       const imageSpotify = currentTrack.album.images[2].url;
-      this.props.getPlayStatus(!spotifyState.paused)
+      this.props.getPlayStatus(!spotifyState.paused);
       this.setState({
         position,
         duration,

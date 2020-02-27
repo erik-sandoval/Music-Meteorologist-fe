@@ -1,6 +1,6 @@
-import React from 'react';
-import styled from 'styled-components';
-import '../App.css';
+import React from "react";
+import styled from "styled-components";
+import "../App.css";
 
 const Footer = styled.footer`
   display: flex;
@@ -14,13 +14,11 @@ const Footer = styled.footer`
 `;
 
 const FooterContainer = () => {
-
   return (
     <Footer>
-        <p> © Copyright 2019, SoundDrip </p>
+      <p> © Copyright 2019, SoundDrip </p>
     </Footer>
   );
+};
 
-}
-
-export default FooterContainer
+export default FooterContainer;
