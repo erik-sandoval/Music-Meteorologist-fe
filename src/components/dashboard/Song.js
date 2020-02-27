@@ -115,7 +115,8 @@ class Song extends React.Component {
 }
 
 const mapStateToProps = state => ({
-  tracksInfo: state.getTrackInfoReducer
+  tracksInfo: state.getTrackInfoReducer,
+  playing: state.currentSongReducer.playing
 });
 
 export default connect(mapStateToProps, { getTrackInfo })(Song);

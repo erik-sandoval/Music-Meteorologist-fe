@@ -95,6 +95,13 @@ export const getTrackInfo = id => dispatch => {
     });
 };
 
+export const getPlayStatus = (status) => dispatch => {
+  dispatch({
+    type: SpotifyActionTypes.GET_PLAY_STATUS,
+    payload: status
+  })
+}
+
 export const getSpotifyAccountDetails = () => dispatch => {
   dispatch({
     type: SpotifyActionTypes.GET_SPOTIFY_PRIVATE_ACCOUNT_DETAILS_FETCHING

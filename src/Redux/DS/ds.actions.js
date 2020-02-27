@@ -25,19 +25,6 @@ export const postDSSong = obj => dispatch => {
             JSON.stringify(JSON.parse(previous_ds_songs).concat(res.data.songs))
           );
 
-          /*    localStorage.setItem(
-              'ds_songs',
-              JSON.stringify([
-                ...new Set(
-                  JSON.parse(previous_ds_songs)
-                    .concat(res.data.songs)
-                    .map(song => ({
-                      similarity: song.similarity,
-                      values: song.values,
-                    })),
-                ),
-              ]),
-            ); */
         } else {
           localStorage.setItem("ds_songs", JSON.stringify(res.data.songs));
         }

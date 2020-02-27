@@ -30,6 +30,9 @@ const SpotifyActionTypes = {
     PERSIST_USER_FAILURE: 'GET_CURRENT_SONG_FAILURE',
 //------------------------------------------------------------------------------------------------------------------------------------------------------
 
+
+GET_PLAY_STATUS: 'GET_PLAY_STATUS',
+
 //GET several tracks
     GET_SEVERAL_TRACKS_FETCHING: 'GET_SEVERAL_TRACKS_FETCHING',
     GET_SEVERAL_TRACKS_SUCCESS: 'GET_SEVERAL_TRACKS_SUCCESS',

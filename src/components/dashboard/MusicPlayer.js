@@ -6,11 +6,6 @@ import {
   getCurrentSong,
   getTrackInfo,
   getSeveralTracks,
-  createPlaylist,
-  addToPlaylist,
-  removeTrack,
-  getlikedSongs,
-  saveLikedSong,
   getPlayStatus
 } from "../../Redux/Spotify/spotify.actions";
 import { postDSSong } from "../../Redux/DS/ds.actions";
@@ -44,7 +39,6 @@ class MusicPlayer extends Component {
       albumName: "Album Name",
       imageSpotify: "",
       imageUrl: "",
-      playing: false,
       position: 0,
       duration: 1,
       id: "",
@@ -84,14 +78,13 @@ class MusicPlayer extends Component {
         .map(artist => artist.name)
         .join(", ");
       const imageSpotify = currentTrack.album.images[2].url;
-      let playing = !spotifyState.paused;
+      this.props.getPlayStatus(!spotifyState.paused)
       this.setState({
         position,
         duration,
         trackName,
         albumName,
         artistName,
-        playing,
         imageSpotify
       });
     } else {
@@ -154,7 +147,6 @@ class MusicPlayer extends Component {
 
   concatenateSongIds(array) {
     const concatString = array.map(song => song.values).join(",");
-    console.log("testing concat string", concatString);
     return concatString;
   }
   getCurrentSongFeatures = id => this.props.getTrackInfo(id);
@@ -211,7 +203,6 @@ class MusicPlayer extends Component {
       artistName,
       albumName,
       error,
-      playing,
       imageSpotify
     } = this.state;
 
@@ -244,7 +235,7 @@ class MusicPlayer extends Component {
                   </div>
                   <PlayerButtons
                     player={this.player}
-                    playing={playing}
+                    playing={this.props.playing}
                     trueSimilarity={this.state.trueSimilarity}
                   />
                 </Grid>
