@@ -1,4 +1,4 @@
-import postDSSong, postDSSong  from '../Redux/DS/ds.actions';
+import postDSSong from '../Redux/DS/ds.actions';
 
 export const useActions = () => {
     const ds: postDSSong = postDSSong();
@@ -7,7 +7,7 @@ export const useActions = () => {
     };
 };
 
-interface postDSSong {
+interface UseActions {
     ds: postDSSong
 }
-export type Actions = useActions | null;
+export type Actions = UseActions | null;
