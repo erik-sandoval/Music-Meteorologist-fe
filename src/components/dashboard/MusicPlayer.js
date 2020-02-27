@@ -30,7 +30,6 @@ import MainBar from "./element-styles/MainBarContainer";
 import PlaylistInfoContainer from "./element-styles/PlaylistInfo";
 import PlaylistSongsContainer from "./element-styles/PlaylistSongs";
 import NavBar from "./element-styles/NavBarMusicPlayer";
-import Footer from "../Footer";
 
 class MusicPlayer extends Component {
   constructor(props) {
@@ -60,27 +59,6 @@ class MusicPlayer extends Component {
     this.handleLogin();
   }
 
-  componentDidUpdate(prevProps) {
-    console.log("this is ds props songs", this.props.ds_songs);
-    // if (this.props.song_id !== prevProps.song_id) {
-    //   this.dsDelivery();
-    // }
-    // if (this.props.savingLike) {
-    //   this.props.getlikedSongs();
-    // }
-    // if (
-    //   this.props.isFetchingSuccessful === true &&
-    //   this.props.ds_songs !== prevProps.ds_songs
-    // ) {
-    //   this.props.addToPlaylist(
-    //     {
-    //       uris: this.createSpotifyUriArray(this.props.ds_songs[0].songs)
-    //     },
-    //     this.props.currentUser.spotify_playlist_id
-    //   );
-    // }
-  }
-
   dsDelivery() {
     const token = { token: localStorage.getItem("token") };
     this.props.postDSSong(token);
@@ -88,25 +66,25 @@ class MusicPlayer extends Component {
 
   handleLogin() {
     if (this.state.token !== "") {
-      this.setState({ loggedIn: true });
-      this.playerCheckInterval = setInterval(() => this.checkForPlayer(), 1000);
+      this.setState({ loggedIn: true })
+      this.playerCheckInterval = this.checkForPlayer()
     }
   }
 
-  onStateChanged(state) {
-    if (state !== null) {
+  onStateChanged(spotifyState) {
+    if (spotifyState !== null) {
       const {
         current_track: currentTrack,
         position,
         duration
-      } = state.track_window;
+      } = spotifyState.track_window;
       const trackName = currentTrack.name;
       const albumName = currentTrack.album.name;
       const artistName = currentTrack.artists
         .map(artist => artist.name)
         .join(", ");
       const imageSpotify = currentTrack.album.images[2].url;
-      const playing = !state.paused;
+      let playing = !spotifyState.paused;
       this.setState({
         position,
         duration,
@@ -124,33 +102,32 @@ class MusicPlayer extends Component {
   }
 
   createEventHandlers() {
-    this.player.on("initialization_error", e => { });
+    this.player.on("initialization_error", e => {});
     this.player.on("authentication_error", e => {
       this.setState({ loggedIn: false });
     });
-    this.player.on("account_error", e => { });
-    this.player.on("playback_error", e => { });
+    this.player.on("account_error", e => {});
+    this.player.on("playback_error", e => {});
 
     // ONLY WHEN PLAYER STATE CHANGED
-    this.player.on("player_state_changed", state => {
-      this.onStateChanged(state);
+    this.player.on("player_state_changed", spotifyState => {
+      this.onStateChanged(spotifyState);
 
       if (this.props.ds_songs && this.props.isFetchingSuccessful === true) {
         this.props.song && this.getCurrentSongFeatures(this.props.song.id);
       }
       // ONLY WHEN NEW SONG
-      if (state.track_window.current_track.id !== this.state.currentTrack) {
+      if (
+        spotifyState.track_window.current_track.id !== this.state.currentTrack
+      ) {
         this.currentSong();
-        this.setState({ currentTrack: state.track_window.current_track.id });
-        console.log("Testing musicplayer", state.track_window.current_track.id);
+        this.setState({
+          currentTrack: spotifyState.track_window.current_track.id
+        });
         this.player.setVolume(0);
-        setTimeout(() => {
-          this.player.pause();
-          this.player.seek(1);
-          this.player.setVolume(0.5);
-        }, 2000);
+        this.player.seek(1);
+        this.player.setVolume(0.5);
         if (true) {
-          console.log("DS ARRAY called");
           this.getDataScienceSongArray();
         }
       }
@@ -189,10 +166,7 @@ class MusicPlayer extends Component {
   checkForPlayer() {
     const { token } = this.state;
 
-    console.log("spotify window", window.Spotify);
-
     if (window.Spotify !== undefined) {
-      console.log("spotify window called");
       clearInterval(this.playerCheckInterval);
 
       this.player = new window.Spotify.Player({
@@ -228,12 +202,10 @@ class MusicPlayer extends Component {
       })
     });
     this.player.setVolume(0);
-    setTimeout(() => this.player.pause(), 2000);
     this.player.setVolume(0.5);
   }
 
   render() {
-    console.log("debugging device id error", this.props);
     const {
       trackName,
       artistName,
@@ -243,6 +215,8 @@ class MusicPlayer extends Component {
       imageSpotify
     } = this.state;
 
+    console.log("playing state from Music Player", playing);
+
     return (
       <div>
         <NavBar
@@ -250,7 +224,6 @@ class MusicPlayer extends Component {
           userName={this.props.spotifyId.display_name}
           deviceId={this.state.deviceId}
         />
-        {console.log("all music player props", this.props)}
         <ElementContainer>
           <SideBar id="sideBarLD">
             <div id="sideBarLD1" className="music-player joyride-player-2">
