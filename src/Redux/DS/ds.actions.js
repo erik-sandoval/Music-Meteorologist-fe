@@ -3,7 +3,7 @@ import axios from "axios";
 
 const url = process.env.REACT_APP_BACKEND_BASE_URL;
 
-export const postDSSong = obj => dispatch => {
+const postDSSong = obj => dispatch => {
   dispatch({
     type: DsActionTypes.POST_DS_SONGS_FETCHING
   });
@@ -54,3 +54,4 @@ export const postDSSong = obj => dispatch => {
       });
     });
 };
+export default postDSSong;

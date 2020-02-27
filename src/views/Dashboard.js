@@ -2,7 +2,6 @@ import React from "react";
 import { connect } from "react-redux";
 import { Grid } from "@material-ui/core";
 import LoadingPage from "./LoadingPage.js"
-import WaitForSongs from "./WaitForSongs"
 import Button from "@material-ui/core/Button";
 import Paper from "@material-ui/core/Paper";
 import List from "@material-ui/core/List";
@@ -55,6 +54,8 @@ class Dashboard extends React.Component {
 
     this.dsDelivery()
 
+    this.getDataScienceSongArray()
+
     if (this.props.spotifyUser.length > 0) {
       this.props.persistUser(this.props.spotifyUser);
     }
@@ -63,9 +64,6 @@ class Dashboard extends React.Component {
   }
 
   componentDidUpdate(prevProps) {
-    // console.log('Previous Props', prevProps);
-    // console.log('Current Props', this.props);
-
     if (this.state.userDataFetching === false && this.props.spotifyUser.id) {
       this.props.getCurrentUser(this.props.spotifyUser.id);
       this.setState({
@@ -130,6 +128,17 @@ class Dashboard extends React.Component {
     // }
   }
 
+  getDataScienceSongArray = () => {
+    this.props.ds_songs.length > 0 &&
+      this.props.getSeveralTracks(
+        this.concatenateSongIds(this.props.ds_songs[0].songs)
+      );
+  };
+
+  concatenateSongIds(array) {
+    return array.map(song => song.values).join(",");
+  }
+
   dsDelivery() {
     const token = { token: localStorage.getItem("token") };
     this.props.postDSSong(token);
@@ -154,12 +163,8 @@ class Dashboard extends React.Component {
     this.props.history.push("/logout");
   };
 
-
   render() {
-    console.log("what it do", this.props);
-    // console.log('getSpotifyAccountDetails ! _ 0', this.props);
-
-
+    // console.log('getSpotifyAccountDetails ! _ 0', this.props)
     const dsSongs = this.props.ds_songs;
     return (
       <div className="dashboard">
