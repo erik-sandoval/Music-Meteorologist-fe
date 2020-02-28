@@ -79,7 +79,6 @@ class NavBar extends React.Component {
     return (
       <Nav1>
         <NavContainer>
-          {console.log("props from navbar", this.props)}
           <Logo1
             src={MusicLogo}
             alt={"Navbar logo"}

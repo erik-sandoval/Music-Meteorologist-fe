@@ -287,7 +287,7 @@ export default function Team() {
             />
             <Grid style={{ marginTop: "3px" }} container spacing={3}>
               <Grid item xs={12} sm={8}>
-                <Typography className={classes.name}>Xander Bennet</Typography>
+                <Typography className={classes.name}>Xander Bennett</Typography>
                 <Typography className={classes.position}>
                   Machine Learning Engineer
                 </Typography>
