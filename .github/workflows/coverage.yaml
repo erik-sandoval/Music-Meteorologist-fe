@@ -42,8 +42,8 @@ jobs:
       - uses: actions/setup-node@master
         with:
           node-version: ${{ matrix.node }}
-      - run: yarn install
-      - run: yarn run build --if-present
+      - run: yarn 
+      - run: yarn build --if-present
       - run: yarn test
         env:
           CI: true
@@ -55,11 +55,11 @@ jobs:
       - uses: actions/setup-node@master
         with:
           node-version: "12"
-      - run: yarn install
+      - run: yarn 
       - uses: paambaati/codeclimate-action@v2.4.0
         env:
           CC_TEST_REPORTER_ID: ${{ secrets.CodeClimateReporterId }}
           CI: true
         with:
-          coverageCommand: yarn run coverage
+          coverageCommand: yarn coverage
           debug: true
