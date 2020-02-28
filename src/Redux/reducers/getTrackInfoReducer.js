@@ -1,15 +1,28 @@
 import SpotifyActionTypes from "../Spotify/spotify.types";
 
-const initialState = {};
+const initialState = {
+  trackFetching: null,
+  trackFetched: null,
+  err: null
+};
 
 const getTrackInfoReducer = (state = initialState, action) => {
   switch (action.type) {
     case SpotifyActionTypes.GET_TRACK_INFO_FETCHING:
+      return {
+        ...state,
+        trackFetching: true
+      };
     case SpotifyActionTypes.GET_TRACK_INFO_SUCCESS:
+      return {
+        ...state,
+        trackFetching: false,
+        trackFetched: true
+      };
     case SpotifyActionTypes.GET_TRACK_INFO_FAILURE:
       return {
         ...state,
-        ...action.payload
+        err: action.payload
       };
     default:
       return state;
