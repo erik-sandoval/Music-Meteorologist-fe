@@ -1,5 +1,5 @@
 # name: Report Code Coverage
-#adding this for another run for code climate
+
 # on: [push, pull_request]
 
 # env:
