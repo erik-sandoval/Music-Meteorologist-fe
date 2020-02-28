@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { getCurrentSong } from "../Redux/Spotify/spotify.actions";
 import LinearProgress from "@material-ui/core/LinearProgress";
 
 class LinearDeterminate extends Component {
@@ -36,19 +35,18 @@ class LinearDeterminate extends Component {
   };
 
   render() {
+    const { duration, position } = this.state;
     const { player, song } = this.props;
 
     song && this.checkPlayer(player, song);
-    const tvalue = Math.floor(
-      (this.state.position / this.state.duration) * 100
-    );
-    const minutesPosition = Math.floor(this.state.position / 60000);
+    const tvalue = Math.floor((position / duration) * 100);
+    const minutesPosition = Math.floor(position / 60000);
     const remainingSecondsPosition = Math.floor(
-      this.state.position / 1000 - minutesPosition * 60
+      position / 1000 - minutesPosition * 60
     );
-    const minutesDuration = Math.floor(this.state.duration / 60000);
+    const minutesDuration = Math.floor(duration / 60000);
     const remainingSecondsDuration = Math.floor(
-      this.state.duration / 1000 - minutesDuration * 60
+      duration / 1000 - minutesDuration * 60
     );
     return (
       <div style={{ width: "10rem" }}>
@@ -76,4 +74,4 @@ const mapStateToProps = state => ({
   song: state.currentSongReducer.item
 });
 
-export default connect(mapStateToProps, { getCurrentSong })(LinearDeterminate);
+export default connect(mapStateToProps)(LinearDeterminate);
