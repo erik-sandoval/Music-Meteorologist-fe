@@ -25,6 +25,7 @@ import MainBar from "./element-styles/MainBarContainer";
 import PlaylistInfoContainer from "./element-styles/PlaylistInfo";
 import PlaylistSongsContainer from "./element-styles/PlaylistSongs";
 import NavBar from "./element-styles/NavBarMusicPlayer";
+import PlayerSeekBar from "../PlayerSeekBar.component";
 
 class MusicPlayer extends Component {
   state = {
@@ -228,7 +229,8 @@ class MusicPlayer extends Component {
                   style={{ width: 377, height: "60px", marginBottom: "10px" }}
                 >
                   <div>
-                    <LinearDeterminate player={this.player} />
+                    {/* <LinearDeterminate player={this.player} /> */}
+                    <PlayerSeekBar player={this.player}></PlayerSeekBar>
                   </div>
                   <PlayerButtons
                     player={this.player}
