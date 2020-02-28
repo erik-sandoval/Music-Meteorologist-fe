@@ -16,6 +16,7 @@ const getTrackInfoReducer = (state = initialState, action) => {
     case SpotifyActionTypes.GET_TRACK_INFO_SUCCESS:
       return {
         ...state,
+        ...action.payload,
         trackFetching: false,
         trackFetched: true
       };

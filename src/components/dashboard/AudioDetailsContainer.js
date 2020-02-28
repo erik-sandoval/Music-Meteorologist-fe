@@ -5,6 +5,7 @@ import Paper from "@material-ui/core/Paper";
 import List from "@material-ui/core/List";
 import Chart from "../Chart";
 import AudioDetailsStyles from "./element-styles/AudioDetailsStyles";
+import { connect } from "react-redux";
 
 const AudioDetailsContainer = props => {
   const [collapse, setCollapse] = useState(false);
@@ -60,4 +61,8 @@ const AudioDetailsContainer = props => {
   );
 };
 
-export default AudioDetailsContainer;
+const mapStateToProps = state => ({
+  traits: state.getTrackInfoReducer
+});
+
+export default connect(mapStateToProps)(AudioDetailsContainer);
