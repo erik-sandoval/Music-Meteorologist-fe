@@ -710,18 +710,30 @@ body::-webkit-scrollbar {
   height: 45px;
   width: 45px;
   background: transparent url("./assets/whiteplayspaced.png") no-repeat 0 0;
-  transition: 0.3s ease;
 }
 
 .playicon2:hover {
   background: white url("./assets/pinkplayspaced.png") no-repeat 0 0;
-  transition: 0.3s ease;
   border-radius: 10px;
 }
 
-.playicon2:active {
-  transform: scale(0.8);
-  transition: 0.3s ease;
+.pauseicon2 {
+  display: inline-block;
+  height: 45px;
+  width: 45px;
+  background-repeat: no-repeat;
+  background-size: 25px;
+  background-position: center;
+  background-image: url("./assets/whitepausebutton.png");
+  border-radius: 10px;
+}
+
+.pauseicon2:hover {
+  background: white url("./assets/pinkpausebutton.png") no-repeat 0 0;
+  background-repeat: no-repeat;
+  background-size: 25px;
+  background-position: center;
+  border-radius: 10px;
 }
 
 .playflex {

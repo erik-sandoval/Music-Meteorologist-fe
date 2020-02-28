@@ -14,25 +14,10 @@ class Song extends React.Component {
       : minutes + ":" + (seconds < 10 ? "0" : "") + seconds;
   }
 
-  changeSong = trackUris => {
-    axios.put(
-      `https://api.spotify.com/v1/me/player/play?device_id=${this.props.deviceId}`,
-      {
-        uris: trackUris
-      },
-      {
-        headers: { Authorization: "Bearer " + localStorage.getItem("token") }
-      }
-    );
-  };
-
   render() {
-    const { song } = this.props;
-
-    const trackUris = this.props.tracks.map(track => track.uri);
-    trackUris.unshift(song.uri);
-  render() {
+    console.log(this.props);
     const { song, playing, id, currentSong, tracks } = this.props;
+
     return (
       <div>
         <Grid
@@ -57,7 +42,7 @@ class Song extends React.Component {
               ) : (
                 <div
                   className="playicon2"
-                  onClick={() => this.changeSong(tracks, song.uri)}
+                  onClick={() => this.props.playSong(tracks, song.uri)}
                 />
               )}
             </button>
