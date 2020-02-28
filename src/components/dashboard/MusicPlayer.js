@@ -27,27 +27,24 @@ import PlaylistSongsContainer from "./element-styles/PlaylistSongs";
 import NavBar from "./element-styles/NavBarMusicPlayer";
 
 class MusicPlayer extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      token: localStorage.getItem("token"),
-      deviceId: "",
-      loggedIn: false,
-      error: "",
-      trackName: "Track Name",
-      artistName: "Artist Name",
-      albumName: "Album Name",
-      imageSpotify: "",
-      imageUrl: "",
-      position: 0,
-      duration: 1,
-      id: "",
-      songFeatures: [],
-      currentTrack: "",
-      trueSimilarity: { similarity: 0.00001, values: "mock" }
-    };
-    this.playerCheckInterval = null;
-  }
+  state = {
+    token: localStorage.getItem("token"),
+    deviceId: "",
+    loggedIn: false,
+    error: "",
+    trackName: "Track Name",
+    artistName: "Artist Name",
+    albumName: "Album Name",
+    imageSpotify: "",
+    imageUrl: "",
+    position: 0,
+    duration: 1,
+    id: "",
+    songFeatures: [],
+    currentTrack: "",
+    trueSimilarity: { similarity: 0.00001, values: "mock" }
+  };
+  playerCheckInterval = null;
 
   componentDidMount() {
     this.handleLogin();

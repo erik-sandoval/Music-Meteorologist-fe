@@ -15,8 +15,7 @@ class Song extends React.Component {
   }
 
   render() {
-    console.log(this.props);
-    const { song, playing, id, currentSong, tracks } = this.props;
+    const { song, playing, id, currentSong, tracks, playSong } = this.props;
 
     return (
       <div>
@@ -42,7 +41,7 @@ class Song extends React.Component {
               ) : (
                 <div
                   className="playicon2"
-                  onClick={() => this.props.playSong(tracks, song.uri)}
+                  onClick={() => playSong(tracks, song.uri)}
                 />
               )}
             </button>
