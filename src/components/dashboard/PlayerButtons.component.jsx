@@ -24,9 +24,9 @@ const PlayerButtons = props => {
           id="x"
           className="like-dislike dislike joyride-dislike-4"
           style={{ background: "none", border: "none", outline: "none" }}
-          onClick={(props) => toggleDislikeButton(player, props)}
+          onClick={() => toggleDislikeButton(player, props)}
         >
-          <a className="dislikeicon" style={{ maxHeight: 70 }} />
+          <div className="dislikeicon" style={{ maxHeight: 70 }} />
         </button>
         <div style={{ display: "flex" }}>
           <button
@@ -38,7 +38,7 @@ const PlayerButtons = props => {
             }}
             onClick={() => onPrevClick(player)}
           >
-            <a className="previcon" style={{ maxHeight: 35 }} />
+            <div className="previcon" style={{ maxHeight: 35 }} />
           </button>
 
           <button
@@ -51,9 +51,9 @@ const PlayerButtons = props => {
             onClick={() => onPlayClick(player)}
           >
             {playing ? (
-              <a className="pauseicon" style={{ maxHeight: 35 }} />
+              <div className="pauseicon" style={{ maxHeight: 35 }} />
             ) : (
-              <a className="playicon" style={{ maxHeight: 35 }} />
+              <div className="playicon" style={{ maxHeight: 35 }} />
             )}
           </button>
 
@@ -66,16 +66,16 @@ const PlayerButtons = props => {
             }}
             onClick={() => onNextClick(player)}
           >
-            <a className="nexticon" style={{ maxHeight: 35 }} />
+            <div className="nexticon" style={{ maxHeight: 35 }} />
           </button>
         </div>
         <button
           id="heart"
           className="like-dislike like"
           style={{ background: "none", border: "none", outline: "none" }}
-          onClick={(props) => toggleLikeButton(player, props)}
+          onClick={() => toggleLikeButton(player, props)}
         >
-          <a className="likeicon" id="like1" style={{ maxHeight: 70 }} />
+          <div className="likeicon" id="like1" style={{ maxHeight: 70 }} />
         </button>
       </div>
     </LikeDislikeContainer>
