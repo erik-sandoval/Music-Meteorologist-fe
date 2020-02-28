@@ -5,6 +5,8 @@ import { getTrackInfo } from "../../Redux/Spotify/spotify.actions";
 import "../../App.css";
 import axios from "axios";
 
+import { onPlayClick } from "../../playerActions/playerActions";
+
 class Song extends React.Component {
   msToTime(s) {
     var minutes = Math.floor(s / 60000);
@@ -37,7 +39,10 @@ class Song extends React.Component {
               }}
             >
               {playing && id === currentSong.id ? (
-                <div className="pauseicon2" />
+                <div
+                  className="pauseicon2"
+                  onClick={() => onPlayClick(this.props)}
+                />
               ) : (
                 <div
                   className="playicon2"
@@ -66,7 +71,6 @@ class Song extends React.Component {
               {song.artists[0].name}
             </Typography>
             <Typography style={{ fontSize: 13 }}></Typography>
-            {/* <p>Audio Features: {loadingTf ? 'loading....' : tf.data.tempo}</p> */}
           </Grid>
           <Grid
             className="songAlbumName"
