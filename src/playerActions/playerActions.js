@@ -1,19 +1,50 @@
-export const onPrevClick = player => {
-  player.previousTrack();
-  player.setVolume(0);
-  player.setVolume(0.5);
+import axios from "axios";
+
+const spotifyApiUrl = "https://api.spotify.com/v1/me/player";
+
+const token = localStorage.getItem("token");
+
+const config = {
+  headers: { Authorization: "Bearer " + token }
 };
 
-export const onPlayClick = player => {
-  player.togglePlay();
+export const onPrevClick = player => {
+  axios
+    .post(`${spotifyApiUrl}/previous`, {}, config)
+    .then(res => {})
+    .catch(err => {
+      console.log(err);
+    });
+};
+
+export const onPlayClick = props => {
+  if (props.playing) {
+    axios
+      .put(`${spotifyApiUrl}/pause`, {}, config)
+      .then(res => {})
+      .catch(err => {
+        console.log(err);
+      });
+  } else {
+    axios
+      .put(`${spotifyApiUrl}/play`, {}, config)
+      .then(res => {})
+      .catch(err => {
+        console.log(err);
+      });
+  }
 };
 
 export const onNextClick = player => {
-  player.nextTrack();
-  player.setVolume(0);
-  player.playing && player.pause();
+  axios
+    .post(`${spotifyApiUrl}/next`, {}, config)
+    .then(res => {})
+    .catch(err => {
+      console.log(err);
+    });
 
-  player.setVolume(0.5);
+  var element = document.getElementById("like1");
+  element.classList.remove("fullHeart");
 };
 
 export const toggleLikeButton = (player, props) => {
@@ -21,19 +52,11 @@ export const toggleLikeButton = (player, props) => {
 
   player.setVolume(0.5);
 
-  props.removeTrack(props.currentUser.spotify_playlist_id, props.song.id);
   var element = document.getElementById("like1");
   element.classList.add("fullHeart");
 };
 
 export const toggleDislikeButton = (player, props) => {
-  player.nextTrack();
-  player.setVolume(0);
-  setTimeout(() => {
-    player.pause();
-    player.setVolume(0.5);
-  }, 2000);
-  props.removeTrack(props.currentUser.spotify_playlist_id, props.song.id);
-  var element = document.getElementById("like1");
-  element.classList.remove("fullHeart");
+
+
 };

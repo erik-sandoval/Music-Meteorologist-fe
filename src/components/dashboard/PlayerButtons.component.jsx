@@ -20,14 +20,6 @@ const PlayerButtons = props => {
   return (
     <LikeDislikeContainer>
       <div className="display-flex">
-        <button
-          id="x"
-          className="like-dislike dislike joyride-dislike-4"
-          style={{ background: "none", border: "none", outline: "none" }}
-          onClick={() => toggleDislikeButton(player, props)}
-        >
-          <div className="dislikeicon" style={{ maxHeight: 70 }} />
-        </button>
         <div style={{ display: "flex" }}>
           <button
             id="prev"
@@ -48,7 +40,7 @@ const PlayerButtons = props => {
               border: "none",
               outline: "none"
             }}
-            onClick={() => onPlayClick(player)}
+            onClick={() => onPlayClick(props)}
           >
             {playing ? (
               <div className="pauseicon" style={{ maxHeight: 35 }} />
@@ -83,7 +75,8 @@ const PlayerButtons = props => {
 };
 
 const mapStateToProps = state => ({
-  song: state.currentSongReducer.item
+  song: state.currentSongReducer.item,
+  playing: state.currentSongReducer.playing
 });
 
 export default connect(mapStateToProps, { saveLikedSong, removeTrack })(

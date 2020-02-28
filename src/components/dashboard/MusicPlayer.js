@@ -242,7 +242,7 @@ class MusicPlayer extends Component {
                   justify="center"
                   alignItems="center"
                 >
-                  <AudioDetailsContainer traits={this.props.traits} />
+                  <AudioDetailsContainer />
                   <Grid item>
                     {window.Spotify !== undefined &&
                       this.state.imageUrl !== "" && (
