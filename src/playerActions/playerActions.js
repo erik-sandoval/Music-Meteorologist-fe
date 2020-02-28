@@ -56,7 +56,15 @@ export const toggleLikeButton = (player, props) => {
   element.classList.add("fullHeart");
 };
 
-export const toggleDislikeButton = (player, props) => {
+export const toggleDislikeButton = (player, props) => {};
 
+export const seekTrackTime = position_ms => {
+  position_ms = Math.floor(position_ms);
 
+  axios
+    .put(`${spotifyApiUrl}/seek?position_ms=${position_ms}`, {}, config)
+    .then(res => {})
+    .catch(err => {
+      console.log(err);
+    });
 };
