@@ -17,7 +17,7 @@ const AudioDetailsContainer = props => {
   return (
     <AudioDetailsStyles className="scroll">
       <div className="audioDiv">
-        <a
+        <div
           id="sideBarLD2"
           href="#"
           onClick={() => openAudioDetails()}
@@ -29,7 +29,7 @@ const AudioDetailsContainer = props => {
           }}
         >
           What does this mean?
-        </a>
+        </div>
       </div>
       <List className="scroll">
         <Paper
