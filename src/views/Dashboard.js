@@ -37,6 +37,8 @@ class Dashboard extends React.Component {
 
     this.dsDelivery();
 
+    this.getDataScienceSongArray()
+
     if (this.props.spotifyUser.length > 0) {
       this.props.persistUser(this.props.spotifyUser);
     }
@@ -86,6 +88,17 @@ class Dashboard extends React.Component {
         this.props.currentUser.spotify_playlist_id
       );
     }
+  }
+
+  getDataScienceSongArray = () => {
+    this.props.ds_songs.length > 0 &&
+      this.props.getSeveralTracks(
+        this.concatenateSongIds(this.props.ds_songs[0].songs)
+      );
+  };
+
+  concatenateSongIds(array) {
+    return array.map(song => song.values).join(",");
   }
 
   dsDelivery() {

@@ -147,7 +147,7 @@ const About = () => (
       <MobileNav />
     </div>
     <HomepageNav />
-    <div className="about-image">
+    <div className='about-image'>
       <img className="desktop-about" src={AboutImage} />
       <img className="mobile-about" src={AboutImageMobile} />
     </div>
@@ -160,7 +160,7 @@ const About = () => (
           Songs picked just for your music taste.
         </SecondaryHeader>
         <Sentence style={{ zIndex: "-1" }}>
-          We’ll put together a playlsit for you based on the musical traits of
+          We’ll put together a playlist for you based on the musical traits of
           the songs you like.
         </Sentence>
       </InnerGrid>
@@ -173,11 +173,11 @@ const About = () => (
       <InnerGridReverse>
         <SecondaryHeader>
           Our prediction model will do all the work.
-        </SecondaryHeader>
+          </SecondaryHeader>
         <Sentence style={{ zIndex: "-1" }}>
           We’ve got you covered, just join with your Spotify account and we’ll
           take it from there.
-        </Sentence>
+          </Sentence>
       </InnerGridReverse>
       <div className="reverse">
         <InnerGrid>
