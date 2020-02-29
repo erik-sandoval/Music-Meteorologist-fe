@@ -160,21 +160,15 @@ class PlayerSeekBar extends Component {
           {/* Here we render whatever we want. Nothings is rendered by default. */}
           <SliderBar
             direction={this.state.direction}
-            value={timePercentValue}
+            value={this.state.lastIntent}
             style={{
-              background: "red",
-              width: `${timePercentValue}%`
+              background: "#D0D0D0"
             }}
           />
           <SliderBar
             direction={this.state.direction}
-            value={lastValueEnd}
-            style={{ background: "gray", width: `${timePercentValue}%` }}
-          />
-          <SliderHandle
-            direction={this.state.direction}
             value={timePercentValue}
-            style={{ background: this.state.isEnabled ? "#72d687" : "#878c88" }}
+            style={{ background: "#E20351" }}
           />
         </Slider>
 
