@@ -1,10 +1,10 @@
-import React from 'react';
+import React from "react";
 
 class AudioDetails extends React.Component {
   render() {
     return (
-      <div className="scroll"> 
-        <div className='audio-detail'>
+      <div className="scroll">
+        <div className="audio-detail">
           <h4>Acousticness:</h4>
           <p>
             A confidence measure from 0.0 to 1.0 of whether the track is
@@ -13,7 +13,7 @@ class AudioDetails extends React.Component {
             distribution
           </p>
         </div>
-        <div className='audio-detail'>
+        <div className="audio-detail">
           <h4>Danceability:</h4>
           <p>
             Danceability describes how suitable a track is for dancing based on
@@ -23,7 +23,7 @@ class AudioDetails extends React.Component {
             this feature look like this: Danceability distribution
           </p>
         </div>
-        <div className='audio-detail'>
+        <div className="audio-detail">
           <h4>Energy:</h4>
           <p>
             Energy is a measure from 0.0 to 1.0 and represents a perceptual
@@ -35,7 +35,7 @@ class AudioDetails extends React.Component {
             of values for this feature look like this: Energy distribution
           </p>
         </div>
-        <div className='audio-detail'>
+        <div className="audio-detail">
           <h4>Instrumentalness:</h4>
           <p>
             Predicts whether a track contains no vocals. “Ooh” and “aah” sounds
@@ -48,7 +48,7 @@ class AudioDetails extends React.Component {
             distribution
           </p>
         </div>
-        <div className='audio-detail'>
+        <div className="audio-detail">
           <h4>Liveness:</h4>
           <p>
             Detects the presence of an audience in the recording. Higher
@@ -58,7 +58,7 @@ class AudioDetails extends React.Component {
             look like this: Liveness distribution
           </p>
         </div>
-        <div className='audio-detail'>
+        <div className="audio-detail">
           <h4>Loudness:</h4>
           <p>
             The overall loudness of a track in decibels (dB). Loudness values
@@ -70,7 +70,7 @@ class AudioDetails extends React.Component {
             distribution
           </p>
         </div>
-        <div className='audio-detail'>
+        <div className="audio-detail">
           <h4>Speechiness:</h4>
           <p>
             Speechiness detects the presence of spoken words in a track. The
@@ -84,7 +84,7 @@ class AudioDetails extends React.Component {
             this feature look like this: Speechiness distribution
           </p>
         </div>
-        <div className='audio-detail'>
+        <div className="audio-detail">
           <h4>Valence:</h4>
           <p>
             A measure from 0.0 to 1.0 describing the musical positiveness
@@ -94,7 +94,7 @@ class AudioDetails extends React.Component {
             of values for this feature look like this: Valence distribution
           </p>
         </div>
-        <div className='audio-detail'>
+        <div className="audio-detail">
           <h4>Tempo:</h4>
           <p>
             The overall estimated tempo of a track in beats per minute (BPM). In

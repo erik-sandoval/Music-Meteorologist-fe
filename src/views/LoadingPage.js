@@ -18,7 +18,6 @@ const LoaderContainer = () => {
   return (
     <div>
       <LoadContainer>
-        {/* chill, its coming */}
         <img src={Loader} />
       </LoadContainer>
     </div>

@@ -1,7 +1,8 @@
 import React from "react";
 import { connect } from "react-redux";
 import { Grid } from "@material-ui/core";
-import LoadingPage from "./LoadingPage.js"
+import LoadingPage from "./LoadingPage.js";
+import WaitForSongs from "./WaitForSongs";
 import Button from "@material-ui/core/Button";
 import Paper from "@material-ui/core/Paper";
 import List from "@material-ui/core/List";
@@ -26,24 +27,6 @@ import "../App.css";
 class Dashboard extends React.Component {
   state = {
     collapse: false,
-    steps: [
-      {
-        target: ".joyride-logo-1",
-        content:
-          "Welcome to Music Meteorologist! Here you will be able to rate songs based on characteristics and recieve song recommendations"
-      },
-      {
-        target: ".joyride-player-2",
-        content:
-          "Here you can view what song you will be rating and the characteristics for that song",
-        placement: "center"
-      },
-      {
-        target: ".joyride-3",
-        content: "Tap here to view more details on each of the characteristics",
-        placement: "right"
-      }
-    ],
     popout: false,
     playlistCreated: false,
     userDataFetching: false
@@ -52,7 +35,7 @@ class Dashboard extends React.Component {
   componentDidMount() {
     this.props.getSpotifyAccountDetails();
 
-    this.dsDelivery()
+    this.dsDelivery();
 
     this.getDataScienceSongArray()
 
@@ -60,7 +43,6 @@ class Dashboard extends React.Component {
       this.props.persistUser(this.props.spotifyUser);
     }
     this.props.getlikedSongs();
-
   }
 
   componentDidUpdate(prevProps) {
@@ -106,26 +88,6 @@ class Dashboard extends React.Component {
         this.props.currentUser.spotify_playlist_id
       );
     }
-
-    // if no have then run createplaylist
-    // update component state with flag to false
-
-    // save playlist id through persistuser
-
-    //   if (this.props.playlistId) {
-    //     if (
-    //       this.props.spotifyUser.id &&
-    //       // this.props.playlistId &&
-    //       !this.props.currentUser.spotify_playlist_id &&
-    //       ) {
-    //     // this.props.persistUser(this.props.spotifyUser);
-    //     this.props.createPlaylist(this.props.spotifyUser.id);
-    //     this.setState({
-    //       playlistCreated: true,
-    //     });
-    //     console.log('INSIDE BIG BRAIN FUNCTION', this.props);
-    //   }
-    // }
   }
 
   getDataScienceSongArray = () => {
@@ -164,24 +126,28 @@ class Dashboard extends React.Component {
   };
 
   render() {
-    // console.log('getSpotifyAccountDetails ! _ 0', this.props)
-    const dsSongs = this.props.ds_songs;
+    const { dsSongs } = this.props;
+
     return (
       <div className="dashboard">
-        {/* {dsSongs.length ===  0 ? <LoadingPage />  :  <Grid><MusicPlayer spotifyId={this.props.spotifyUser} /></Grid>} */}
-        {dsSongs.length === 0 ? <LoadingPage /> : <Grid><MusicPlayer spotifyId={this.props.spotifyUser} /></Grid>}
+        {dsSongs.songs ? (
+          <Grid>
+            <MusicPlayer spotifyId={this.props.spotifyUser} />
+          </Grid>
+        ) : (
+          <LoadingPage />
+        )}
       </div>
     );
-
   }
 }
 
 const mapStateToProps = state => ({
-  spotifyUser: state.getUsersReducer.spotifyUser,
+  spotifyUser: state.getUserReducer.spotifyUser,
   currentUser: state.getCurrentUserReducer.currentUser,
-  fetchingSpotifyUser: state.getUsersReducer.fetchingSpotifyUser,
+  fetchingSpotifyUser: state.getUserReducer.fetchingSpotifyUser,
   fetchingDsSongs: state.queueReducer.isFetchingDSSongs,
-  ds_songs: state.queueReducer.ds_songs,
+  dsSongs: state.queueReducer.ds_songs,
   several_tracks: state.queueReducer.several_tracks,
   playlistId: state.createPlaylistReducer.playlistId,
   fetchingCreatePlaylist: state.createPlaylistReducer.fetchingPlaylist,

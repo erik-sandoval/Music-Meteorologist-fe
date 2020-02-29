@@ -1,8 +1,8 @@
 const SpotifyActionTypes = {
-//GET users
-    GET_USERS_FETCHING: 'GET_USERS_FETCHING',
-    GET_USERS_SUCCESS: 'GET_USERS_SUCCESS',
-    GET_USERS_FAILURE: 'GET_USERS_FAILURE',
+//GET user
+    GET_USER_FETCHING: 'GET_USER_FETCHING',
+    GET_USER_SUCCESS: 'GET_USER_SUCCESS',
+    GET_USER_FAILURE: 'GET_USER_FAILURE',
 //GET logged in
     GET_LOGGED_IN_FETCHING: 'GET_LOGGED_IN_FETCHING',
     GET_LOGGED_IN_SUCCESS: 'GET_LOGGED_IN_SUCCESS',
@@ -29,6 +29,9 @@ const SpotifyActionTypes = {
     PERSIST_USER_SUCCESS: 'GET_CURRENT_SONG_SUCCESS',
     PERSIST_USER_FAILURE: 'GET_CURRENT_SONG_FAILURE',
 //------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+GET_PLAY_STATUS: 'GET_PLAY_STATUS',
 
 //GET several tracks
     GET_SEVERAL_TRACKS_FETCHING: 'GET_SEVERAL_TRACKS_FETCHING',

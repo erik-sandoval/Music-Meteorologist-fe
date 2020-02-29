@@ -6,12 +6,7 @@ import {
   getCurrentSong,
   getTrackInfo,
   getSeveralTracks,
-  createPlaylist,
-  addToPlaylist,
-  removeTrack,
-  getlikedSongs,
-  saveLikedSong,
-  getCurrentUser
+  getPlayStatus
 } from "../../Redux/Spotify/spotify.actions";
 import { postDSSong } from "../../Redux/DS/ds.actions";
 import PlaylistItems from "./PlaylistItems";
@@ -30,54 +25,30 @@ import MainBar from "./element-styles/MainBarContainer";
 import PlaylistInfoContainer from "./element-styles/PlaylistInfo";
 import PlaylistSongsContainer from "./element-styles/PlaylistSongs";
 import NavBar from "./element-styles/NavBarMusicPlayer";
-import Footer from "../Footer";
+import PlayerSeekBar from "../PlayerSeekBar.component";
 
 class MusicPlayer extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      token: localStorage.getItem("token"),
-      deviceId: "",
-      loggedIn: false,
-      error: "",
-      trackName: "Track Name",
-      artistName: "Artist Name",
-      albumName: "Album Name",
-      imageSpotify: "",
-      imageUrl: "",
-      playing: false,
-      position: 0,
-      duration: 1,
-      id: "",
-      songFeatures: [],
-      currentTrack: "",
-      trueSimilarity: { similarity: 0.00001, values: "mock" }
-    };
-    this.playerCheckInterval = null;
-  }
+  state = {
+    token: localStorage.getItem("token"),
+    deviceId: "",
+    loggedIn: false,
+    error: "",
+    trackName: "Track Name",
+    artistName: "Artist Name",
+    albumName: "Album Name",
+    imageSpotify: "",
+    imageUrl: "",
+    position: 0,
+    duration: 1,
+    id: "",
+    songFeatures: [],
+    currentTrack: "",
+    trueSimilarity: { similarity: 0.00001, values: "mock" }
+  };
+  playerCheckInterval = null;
 
   componentDidMount() {
     this.handleLogin();
-  }
-
-  componentDidUpdate(prevProps) {
-    // if (this.props.song_id !== prevProps.song_id) {
-    //   this.dsDelivery();
-    // }
-    // if (this.props.savingLike) {
-    //   this.props.getlikedSongs();
-    // }
-    // if (
-    //   this.props.isFetchingSuccessful === true &&
-    //   this.props.ds_songs !== prevProps.ds_songs
-    // ) {
-    //   this.props.addToPlaylist(
-    //     {
-    //       uris: this.createSpotifyUriArray(this.props.ds_songs[0].songs)
-    //     },
-    //     this.props.currentUser.spotify_playlist_id
-    //   );
-    // }
   }
 
   dsDelivery() {
@@ -88,31 +59,30 @@ class MusicPlayer extends Component {
   handleLogin() {
     if (this.state.token !== "") {
       this.setState({ loggedIn: true });
-      this.playerCheckInterval = setInterval(() => this.checkForPlayer(), 1000);
+      this.playerCheckInterval = this.checkForPlayer();
     }
   }
 
-  onStateChanged(state) {
-    if (state !== null) {
+  onStateChanged(spotifyState) {
+    if (spotifyState !== null) {
       const {
         current_track: currentTrack,
         position,
         duration
-      } = state.track_window;
+      } = spotifyState.track_window;
       const trackName = currentTrack.name;
       const albumName = currentTrack.album.name;
       const artistName = currentTrack.artists
         .map(artist => artist.name)
         .join(", ");
       const imageSpotify = currentTrack.album.images[2].url;
-      const playing = !state.paused;
+      this.props.getPlayStatus(!spotifyState.paused);
       this.setState({
         position,
         duration,
         trackName,
         albumName,
         artistName,
-        playing,
         imageSpotify
       });
     } else {
@@ -123,30 +93,31 @@ class MusicPlayer extends Component {
   }
 
   createEventHandlers() {
-    this.player.on("initialization_error", e => { });
+    this.player.on("initialization_error", e => {});
     this.player.on("authentication_error", e => {
       this.setState({ loggedIn: false });
     });
-    this.player.on("account_error", e => { });
-    this.player.on("playback_error", e => { });
+    this.player.on("account_error", e => {});
+    this.player.on("playback_error", e => {});
 
     // ONLY WHEN PLAYER STATE CHANGED
-    this.player.on("player_state_changed", state => {
-      this.onStateChanged(state);
+    this.player.on("player_state_changed", spotifyState => {
+      this.onStateChanged(spotifyState);
 
       if (this.props.ds_songs && this.props.isFetchingSuccessful === true) {
         this.props.song && this.getCurrentSongFeatures(this.props.song.id);
       }
       // ONLY WHEN NEW SONG
-      if (state.track_window.current_track.id !== this.state.currentTrack) {
+      if (
+        spotifyState.track_window.current_track.id !== this.state.currentTrack
+      ) {
         this.currentSong();
-        this.setState({ currentTrack: state.track_window.current_track.id });
+        this.setState({
+          currentTrack: spotifyState.track_window.current_track.id
+        });
         this.player.setVolume(0);
-        setTimeout(() => {
-          this.player.pause();
-          this.player.seek(1);
-          this.player.setVolume(0.5);
-        }, 2000);
+        this.player.seek(1);
+        this.player.setVolume(0.5);
         if (true) {
           this.getDataScienceSongArray();
         }
@@ -221,7 +192,6 @@ class MusicPlayer extends Component {
       })
     });
     this.player.setVolume(0);
-    setTimeout(() => this.player.pause(), 2000);
     this.player.setVolume(0.5);
   }
 
@@ -231,7 +201,6 @@ class MusicPlayer extends Component {
       artistName,
       albumName,
       error,
-      playing,
       imageSpotify
     } = this.state;
 
@@ -260,11 +229,12 @@ class MusicPlayer extends Component {
                   style={{ width: 377, height: "60px", marginBottom: "10px" }}
                 >
                   <div>
-                    <LinearDeterminate player={this.player} />
+                    {/* <LinearDeterminate player={this.player} /> */}
+                    <PlayerSeekBar player={this.player}></PlayerSeekBar>
                   </div>
                   <PlayerButtons
                     player={this.player}
-                    playing={playing}
+                    playing={this.props.playing}
                     trueSimilarity={this.state.trueSimilarity}
                   />
                 </Grid>
@@ -274,11 +244,10 @@ class MusicPlayer extends Component {
                   justify="center"
                   alignItems="center"
                 >
-                  <AudioDetailsContainer traits={this.props.traits} />
+                  <AudioDetailsContainer />
                   <Grid item>
                     {window.Spotify !== undefined &&
-                      this.state.imageUrl !== "" &&
-                      artistName !== "Artist Name" && (
+                      this.state.imageUrl !== "" && (
                         <div className="album-art">
                           <h4 style={{ textAlign: "center" }}>Now Playing</h4>
                           <img
@@ -328,9 +297,9 @@ const mapStateToProps = state => ({
   playlistId: state.createPlaylistReducer.playlistId,
   song_id: state.likedSongsReducer.song_id,
   savingLike: state.likedSongsReducer.savingLike,
-  currentUser: state.getCurrentUserReducer.currentUser,
   isFetchingSuccessful: state.queueReducer.isFetchingSuccessful,
-  isFetchingDSSongs: state.queueReducer.isFetchingDSSongs
+  isFetchingDSSongs: state.queueReducer.isFetchingDSSongs,
+  playing: state.currentSongReducer.playing
 });
 
 export default connect(mapStateToProps, {
@@ -338,10 +307,5 @@ export default connect(mapStateToProps, {
   getCurrentSong,
   postDSSong,
   getSeveralTracks,
-  createPlaylist,
-  addToPlaylist,
-  removeTrack,
-  getlikedSongs,
-  saveLikedSong,
-  getCurrentUser
+  getPlayStatus
 })(MusicPlayer);
