@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import { Direction, Slider, FormattedTime } from "react-player-controls";
 import { seekTrackTime } from "../playerActions/playerActions";
+import styled from "styled-components";
 
 const SliderBar = ({ direction, value, style }) => (
   <div
@@ -63,6 +64,12 @@ const SliderHandle = ({ direction, value, style }) => (
   />
 );
 
+const ProgressBarContainer = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+`;
+
 class PlayerSeekBar extends Component {
   state = {
     isEnabled: true,
@@ -73,24 +80,6 @@ class PlayerSeekBar extends Component {
     lastValueEnd: null,
     value: null
   };
-
-  componentDidMount() {
-    const {
-      duration,
-      position,
-      isEnabled,
-      value,
-      lastValueEnd,
-      lastValueStart
-    } = this.state;
-    const { player, song } = this.props;
-
-    const timePercentValue = position / duration;
-
-    if (song) {
-      this.checkPlayer(player, song);
-    }
-  }
 
   changeTime = async (duration, lastValueEnd) => {
     console.log({ duration, lastValueEnd });
@@ -127,14 +116,7 @@ class PlayerSeekBar extends Component {
   };
 
   render() {
-    const {
-      duration,
-      position,
-      isEnabled,
-      value,
-      lastValueEnd,
-      lastValueStart
-    } = this.state;
+    const { duration, position, lastValueEnd } = this.state;
     const { player, song } = this.props;
     const timePercentValue = position / duration;
 
@@ -143,8 +125,11 @@ class PlayerSeekBar extends Component {
     }
 
     return (
-      <div>
-        <FormattedTime numSeconds={this.state.position / 1000} />
+      <ProgressBarContainer>
+        <FormattedTime
+          numSeconds={this.state.position / 1000}
+          style={{ marginRight: 14 }}
+        />
         <Slider
           isEnabled={this.state.isEnabled}
           direction={this.state.direction}
@@ -154,7 +139,7 @@ class PlayerSeekBar extends Component {
           }
           onChangeEnd={endValue => {
             this.setState({ lastValueEnd: endValue });
-            this.changeTime(duration, lastValueEnd);
+            this.changeTime(duration, endValue);
           }}
           onIntent={intent => this.setState(() => ({ lastIntent: intent }))}
           onIntentStart={intent =>
@@ -193,8 +178,11 @@ class PlayerSeekBar extends Component {
           />
         </Slider>
 
-        <FormattedTime numSeconds={this.state.duration / 1000} />
-      </div>
+        <FormattedTime
+          numSeconds={this.state.duration / 1000}
+          style={{ marginLeft: 8 }}
+        />
+      </ProgressBarContainer>
     );
   }
 }
