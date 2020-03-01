@@ -1,7 +1,7 @@
-import React from 'react';
-import styled from 'styled-components';
-import '../App.css';
-import Loader from '../assets/loader.gif';
+import React from "react";
+import styled from "styled-components";
+import "../App.css";
+import Loader from "../assets/loader.gif";
 
 const LoadContainer = styled.div`
   display: flex;
@@ -14,15 +14,13 @@ const LoadContainer = styled.div`
 `;
 
 const LoaderContainer = () => {
-
   return (
     <div>
       <LoadContainer>
-        <img src={Loader} />
+        <img src={Loader} alt="waiting animation"/>
       </LoadContainer>
     </div>
   );
+};
 
-}
-
-export default LoaderContainer
+export default LoaderContainer;

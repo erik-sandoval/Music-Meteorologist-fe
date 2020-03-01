@@ -2,11 +2,6 @@ import React from "react";
 import { connect } from "react-redux";
 import { Grid } from "@material-ui/core";
 import LoadingPage from "./LoadingPage.js";
-import WaitForSongs from "./WaitForSongs";
-import Button from "@material-ui/core/Button";
-import Paper from "@material-ui/core/Paper";
-import List from "@material-ui/core/List";
-import Joyride from "react-joyride";
 import {
   getlikedSongs,
   getUsers,
@@ -18,7 +13,6 @@ import {
   removeTrack
 } from "../Redux/Spotify/spotify.actions";
 import { postDSSong } from "../Redux/DS/ds.actions";
-import LikedSongs from "../components/dashboard/LikedSongs";
 import MusicPlayer from "../components/dashboard/MusicPlayer";
 
 // Styling
@@ -36,8 +30,6 @@ class Dashboard extends React.Component {
     this.props.getSpotifyAccountDetails();
 
     this.dsDelivery();
-
-    this.getDataScienceSongArray()
 
     if (this.props.spotifyUser.length > 0) {
       this.props.persistUser(this.props.spotifyUser);
@@ -91,10 +83,8 @@ class Dashboard extends React.Component {
   }
 
   getDataScienceSongArray = () => {
-    this.props.ds_songs.length > 0 &&
-      this.props.getSeveralTracks(
-        this.concatenateSongIds(this.props.ds_songs[0].songs)
-      );
+    this.props.dsSongs.length > 0 &&
+      this.props.getSeveralTracks(this.concatenateSongIds(this.props.dsSongs));
   };
 
   concatenateSongIds(array) {
@@ -130,7 +120,7 @@ class Dashboard extends React.Component {
 
     return (
       <div className="dashboard">
-        {dsSongs.songs ? (
+        {this.props.fetchingDsSongs ? (
           <Grid>
             <MusicPlayer spotifyId={this.props.spotifyUser} />
           </Grid>
@@ -146,8 +136,8 @@ const mapStateToProps = state => ({
   spotifyUser: state.getUserReducer.spotifyUser,
   currentUser: state.getCurrentUserReducer.currentUser,
   fetchingSpotifyUser: state.getUserReducer.fetchingSpotifyUser,
-  fetchingDsSongs: state.queueReducer.isFetchingDSSongs,
-  dsSongs: state.queueReducer.ds_songs,
+  fetchingDsSongs: state.queueReducer.isFetchingSuccessful,
+  dsSongs: state.queueReducer.ds_songs.songs,
   several_tracks: state.queueReducer.several_tracks,
   playlistId: state.createPlaylistReducer.playlistId,
   fetchingCreatePlaylist: state.createPlaylistReducer.fetchingPlaylist,

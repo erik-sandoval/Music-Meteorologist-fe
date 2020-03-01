@@ -15,7 +15,6 @@ class LikedSongs extends React.Component {
     getList: false
   };
   componentDidMount() {
-    // this.props.getlikedSongs();
     this.props.getUsers();
   }
 
