@@ -29,7 +29,7 @@ let store = null;
 if (process.env.NODE_ENV === "development") {
   store = createStore(rootReducer, applyMiddleware(logger, thunk));
 } else {
-  store = createStore(rootReducer);
+  store = createStore(rootReducer, applyMiddleware(thunk));
 }
 
 ReactDOM.render(
