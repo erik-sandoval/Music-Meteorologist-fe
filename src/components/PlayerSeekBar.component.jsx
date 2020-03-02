@@ -82,7 +82,6 @@ class PlayerSeekBar extends Component {
   };
 
   changeTime = async (duration, lastValueEnd) => {
-    console.log({ duration, lastValueEnd });
     const msSeconds = duration * lastValueEnd;
 
     seekTrackTime(msSeconds);
