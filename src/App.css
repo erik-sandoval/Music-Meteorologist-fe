@@ -43,7 +43,6 @@ body::-webkit-scrollbar {
   margin-top: 10px;
 }
 
-
 @keyframes App-logo-spin {
   from {
     transform: rotate(0deg);
@@ -106,7 +105,6 @@ body::-webkit-scrollbar {
   }
 }
 
-
 /* PLAYLIST STYLES */
 
 .song:hover {
@@ -114,9 +112,6 @@ body::-webkit-scrollbar {
 }
 
 /* DASHBOARD STYLES */
-
-.dashboard {}
-
 
 /* FOOTER STYLES */
 
@@ -185,7 +180,6 @@ body::-webkit-scrollbar {
   flex-flow: row;
   justify-content: space-evenly;
   align-items: center;
-
 }
 
 .MuiButton-root {
@@ -202,14 +196,14 @@ body::-webkit-scrollbar {
 }
 
 .arrow:hover {
-  border: solid #E20351;
+  border: solid #e20351;
   border-width: 0 3px 3px 0;
   display: inline-block;
   padding: 3px;
 }
 
 .MuiButton-root:hover .arrow {
-  border: solid #E20351;
+  border: solid #e20351;
   border-width: 0 3px 3px 0;
   display: inline-block;
   padding: 3px;
@@ -221,17 +215,19 @@ body::-webkit-scrollbar {
 }
 
 #menu-list-grow {
-  background-color: #17191C !important;
+  background-color: #17191c !important;
   color: white !important;
 }
 
 .MuiListItem-button:hover {
-  background-color: #1E2024 !important;
+  background-color: #1e2024 !important;
 }
 
 .shake {
-  -webkit-animation: shake-vertical 4s cubic-bezier(0.455, 0.030, 0.515, 0.955) infinite both;
-  animation: shake-vertical 4s cubic-bezier(0.455, 0.030, 0.515, 0.955) infinite both;
+  -webkit-animation: shake-vertical 4s cubic-bezier(0.455, 0.03, 0.515, 0.955)
+    infinite both;
+  animation: shake-vertical 4s cubic-bezier(0.455, 0.03, 0.515, 0.955) infinite
+    both;
 }
 
 .music-chart {
@@ -260,7 +256,6 @@ body::-webkit-scrollbar {
 }
 
 @media (max-width: 576px) {
-
   .team-footer {
     display: none !important;
   }
@@ -283,19 +278,17 @@ body::-webkit-scrollbar {
 
   .MuiButton-containedSecondary {
     color: #fff;
-    background-color: #E20351 !important;
+    background-color: #e20351 !important;
   }
 
   .makeStyles-buttonArrow-8:hover {
     color: rgba(255, 255, 255, 1) !important;
-    box-shadow: 0 3px 25px rgba(226, 3, 81, .7) !important;
+    box-shadow: 0 3px 25px rgba(226, 3, 81, 0.7) !important;
     transition: 0.3s ease !important;
   }
 }
 
-
 @-webkit-keyframes shake-vertical {
-
   0%,
   100% {
     -webkit-transform: translateY(0);
@@ -329,7 +322,6 @@ body::-webkit-scrollbar {
 }
 
 @keyframes shake-vertical {
-
   0%,
   100% {
     -webkit-transform: translateY(0);
@@ -364,20 +356,19 @@ body::-webkit-scrollbar {
 
 .startedButton:hover {
   color: rgba(255, 255, 255, 1) !important;
-  box-shadow: 0 3px 25px rgba(226, 3, 81, .7) !important;
+  box-shadow: 0 3px 25px rgba(226, 3, 81, 0.7) !important;
   transition: 0.3s ease !important;
-  background-color: #E20351 !important;
+  background-color: #e20351 !important;
 }
 
 .loginHover:hover {
   color: rgba(255, 255, 255, 1) !important;
-  box-shadow: 0 3px 25px rgba(226, 3, 81, .7) !important;
+  box-shadow: 0 3px 25px rgba(226, 3, 81, 0.7) !important;
   transition: 0.3s ease !important;
-  background-color: #E20351 !important;
+  background-color: #e20351 !important;
 }
 
 @media (max-width: 600px) {
-
   .App {
     overflow-x: hidden !important;
   }
@@ -385,7 +376,7 @@ body::-webkit-scrollbar {
   .mobileNavWrap {
     height: 25px;
     width: 100%;
-    background-color: #0E0F11;
+    background-color: #0e0f11;
     position: fixed;
     padding-bottom: 40px;
     z-index: 1;
@@ -671,10 +662,9 @@ body::-webkit-scrollbar {
   transition: 0.15s ease;
 }
 
-
 .pinkhover:hover {
-  background-color: #E20351 !important;
-  color: #E20351;
+  background-color: #e20351 !important;
+  color: #e20351;
 }
 
 .music-player {
@@ -682,16 +672,12 @@ body::-webkit-scrollbar {
   background: #121416;
 }
 
-.MuiGrid-container {
-  max-height: 600px;
-}
-
 .like-dislike-wrapper {
   display: flex;
 }
 
 .MuiLinearProgress-barColorPrimary {
-  background-color: #E20351 !important;
+  background-color: #e20351 !important;
 }
 
 .MuiLinearProgress-colorPrimary {
@@ -705,12 +691,11 @@ body::-webkit-scrollbar {
 
 .copytext {
   color: white;
-  background-color: #17191C;
+  background-color: #17191c;
   border: solid 2px transparent;
   text-align: center;
   width: 90px;
 }
-
 
 .dislike {
   transition: 0.2s ease;
@@ -725,19 +710,30 @@ body::-webkit-scrollbar {
   height: 45px;
   width: 45px;
   background: transparent url("./assets/whiteplayspaced.png") no-repeat 0 0;
-  transition: 0.3s ease;
 }
 
 .playicon2:hover {
   background: white url("./assets/pinkplayspaced.png") no-repeat 0 0;
-  transition: 0.3s ease;
   border-radius: 10px;
 }
 
-.playicon2:active {
-  transform: scale(.8);
-  transition: 0.3s ease;
+.pauseicon2 {
+  display: inline-block;
+  height: 45px;
+  width: 45px;
+  background-repeat: no-repeat;
+  background-size: 25px;
+  background-position: center;
+  background-image: url("./assets/whitepausebutton.png");
+  border-radius: 10px;
+}
 
+.pauseicon2:hover {
+  background: white url("./assets/pinkpausebutton.png") no-repeat 0 0;
+  background-repeat: no-repeat;
+  background-size: 25px;
+  background-position: center;
+  border-radius: 10px;
 }
 
 .playflex {
@@ -747,67 +743,66 @@ body::-webkit-scrollbar {
   text-align: center;
 }
 
-
 /* LIGHT / DARK MODE */
 
 .sideBarL {
   background: white !important;
-  color: #22252A !important;
-  stroke: #22252A !important;
+  color: #22252a !important;
+  stroke: #22252a !important;
   transition: 1s ease;
 }
 
 .radarL {
-  background: #22252A !important;
-  stroke: #22252A !important;
-  fill: #22252A !important;
+  background: #22252a !important;
+  stroke: #22252a !important;
+  fill: #22252a !important;
   border-radius: 100px;
   padding-top: 10px;
   transition: 1s ease;
 }
 
 .playInfoL {
-  background: #EEEFF1 !important;
-  color: #22252A !important;
+  background: #eeeff1 !important;
+  color: #22252a !important;
   transition: 1s ease;
 }
 
 .mainBarL {
   background: white !important;
-  color: #22252A !important;
+  color: #22252a !important;
   transition: 1s ease;
 }
 
 .playpauseL {
-  background: #22252A !important;
+  background: #22252a !important;
   padding-top: 5px;
   padding-bottom: 2px;
   transition: 1s ease;
 }
 
 .nextPrevL {
-  background: #22252A !important;
+  background: #22252a !important;
   padding-top: 5px;
   padding-bottom: 2px;
   transition: 1s ease;
 }
 
 .x {
-  background: #22252A !important;
+  background: #22252a !important;
   border-top-left-radius: 10px !important;
   border-bottom-left-radius: 10px !important;
   transition: 1s ease;
 }
 
 .heart {
-  background: #22252A !important;
+  background: #22252a !important;
   border-top-right-radius: 10px !important;
   border-bottom-right-radius: 10px !important;
   transition: 1s ease;
 }
 
 .progressBarEmpty {
-  background-color: #E3E5E8 !important;
+  background-color: #e3e5e8 !important;
   transition: 1s ease;
 }
 

@@ -1,10 +1,10 @@
 import React from "react";
 import styled from "styled-components";
 import Button from "./dashboard/element-styles/AuthButton.js";
-import MobileNav from './dashboard/element-styles/MobileNav.js'
+import MobileNav from "./dashboard/element-styles/MobileNav.js";
 
 import "../views/styles/about.css";
-import HomepageNav from "./HomepageNav.js"
+import HomepageNav from "./HomepageNav.js";
 import AboutImage from "../assets/About-Image.svg";
 import ChartImage from "../assets/chart-image.svg";
 import SpotifyImage from "../assets/spotify-image.svg";
@@ -93,7 +93,6 @@ const Grid = styled.div`
     padding: 0%;
     height: 1500px;
   }
-
 `;
 
 // margin-left: 5%;
@@ -118,12 +117,11 @@ const InnerGrid = styled.div`
   }
 `;
 const InnerGridReverse = styled.div`
-  
-display: flex;
-justify-content: center;
-flex-direction: column;
-margin: 2%;
-padding: 10%;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  margin: 2%;
+  padding: 10%;
   @media (max-width: 576px) {
     display: none;
   }
@@ -153,7 +151,7 @@ const About = () => (
       <img className="desktop-about" src={AboutImage} />
       <img className="mobile-about" src={AboutImageMobile} />
     </div>
-    <div className='header-container'>
+    <div className="header-container">
       <Header>Sit back while we create a playlist of songs you'll love.</Header>
     </div>
     <Grid>
@@ -206,9 +204,10 @@ const About = () => (
         <img className="about-images" src={SongImage} />
       </InnerGrid>
     </Grid>
-    <div className='button-container'>
-      <Button className="startedButton"
-        as='a'
+    <div className="button-container">
+      <Button
+        className="startedButton"
+        as="a"
         href={`${authEndpoint}?client_id=${clientId}&redirect_uri=${redirectUri}&scope=${encodeURIComponent(
           scopes
         )}&response_type=token&show_dialog=true`}

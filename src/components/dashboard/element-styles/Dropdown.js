@@ -1,27 +1,25 @@
-import React from 'react';
-import { withRouter } from 'react-router-dom';
-import Button from '@material-ui/core/Button';
-import ClickAwayListener from '@material-ui/core/ClickAwayListener';
-import Grow from '@material-ui/core/Grow';
-import Paper from '@material-ui/core/Paper';
-import Popper from '@material-ui/core/Popper';
-import MenuItem from '@material-ui/core/MenuItem';
-import MenuList from '@material-ui/core/MenuList';
-import { makeStyles } from '@material-ui/core/styles';
+import React from "react";
+import { withRouter } from "react-router-dom";
+import Button from "@material-ui/core/Button";
+import ClickAwayListener from "@material-ui/core/ClickAwayListener";
+import Grow from "@material-ui/core/Grow";
+import Paper from "@material-ui/core/Paper";
+import Popper from "@material-ui/core/Popper";
+import MenuItem from "@material-ui/core/MenuItem";
+import MenuList from "@material-ui/core/MenuList";
+import { makeStyles } from "@material-ui/core/styles";
 import "../../../App.css";
-import axios from 'axios';
-import { Icon } from '@material-ui/core';
 
 const useStyles = makeStyles(theme => ({
   root: {
-    display: 'flex',
+    display: "flex"
   },
   paper: {
-    marginRight: theme.spacing(2),
-  },
+    marginRight: theme.spacing(2)
+  }
 }));
 
-const MenuListComposition = (props) => {
+const MenuListComposition = props => {
   const classes = useStyles();
   const [open, setOpen] = React.useState(false);
   const anchorRef = React.useRef(null);
@@ -39,7 +37,7 @@ const MenuListComposition = (props) => {
   };
 
   function handleListKeyDown(event) {
-    if (event.key === 'Tab') {
+    if (event.key === "Tab") {
       event.preventDefault();
       setOpen(false);
     }
@@ -90,7 +88,9 @@ const MenuListComposition = (props) => {
     element12.classList.toggle("heart");
     var element13 = document.querySelector(".MuiLinearProgress-colorPrimary");
     element13.classList.toggle("progressBarEmpty");
-    var element14 = document.querySelector(".MuiLinearProgress-barColorPrimary");
+    var element14 = document.querySelector(
+      ".MuiLinearProgress-barColorPrimary"
+    );
     element14.classList.toggle("progressBarFull");
     var element15 = document.querySelectorAll(".playicon2");
     element15.forEach(element => element.classList.toggle("playiconL"));
@@ -103,29 +103,48 @@ const MenuListComposition = (props) => {
       <div>
         <Button
           ref={anchorRef}
-          aria-controls={open ? 'menu-list-grow' : undefined}
+          aria-controls={open ? "menu-list-grow" : undefined}
           aria-haspopup="true"
           onClick={handleToggle}
           style={{ width: 20 }}
         >
           <i className="arrow down" style={{ width: 15, marginBottom: 3 }} />
         </Button>
-        <Popper className="drop" open={open} anchorEl={anchorRef.current} role={undefined} transition disablePortal>
+        <Popper
+          className="drop"
+          open={open}
+          anchorEl={anchorRef.current}
+          role={undefined}
+          transition
+          disablePortal
+        >
           {({ TransitionProps, placement }) => (
             <Grow
               {...TransitionProps}
-              style={{ transformOrigin: placement === 'bottom' ? 'center top' : 'center bottom', left: '-50px', background: 'transparent' }}
+              style={{
+                transformOrigin:
+                  placement === "bottom" ? "center top" : "center bottom",
+                left: "-50px",
+                background: "transparent"
+              }}
             >
               <Paper>
                 <ClickAwayListener onClickAway={handleClose}>
-                  <MenuList autoFocusItem={open} id="menu-list-grow" onKeyDown={handleListKeyDown}>
-                    <MenuItem className="copybar" onClick={toggleLightDark}>Dark/Light Mode
-                      </MenuItem>
+                  <MenuList
+                    autoFocusItem={open}
+                    id="menu-list-grow"
+                    onKeyDown={handleListKeyDown}
+                  >
+                    <MenuItem className="copybar" onClick={toggleLightDark}>
+                      Dark/Light Mode
+                    </MenuItem>
                     {/* <MenuItem className="copybar">
                       Your Spotify ID <br />
                       <input className="copytext" type="text" value={props.navBarProps.spotifyId.id} id="myInput" />
                     </MenuItem> */}
-                    <MenuItem className="copybar" onClick={logout}>Logout</MenuItem>
+                    <MenuItem className="copybar" onClick={logout}>
+                      Logout
+                    </MenuItem>
                   </MenuList>
                 </ClickAwayListener>
               </Paper>
@@ -135,6 +154,6 @@ const MenuListComposition = (props) => {
       </div>
     </div>
   );
-}
+};
 
 export default withRouter(MenuListComposition);

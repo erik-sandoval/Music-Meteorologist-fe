@@ -22,24 +22,6 @@ import "../../App.css";
 class PlaylistItems extends React.Component {
   state = {
     collapse: true,
-    steps: [
-      {
-        target: ".joyride-logo-1",
-        content:
-          "Welcome to Music Meteorologist! Here you will be able to rate songs based on characteristics and recieve song recommendations"
-      },
-      {
-        target: ".joyride-player-2",
-        content:
-          "Here you can view what song you will be rating and the characteristics for that song",
-        placement: "center"
-      },
-      {
-        target: ".joyride-3",
-        content: "Tap here to view more details on each of the characteristics",
-        placement: "right"
-      }
-    ],
     popout: false,
     playlistCreated: false,
     userDataFetching: false
@@ -82,26 +64,6 @@ class PlaylistItems extends React.Component {
         this.props.getCurrentUser(this.props.spotifyUser.id);
       }, 5000);
     }
-
-    // if no have then run createplaylist
-    // update component state with flag to false
-
-    // save playlist id through persistuser
-
-    //   if (this.props.playlistId) {
-    //     if (
-    //       this.props.spotifyUser.id &&
-    //       // this.props.playlistId &&
-    //       !this.props.currentUser.spotify_playlist_id &&
-    //       ) {
-    //     // this.props.persistUser(this.props.spotifyUser);
-    //     this.props.createPlaylist(this.props.spotifyUser.id);
-    //     this.setState({
-    //       playlistCreated: true,
-    //     });
-    //     console.log('INSIDE BIG BRAIN FUNCTION', this.props);
-    //   }
-    // }
   }
 
   openPlaylist() {
@@ -119,7 +81,6 @@ class PlaylistItems extends React.Component {
   logout = e => {
     e.preventDefault();
     localStorage.removeItem("token");
-    localStorage.removeItem("ds_songs");
     this.props.history.push("/logout");
   };
 
@@ -186,11 +147,11 @@ class PlaylistItems extends React.Component {
                 overflow: "auto",
                 color: "white",
                 marginLeft: "45px",
-                marginRight: "45px",
+                overflowY: "scroll",
+                height: "73vh",
                 background: "transparent",
                 boxShadow: "none",
-                textAlign: "left",
-                height: "600px"
+                textAlign: "left"
               }}
             >
               <LikedSongs deviceId={this.props.deviceId} />
@@ -203,9 +164,9 @@ class PlaylistItems extends React.Component {
 }
 
 const mapStateToProps = state => ({
-  spotifyUser: state.getUsersReducer.spotifyUser,
+  spotifyUser: state.getUserReducer.spotifyUser,
   currentUser: state.getCurrentUserReducer.currentUser,
-  fetchingSpotifyUser: state.getUsersReducer.fetchingSpotifyUser,
+  fetchingSpotifyUser: state.getUserReducer.fetchingSpotifyUser,
   ds_songs: state.queueReducer.ds_songs,
   several_tracks: state.queueReducer.several_tracks,
   playlistId: state.createPlaylistReducer.playlistId,

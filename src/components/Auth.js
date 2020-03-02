@@ -4,7 +4,7 @@ import ButtonAuth from "./dashboard/element-styles/AuthButton.js";
 import MobileNav from "./dashboard/element-styles/MobileNav.js";
 
 import Footer from "./Footer.js";
-import HomepageNav from "./HomepageNav.js"
+import HomepageNav from "./HomepageNav.js";
 import "../App.css";
 import "../views/styles/homepage.css";
 
@@ -55,37 +55,37 @@ export class Auth extends Component {
   }
 
   render() {
-
     return (
-      <div className='auth'>
+      <div className="auth">
         <div className="mobileNavWrap">
           <MobileNav />
         </div>
-        <HomepageNav/>
-        <div class='main-wrapper'>
-          <div className='main-cta-spotify'>
-            <div class='img-container'>
-              <img src={albums_background} alt='' class='bd-box' />
+        <HomepageNav />
+        <div class="main-wrapper">
+          <div className="main-cta-spotify">
+            <div class="img-container">
+              <img src={albums_background} alt="" class="bd-box" />
             </div>
-            <div class='text-content-container'>
-              <div class='text-content'>
+            <div class="text-content-container">
+              <div class="text-content">
                 <h2>Discover songs by their traits</h2>
                 <p>
                   We'll curate a playlist based on the different traits of songs
                   you like in your Spotify library.
                 </p>
-                <div class='cta-signup'>
-                  <ButtonAuth className="loginHover"
-                    style={{ zIndex: '0' }}
-                    as='a'
+                <div class="cta-signup">
+                  <ButtonAuth
+                    className="loginHover"
+                    style={{ zIndex: "0" }}
+                    as="a"
                     href={`${authEndpoint}?client_id=${clientId}&redirect_uri=${redirectUri}&scope=${encodeURIComponent(
                       scopes
                     )}&response_type=token&show_dialog=true`}
                   >
                     Login With Spotify
                   </ButtonAuth>
-                  <div class='img-container-mobile'>
-                    <img src={albums_background_mobile} alt='' class='bd-box' />
+                  <div class="img-container-mobile">
+                    <img src={albums_background_mobile} alt="" class="bd-box" />
                   </div>
                 </div>
               </div>
