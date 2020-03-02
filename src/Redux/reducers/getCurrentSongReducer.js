@@ -1,9 +1,10 @@
-import SpotifyActionTypes from '../Spotify/spotify.types'
+import SpotifyActionTypes from "../Spotify/spotify.types";
 
 const initialState = {
   item: [],
   imageUrl: [],
-  fetchingSongError: '',
+  fetchingSongError: "",
+  playing: false
 };
 
 const currentSongReducer = (state = initialState, action) => {
@@ -11,19 +12,23 @@ const currentSongReducer = (state = initialState, action) => {
     case SpotifyActionTypes.GET_CURRENT_SONG_FETCHING:
       return {
         ...state,
-        fetchingSongError: '',
+        fetchingSongError: ""
       };
     case SpotifyActionTypes.GET_CURRENT_SONG_SUCCESS:
       return {
         ...state,
         item: action.payload,
-        // imageUrl: action.payload.album.images,
-        fetchingSongError: '',
+        fetchingSongError: ""
       };
     case SpotifyActionTypes.GET_CURRENT_SONG_FAILURE:
       return {
         ...state,
-        fetchingSongError: action.payload,
+        fetchingSongError: action.payload
+      };
+    case SpotifyActionTypes.GET_PLAY_STATUS:
+      return {
+        ...state,
+        playing: action.payload
       };
     default:
       return state;

@@ -9,7 +9,7 @@ export const ProtectedRoute = ({ component: Component, ...rest }) => {
         localStorage.getItem("token") ? (
           <Component {...props} />
         ) : (
-          <Redirect to='/' />
+          <Redirect to="/" />
         )
       }
     />
