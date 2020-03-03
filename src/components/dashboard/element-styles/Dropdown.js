@@ -52,6 +52,16 @@ const MenuListComposition = (props) => {
     props.history.push("/logout");
   };
 
+  const about = e => { 
+    e.preventDefault();
+    window.open("/about")
+  }
+
+  const team = e => { 
+    e.preventDefault();
+    window.open("/team")
+  }
+
   // return focus to the button when we transitioned from !open -> open
   const prevOpen = React.useRef(open);
   React.useEffect(() => {
@@ -121,6 +131,8 @@ const MenuListComposition = (props) => {
                   <MenuList autoFocusItem={open} id="menu-list-grow" onKeyDown={handleListKeyDown}>
                     <MenuItem className="copybar" onClick={toggleLightDark}>Dark/Light Mode
                       </MenuItem>
+                    <MenuItem className="copybar" onClick={about} >About Page</MenuItem>
+                    <MenuItem className="copybar" onClick={team} >Team Page</MenuItem>
                     {/* <MenuItem className="copybar">
                       Your Spotify ID <br />
                       <input className="copytext" type="text" value={props.navBarProps.spotifyId.id} id="myInput" />

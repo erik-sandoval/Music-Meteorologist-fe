@@ -91,7 +91,7 @@ const useStyles = makeStyles(theme => ({
     color: "#fff"
   },
   position: {
-    color: "#2E3138"
+    color: "#8D8E92"
   },
   buttonArrow: {
     width: "42px",
@@ -135,7 +135,7 @@ export default function Team() {
         </a>
         <NavbarLinks href="/about">How it works?</NavbarLinks>
         <NavbarLinks href="/team">Team</NavbarLinks>
-        <NavbarLinks href="https://github.com/Lambda-School-Labs/Music-Meteorologist-fe">
+        <NavbarLinks href="https://github.com/orgs/Lambda-School-Labs/teams/labs-20-music-meteorologist/repositories">
           Github
         </NavbarLinks>
       </HomepageNavbar>
@@ -145,11 +145,6 @@ export default function Team() {
             <Typography className={classes.heading}>Our Team</Typography>
           </Grid>
           <Grid item xs={12} sm={8}>
-            <Typography className={classes.paragraph}>
-              We're a team comprised of developers, designers and data
-              scientist. Connect with us below, we're all open to job
-              opportunities
-            </Typography>
           </Grid>
         </Grid>
         <Grid style={{ padding: "80px 0" }} container spacing={5}>
@@ -235,7 +230,7 @@ export default function Team() {
             />
             <Grid style={{ marginTop: "3px" }} container spacing={3}>
               <Grid item xs={12} sm={8}>
-                <Typography className={classes.name}>April Clemente</Typography>
+                <Typography className={classes.name}>April Clements</Typography>
                 <Typography className={classes.position}>
                   Web Developer
                 </Typography>
@@ -386,7 +381,7 @@ export default function Team() {
         </Grid>
       </Container>
       <Footer className="team-footer">
-        <p> © Copyright 2019, SoundDrip </p>
+        <p> © Copyright 2020, SoundDrip </p>
       </Footer>
     </div>
   );
