@@ -101,7 +101,7 @@ const Menu = ({ open }) => {
         <a href="/team">
           Team
           </a>
-        <a href="https://github.com/Lambda-School-Labs/Music-Meteorologist-fe" target="_blank">
+        <a href="https://github.com/orgs/Lambda-School-Labs/teams/labs-20-music-meteorologist/repositories" target="_blank">
           Github
           </a>
       </StyledMenu>

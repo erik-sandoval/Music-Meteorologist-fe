@@ -35,11 +35,11 @@ const NavbarLinks = styled.a`
 const HomepageNav = () => {
 
   return (
-    <HomepageNavbar>
+    <HomepageNavbar style={{position: "fixed"}}>
         <a href="/"><img src={MusicLogo}/></a>
         <NavbarLinks href="/about">How it works?</NavbarLinks>
         <NavbarLinks href="/team">Team</NavbarLinks>
-        <NavbarLinks href="https://github.com/Lambda-School-Labs/Music-Meteorologist-fe" target="_blank">Github</NavbarLinks>
+        <NavbarLinks href="https://github.com/orgs/Lambda-School-Labs/teams/labs-20-music-meteorologist/repositories" target="_blank">Github</NavbarLinks>
     </HomepageNavbar>
   );
 
