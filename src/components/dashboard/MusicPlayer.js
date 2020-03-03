@@ -143,8 +143,6 @@ class MusicPlayer extends Component {
         this.setState({ currentTrack: state.track_window.current_track.id });
         this.player.setVolume(0);
         setTimeout(() => {
-          this.player.pause();
-          this.player.seek(1);
           this.player.setVolume(0.5);
         }, 2000);
         if (true) {

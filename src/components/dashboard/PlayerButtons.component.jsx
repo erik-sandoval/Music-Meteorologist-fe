@@ -10,10 +10,10 @@ const PlayerButtons = props => {
  const onPrevClick = () => {
     player.previousTrack();
     player.setVolume(0);
-    setTimeout(() => {
-      player.pause();
-      player.setVolume(0.5);
-    }, 1000);
+    // setTimeout(() => {
+    //   player.pause();
+    //   player.setVolume(0.5);
+    // }, 1000);
     var element = document.getElementById("like1");
     element.classList.remove("fullHeart");
   }
@@ -26,10 +26,10 @@ const PlayerButtons = props => {
     player.nextTrack();
     player.setVolume(0);
     player.playing && player.pause();
-    setTimeout(() => {
-      player.pause();
-      player.setVolume(0.5);
-    }, 2000);
+    // setTimeout(() => {
+    //   player.pause();
+    //   player.setVolume(0.5);
+    // }, 2000);
     var element = document.getElementById("like1");
     element.classList.remove("fullHeart");
   }
@@ -40,7 +40,7 @@ const PlayerButtons = props => {
     setTimeout(() => {
       // player.pause();
       player.setVolume(0.5);
-    }, 2000);
+    });
     props.removeTrack(props.currentUser.spotify_playlist_id, props.song.id);
     var element = document.getElementById("like1");
     element.classList.add("fullHeart");
@@ -49,10 +49,10 @@ const PlayerButtons = props => {
   const toggleDislikeButton = () => {
     player.nextTrack();
     player.setVolume(0);
-    setTimeout(() => {
-      player.pause();
-      player.setVolume(0.5);
-    }, 2000);
+    // setTimeout(() => {
+    //   player.pause();
+    //   player.setVolume(0.5);
+    // }, 2000);
     props.removeTrack(props.currentUser.spotify_playlist_id, props.song.id);
     var element = document.getElementById("like1");
     element.classList.remove("fullHeart");
