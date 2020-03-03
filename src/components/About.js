@@ -212,11 +212,10 @@ const About = () => (
       </InnerGridReverse>
       <InnerGridReverse>
         <SecondaryHeader>
-          Our prediction model will do all the work.
+          Our prediction model
           </SecondaryHeader>
         <Sentence style={{ zIndex: "-1" }}>
-          We’ve got you covered, just join with your Spotify account and we’ll
-          take it from there.
+        By analyzing your Spotify listening history we'll reveal some hidden treasures.
           </Sentence>
       </InnerGridReverse>
       <div className="reverse">
@@ -225,19 +224,17 @@ const About = () => (
         </InnerGrid>
         <InnerGrid>
           <SecondaryHeader>
-            Our prediction model will do all the work.
+            Our prediction model
           </SecondaryHeader>
           <Sentence style={{ zIndex: "-1" }}>
-            We’ve got you covered, just join with your Spotify account and we’ll
-            take it from there.
+          By analyzing your Spotify listening history we'll reveal some hidden treasures.
           </Sentence>
         </InnerGrid>
       </div>
       <InnerGrid>
         <SecondaryHeader>Listen and enjoy!</SecondaryHeader>
         <Sentence style={{ zIndex: "-1" }}>
-          Voila! Now you can add the playlist to your Spotify or enjoy in our
-          music player.
+        Add the songs as a playlist your Spotify account or listen directly on Sound Drip!
         </Sentence>
       </InnerGrid>
       <InnerGrid>
