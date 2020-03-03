@@ -215,7 +215,7 @@ const About = () => (
           Our prediction model
           </SecondaryHeader>
         <Sentence style={{ zIndex: "-1" }}>
-        By analyzing your Spotify listening history we'll reveal some hidden treasures.
+        By analyzing your Spotify listening history we will reveal some hidden treasures.
           </Sentence>
       </InnerGridReverse>
       <div className="reverse">
@@ -227,14 +227,14 @@ const About = () => (
             Our prediction model
           </SecondaryHeader>
           <Sentence style={{ zIndex: "-1" }}>
-          By analyzing your Spotify listening history we'll reveal some hidden treasures.
+          By analyzing your Spotify listening history we will reveal some hidden treasures.
           </Sentence>
         </InnerGrid>
       </div>
       <InnerGrid>
         <SecondaryHeader>Listen and enjoy!</SecondaryHeader>
         <Sentence style={{ zIndex: "-1" }}>
-        Add the songs as a playlist your Spotify account or listen directly on Sound Drip!
+        Add the songs as a playlist to your Spotify account or listen directly on Sound Drip!
         </Sentence>
       </InnerGrid>
       <InnerGrid>
