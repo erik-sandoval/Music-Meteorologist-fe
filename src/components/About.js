@@ -5,18 +5,37 @@ import MobileNav from './dashboard/element-styles/MobileNav.js'
 
 import "../views/styles/about.css";
 import HomepageNav from "./HomepageNav.js"
-import AboutImage from "../assets/About-Image.svg";
+import AboutImage from "../assets/hiw.png";
 import ChartImage from "../assets/chart-image.svg";
 import SpotifyImage from "../assets/spotify-image.svg";
 import AboutImageMobile from "../assets/mobileWorks.svg";
 import SongImage from "../assets/song-image.svg";
 import "../App.css";
+import MusicLogo from "../assets/sounddrip.svg";
 
 export const authEndpoint = "https://accounts.spotify.com/authorize";
 
 const clientId = "256aebf9b04a4f5480a757f770864028"; // testing ENV
 
 const redirectUri = process.env.REACT_APP_REDIRECT_URL;
+
+const HomepageNavbar = styled.nav`
+  display: flex;
+  justify-content: space-between;
+  align-content: center;
+  align-items: center;
+  text-decoration: none;
+  margin-left: 5%;
+  padding-top: 2%;
+  margin-bottom: 2%;
+  height: 60px;
+  width: 550px;
+  color: #9da4af;
+  font-size: 19px;
+  @media (max-width: 576px) {
+    display: none;
+  }
+`;
 
 const scopes = [
   "streaming",
@@ -143,12 +162,31 @@ const Footer = styled.footer`
   margin-top: 10%;
 `;
 
+const NavbarLinks = styled.a`
+  text-decoration: none;
+  color: #9da4af;
+  font-size: 20px;
+
+  &:hover {
+    color: white;
+  }
+`;
+
 const About = () => (
   <AboutContainer>
     <div className="mobileNavWrap">
       <MobileNav />
     </div>
-    <HomepageNav />
+    <HomepageNavbar>
+    <a href="/">
+          <img src={MusicLogo} />
+        </a>
+        <NavbarLinks href="/about">How it works?</NavbarLinks>
+        <NavbarLinks href="/team">Team</NavbarLinks>
+        <NavbarLinks href="https://github.com/orgs/Lambda-School-Labs/teams/labs-20-music-meteorologist/repositories">
+          Github
+        </NavbarLinks>
+    </HomepageNavbar>
     <div className='about-image'>
       <img className="desktop-about" src={AboutImage} />
       <img className="mobile-about" src={AboutImageMobile} />
@@ -174,11 +212,10 @@ const About = () => (
       </InnerGridReverse>
       <InnerGridReverse>
         <SecondaryHeader>
-          Our prediction model will do all the work.
+          Our prediction model
           </SecondaryHeader>
         <Sentence style={{ zIndex: "-1" }}>
-          We’ve got you covered, just join with your Spotify account and we’ll
-          take it from there.
+        By analyzing your Spotify listening history we'll reveal some hidden treasures.
           </Sentence>
       </InnerGridReverse>
       <div className="reverse">
@@ -187,19 +224,17 @@ const About = () => (
         </InnerGrid>
         <InnerGrid>
           <SecondaryHeader>
-            Our prediction model will do all the work.
+            Our prediction model
           </SecondaryHeader>
           <Sentence style={{ zIndex: "-1" }}>
-            We’ve got you covered, just join with your Spotify account and we’ll
-            take it from there.
+          By analyzing your Spotify listening history we'll reveal some hidden treasures.
           </Sentence>
         </InnerGrid>
       </div>
       <InnerGrid>
         <SecondaryHeader>Listen and enjoy!</SecondaryHeader>
         <Sentence style={{ zIndex: "-1" }}>
-          Voila! Now you can add the playlist to your Spotify or enjoy in our
-          music player.
+        Add the songs as a playlist your Spotify account or listen directly on Sound Drip!
         </Sentence>
       </InnerGrid>
       <InnerGrid>
@@ -217,7 +252,7 @@ const About = () => (
       </Button>
     </div>
     <Footer>
-      <p> © Copyright 2019, SoundDrip </p>
+      <p> © Copyright 2020, SoundDrip </p>
     </Footer>
   </AboutContainer>
 );
