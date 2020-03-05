@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import MusicLogo from "../assets/sounddrip.svg";
-import mobileNav from "./dashboard/element-styles/MobileNav.js";
+
 import "../App.css";
 import {
   Grid,
@@ -12,7 +12,7 @@ import {
   makeStyles
 } from "@material-ui/core";
 import ArrowForwardIcon from "@material-ui/icons/ArrowForward";
-import MobileNav from "./dashboard/element-styles/MobileNav.js";
+import MobileNav from "./navigation-bar/MobileNav.js";
 // import HomepageNav from "./HomepageNav.js"
 // import useMediaQuery from "@material-ui/core/useMediaQuery";
 

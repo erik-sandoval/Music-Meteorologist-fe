@@ -1,7 +1,7 @@
 import React, { useState, useRef } from "react";
 import styled from "styled-components";
-import MusicLogo from "../../../assets/sounddrip.svg";
-import "../../../views/styles/mobileNav.css";
+import MusicLogo from "../../assets/sounddrip.svg";
+import "../../views/styles/mobileNav.css";
 
 const StyledMenu = styled.nav`
   display: none;
@@ -114,7 +114,7 @@ const Burger = ({ open, setOpen }) => {
   );
 };
 
-function MobileNav() {
+const MobileNav = () => {
   const [open, setOpen] = useState(false);
   const node = useRef();
 
@@ -129,6 +129,6 @@ function MobileNav() {
       <Menu open={open} setOpen={setOpen} />
     </div>
   );
-}
+};
 
 export default MobileNav;

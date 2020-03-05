@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import Button from "./dashboard/element-styles/AuthButton.js";
-import MobileNav from "./dashboard/element-styles/MobileNav.js";
+import MobileNav from "./navigation-bar/MobileNav.js";
 
 import "../views/styles/about.css";
 import HomepageNav from "./HomepageNav.js";
@@ -215,9 +215,7 @@ const About = () => (
         Get Started!
       </Button>
     </div>
-    <Footer>
-      <p> © Copyright 2019, SoundDrip </p>
-    </Footer>
+
   </AboutContainer>
 );
 

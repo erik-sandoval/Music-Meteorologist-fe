@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 
 import ButtonAuth from "./dashboard/element-styles/AuthButton.js";
-import MobileNav from "./dashboard/element-styles/MobileNav.js";
+import MobileNav from "./navigation-bar/MobileNav.js";
 
 import Footer from "./Footer.js";
 import HomepageNav from "./HomepageNav.js";
