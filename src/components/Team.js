@@ -13,8 +13,7 @@ import {
 } from "@material-ui/core";
 import ArrowForwardIcon from "@material-ui/icons/ArrowForward";
 import MobileNav from "./navigation-bar/MobileNav.js";
-// import HomepageNav from "./HomepageNav.js"
-// import useMediaQuery from "@material-ui/core/useMediaQuery";
+import Footer from "./footer/footer.component";
 
 const HomepageNavbar = styled.nav`
   display: flex;
@@ -32,20 +31,6 @@ const HomepageNavbar = styled.nav`
   @media (max-width: 576px) {
     display: none;
   }
-`;
-
-const Footer = styled.footer`
-  display: flex;
-  justify-content: center;
-  align-content: center;
-  align-items: center;
-  background-color: #151619;
-  height: 66px;
-  width: 100%;
-  font-size: 18px;
-  position: relative;
-  bottom: 0;
-  margin-top: 500px;
 `;
 
 const NavbarLinks = styled.a`
@@ -385,9 +370,7 @@ export default function Team() {
           </Grid>
         </Grid>
       </Container>
-      <Footer className="team-footer">
-        <p> © Copyright 2019, SoundDrip </p>
-      </Footer>
+      <Footer></Footer>
     </div>
   );
 }
