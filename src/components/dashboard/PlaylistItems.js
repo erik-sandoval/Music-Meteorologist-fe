@@ -148,7 +148,7 @@ class PlaylistItems extends React.Component {
                 color: "white",
                 marginLeft: "45px",
                 overflowY: "scroll",
-                height: "73vh",
+                height: "68vh",
                 background: "transparent",
                 boxShadow: "none",
                 textAlign: "left"
