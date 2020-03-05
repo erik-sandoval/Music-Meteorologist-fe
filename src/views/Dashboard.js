@@ -1,6 +1,6 @@
 import React from "react";
 import { connect } from "react-redux";
-import { Grid } from "@material-ui/core";
+
 import LoadingPage from "./LoadingPage.js";
 import {
   getlikedSongs,
@@ -121,9 +121,9 @@ class Dashboard extends React.Component {
     return (
       <div className="dashboard">
         {this.props.fetchingDsSongs ? (
-          <Grid>
+          <div>
             <MusicPlayer spotifyId={this.props.spotifyUser} />
-          </Grid>
+          </div>
         ) : (
           <LoadingPage />
         )}

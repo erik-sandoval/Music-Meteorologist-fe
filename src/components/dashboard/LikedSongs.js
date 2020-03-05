@@ -1,6 +1,5 @@
 import React from "react";
 import { connect } from "react-redux";
-import { Grid } from "@material-ui/core";
 import {
   getlikedSongs,
   getUsers,
@@ -61,8 +60,8 @@ class LikedSongs extends React.Component {
       return <h1>Loading...</h1>;
     }
     return (
-      <Grid container>
-        <Grid id="songLD" item>
+      <div container>
+        <div id="songLD" item>
           {several_tracks.tracks ? (
             several_tracks.tracks.map(song => (
               <Song
@@ -77,8 +76,8 @@ class LikedSongs extends React.Component {
           ) : (
             <h1>Loading...</h1>
           )}
-        </Grid>
-      </Grid>
+        </div>
+      </div>
     );
   }
 }
