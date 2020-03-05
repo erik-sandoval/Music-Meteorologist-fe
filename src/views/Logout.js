@@ -1,8 +1,8 @@
 import React from "react";
-import Footer from "../components/Footer.js";
+import Footer from "../components/footer/footer.component.jsx";
 import AuthButton from "../components/dashboard/element-styles/AuthButton.js";
 import MobileNav from "../components/navigation-bar/MobileNav.js";
-import HomepageNav from "../components/HomepageNav.js";
+import HomepageNav from "../components/navigation-bar/HomepageNav.js";
 import styled from "styled-components";
 import "../App.css";
 

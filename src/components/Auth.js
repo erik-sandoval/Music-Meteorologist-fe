@@ -3,8 +3,8 @@ import React, { Component } from "react";
 import ButtonAuth from "./dashboard/element-styles/AuthButton.js";
 import MobileNav from "./navigation-bar/MobileNav.js";
 
-import Footer from "./Footer.js";
-import HomepageNav from "./HomepageNav.js";
+import Footer from "./footer/footer.component.jsx";
+import HomepageNav from "./navigation-bar/HomepageNav.js";
 import "../App.css";
 import "../views/styles/homepage.css";
 

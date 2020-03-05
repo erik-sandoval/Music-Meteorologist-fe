@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components";
-import "../App.css";
-import MusicLogo from "../assets/sounddrip.svg";
+import "../../App.css";
+import MusicLogo from "../../assets/sounddrip.svg";
 
 const HomepageNavbar = styled.nav`
   display: flex;

@@ -14,14 +14,14 @@ import {
 import Button from "../../components/dashboard/element-styles/AuthButton.js";
 
 import "../../views/styles/about.css";
-import HomepageNav from "../../components/HomepageNav.js";
+import HomepageNav from "../../components/navigation-bar/HomepageNav.js";
 import AboutImage from "../../assets/About-Image.svg";
 import ChartImage from "../../assets/chart-image.svg";
 import SpotifyImage from "../../assets/spotify-image.svg";
 import AboutImageMobile from "../../assets/mobileWorks.svg";
 import SongImage from "../../assets/song-image.svg";
 import "../../App.css";
-import Footer from "../../components/Footer";
+import Footer from "../../components/footer/footer.component";
 
 export const authEndpoint = "https://accounts.spotify.com/authorize";
 
