@@ -8,7 +8,7 @@ import MusicPlayer from "./components/dashboard/MusicPlayer";
 import Logout from "./views/Logout";
 import Dashboard from "./views/Dashboard.js";
 import "./App.css";
-import About from "./components/About";
+import About from "./pages/about/about.component";
 import Team from "./components/Team";
 
 /* import LikedSongs from './components/LikedSongs'; */
