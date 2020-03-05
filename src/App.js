@@ -22,7 +22,6 @@ class App extends Component {
         <Route exact path='/about' component={About} />
         <Route exact path='/team' component={Team} />
         <ProtectedRoute exact path='/dashboard' component={Dashboard} />
-        {/* <FooterContainer /> */}
       </div>
     );
   }

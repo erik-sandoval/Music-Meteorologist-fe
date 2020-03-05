@@ -2,7 +2,7 @@ import React from "react";
 import styled from "styled-components";
 import "../App.css";
 
-const Footer = styled.footer`
+const FooterContainer = styled.footer`
   display: flex;
   justify-content: center;
   background-color: #151619;
@@ -13,12 +13,12 @@ const Footer = styled.footer`
   bottom: 0;
 `;
 
-const FooterContainer = () => {
+const Footer = () => {
   return (
-    <Footer>
+    <FooterContainer>
       <p> © Copyright 2019, SoundDrip </p>
-    </Footer>
+    </FooterContainer>
   );
 };
 
-export default FooterContainer;
+export default Footer;
