@@ -58,6 +58,68 @@ const NavbarLinks = styled.a`
   }
 `;
 
+const StyledA = styled.a`
+    display: inline-block;
+    text-align: center;
+    text-decoration: none;
+    cursor: pointer;
+`
+
+const DropDownContent = styled.div`
+    display: none;
+    position: absolute;
+    min-width: 160px;
+    z-index: 1;
+    background-color:#151619;
+`;
+
+const Arrow = styled(StyledA)`
+
+border: solid #9DA4AF;
+border-width: 0 3px 3px 0;
+display: inline-block;
+padding: 3px;
+transform: rotate(45deg);
+-webkit-transform: rotate(45deg);
+margin-bottom: 3px;
+color: #9DA4AF;
+`
+
+const DropDownLi = styled(NavbarLinks)`
+    display: inline-block;
+    &:hover ${DropDownContent} {
+        display: block;
+    }
+    &:hover ${Arrow} {
+      border: solid white;
+      border-width: 0 3px 3px 0;
+      display: inline-block;
+      padding: 3px;
+  }
+`;
+const SubA = styled(StyledA)`
+    text-decoration: none;
+    display: block;
+    text-align: left;
+    padding: 10px;
+    color: #9DA4AF;
+    cursor: pointer;
+    &:hover {
+      color: white;
+      background-color: rgb(226, 3, 81);
+   }
+`;
+
+const frontend = e => { 
+  e.preventDefault();
+  window.open("https://github.com/Lambda-School-Labs/Music-Meteorologist-fe")
+}
+
+const backend = e => { 
+  e.preventDefault();
+  window.open("https://github.com/Lambda-School-Labs/Music-Meteorologist-ds")
+}
+
 const useStyles = makeStyles(theme => ({
   root: {
     flexGrow: 1
@@ -135,9 +197,21 @@ export default function Team() {
         </a>
         <NavbarLinks href="/about">How it works?</NavbarLinks>
         <NavbarLinks href="/team">Team</NavbarLinks>
-        <NavbarLinks href="https://github.com/orgs/Lambda-School-Labs/teams/labs-20-music-meteorologist/repositories">
-          Github
-        </NavbarLinks>
+        <DropDownLi>
+            <StyledA>
+                GitHub <Arrow/>
+
+            </StyledA>
+            <DropDownContent>
+                {" "}
+                <SubA onClick={frontend}>
+                    Front-end
+                </SubA>
+                <SubA onClick={backend}>
+                    Data Science
+                </SubA>
+            </DropDownContent>
+          </DropDownLi>
       </HomepageNavbar>
       <Container maxWidth="md">
         <Grid container spacing={3}>
