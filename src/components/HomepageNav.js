@@ -75,8 +75,13 @@ const SubA = styled(StyledA)`
     text-decoration: none;
     display: block;
     text-align: left;
+    color: #9DA4AF;
     padding: 10px;
     cursor: pointer;
+    &:hover {
+     color: white;
+     background-color: rgb(226, 3, 81);
+  }
 `;
 
 const frontend = e => { 
