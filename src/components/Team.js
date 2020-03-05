@@ -102,7 +102,12 @@ const SubA = styled(StyledA)`
     display: block;
     text-align: left;
     padding: 10px;
+    color: #9DA4AF;
     cursor: pointer;
+    &:hover {
+      color: white;
+      background-color: rgb(226, 3, 81);
+   }
 `;
 
 const frontend = e => { 
