@@ -7,48 +7,48 @@ div.main-wrapper {
   height: 100vh;
 }
 
-.main-cta-spotify{
+.main-cta-spotify {
   display: flex;
   flex-direction: row-reverse;
   min-height: 100% !important;
   height: 100%;
 }
 
-.main-cta-spotify .text-content{
+.main-cta-spotify .text-content {
   display: flex;
   flex-direction: column;
   width: 75%;
   margin-left: 10%;
 }
 
-.main-cta-spotify .text-content h2{
+.main-cta-spotify .text-content h2 {
   font-size: 60px;
   margin: 0%;
 }
 
-.main-cta-spotify .text-content p{
+.main-cta-spotify .text-content p {
   font-size: 22px;
   margin-top: 5%;
   margin-bottom: 5%;
   color: #CECECE
 }
 
-.text-content-container{
+.text-content-container {
   display: flex;
   align-items: center;
   width: 50%;
 }
 
-.img-container{
+.img-container {
   display: flex;
   width: 50%;
 }
 
-.img-container-mobile{
+.img-container-mobile {
   display: none;
 }
 
-.img-container img{
+.img-container img {
   height: 92%;
   width: 95%;
 }
@@ -62,7 +62,7 @@ div.main-wrapper {
   height: 400px;
 }
 
-.container{
+.container {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -71,22 +71,23 @@ div.main-wrapper {
 
 
 @media (max-width: 576px) {
-  .cta-signup{
+  .cta-signup {
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
   }
 
-  .main-cta-spotify .text-content h2{
+  .main-cta-spotify .text-content h2 {
     font-size: 36px;
     margin: 0%;
     text-align: center;
     margin-left: 8%;
     margin-right: 8%;
+    margin-top: 35%;
   }
 
-  .main-cta-spotify .text-content p{
+  .main-cta-spotify .text-content p {
     font-size: 16px;
     margin-top: 8%;
     margin-bottom: 0%;
@@ -95,33 +96,33 @@ div.main-wrapper {
     margin-right: 8%;
   }
 
-  .main-cta-spotify{
+  .main-cta-spotify {
     display: flex;
     padding-top: 20%;
     min-height: 100% !important;
     height: 100%;
   }
 
-  .img-container-mobile{
+  .img-container-mobile {
     display: inline;
   }
 
-  .img-container{
+  .img-container {
     width: 100%;
   }
 
-  .main-cta-spotify .text-content{
+  .main-cta-spotify .text-content {
     display: flex;
     flex-direction: column;
     width: 95%;
     margin: 2%;
   }
 
-  .text-content-container{
+  .text-content-container {
     width: 100%;
   }
 
-  .img-container{
+  .img-container {
     display: none;
   }
 }
