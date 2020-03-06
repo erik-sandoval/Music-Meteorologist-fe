@@ -1,7 +1,12 @@
+// modules
 import React from "react";
-import styled from "styled-components";
-import MobileNav from "../../components/navigation-bar/MobileNav";
 
+// components
+import MobileNav from "../../components/navigation-bar/mobile-nav.component";
+import HomepageNav from "../../components/navigation-bar/homepage-nav.component";
+import Footer from "../../components/footer/footer.component";
+
+// styles
 import {
   AboutContainer,
   Header,
@@ -11,47 +16,35 @@ import {
   Sentence,
   InnerGridReverse
 } from "./about.styles";
-import Button from "../../components/dashboard/element-styles/AuthButton.js";
+import AuthButton from "../../components/buttons/auth-button.styles";
+import "./about.styles.css";
 
-import "../../views/styles/about.css";
-import HomepageNav from "../../components/navigation-bar/HomepageNav.js";
+// assets
 import AboutImage from "../../assets/About-Image.svg";
 import ChartImage from "../../assets/chart-image.svg";
 import SpotifyImage from "../../assets/spotify-image.svg";
 import AboutImageMobile from "../../assets/mobileWorks.svg";
 import SongImage from "../../assets/song-image.svg";
-import "../../App.css";
-import Footer from "../../components/footer/footer.component";
 
-export const authEndpoint = "https://accounts.spotify.com/authorize";
-
-const clientId = "256aebf9b04a4f5480a757f770864028"; // testing ENV
+// utils
+import { scopes } from "../../utils/spotifyScopes";
 
 const redirectUri = process.env.REACT_APP_REDIRECT_URL;
-
-const scopes = [
-  "streaming",
-  "user-read-currently-playing",
-  "user-read-playback-state",
-  "user-library-read",
-  "user-library-modify",
-  "user-modify-playback-state",
-  "user-read-email",
-  "user-read-private",
-  "playlist-modify-public",
-  "playlist-modify-private"
-];
+export const authEndpoint = "https://accounts.spotify.com/authorize";
+const clientId = "256aebf9b04a4f5480a757f770864028"; // testing ENV
 
 const About = () => (
   <>
     <AboutContainer>
-      <div className="mobileNavWrap">
-        <MobileNav />
-      </div>
+      <div className="mobileNavWrap">{/* <MobileNav /> */}</div>
       <HomepageNav />
       <div className="about-image">
-        <img className="desktop-about" src={AboutImage} />
-        <img className="mobile-about" src={AboutImageMobile} />
+        <img className="desktop-about" src={AboutImage} alt="about info" />
+        <img
+          className="mobile-about"
+          src={AboutImageMobile}
+          alt="mobile about info"
+        />
       </div>
       <div className="header-container">
         <Header>
@@ -69,10 +62,10 @@ const About = () => (
           </Sentence>
         </InnerGrid>
         <InnerGrid>
-          <img className="about-images" src={ChartImage} alt="chart"/>
+          <img className="about-images" src={ChartImage} alt="chart" />
         </InnerGrid>
         <InnerGridReverse>
-          <img className="about-images" src={SpotifyImage} alt="spotify"/>
+          <img className="about-images" src={SpotifyImage} alt="spotify" />
         </InnerGridReverse>
         <InnerGridReverse>
           <SecondaryHeader>
@@ -85,7 +78,11 @@ const About = () => (
         </InnerGridReverse>
         <div className="reverse">
           <InnerGrid>
-            <img className="about-images" src={SpotifyImage} />
+            <img
+              className="about-images"
+              src={SpotifyImage}
+              alt="spotify about"
+            />
           </InnerGrid>
           <InnerGrid>
             <SecondaryHeader>
@@ -105,11 +102,11 @@ const About = () => (
           </Sentence>
         </InnerGrid>
         <InnerGrid>
-          <img className="about-images" src={SongImage} />
+          <img className="about-images" src={SongImage} alt="song info" />
         </InnerGrid>
       </Grid>
       <div className="button-container">
-        <Button
+        <AuthButton
           className="startedButton"
           as="a"
           href={`${authEndpoint}?client_id=${clientId}&redirect_uri=${redirectUri}&scope=${encodeURIComponent(
@@ -117,7 +114,7 @@ const About = () => (
           )}&response_type=token&show_dialog=true`}
         >
           Get Started!
-        </Button>
+        </AuthButton>
       </div>
     </AboutContainer>
     <Footer />

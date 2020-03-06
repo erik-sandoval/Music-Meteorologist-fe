@@ -64,13 +64,6 @@ export const Grid = styled.div`
   }
 `;
 
-// margin-left: 5%;
-// margin-right: 5%;
-// margin-top: 30px;
-// grid-template-columns: 1fr;
-// grid-template-rows: 20% 20% 20% 20% 20% 20%
-// height: 1800px;
-
 export const InnerGrid = styled.div`
   display: flex;
   justify-content: center;
