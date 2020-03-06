@@ -100,10 +100,6 @@ class PlaylistItems extends React.Component {
       : false;
   };
   render() {
-    if (this.checkPremiumUser() || this.checkNoIOS()) {
-      this.props.history.push("/info");
-    }
-
     return (
       <div className="dashboard">
         <div id="mainBarLD1">
