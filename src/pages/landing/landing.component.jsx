@@ -46,9 +46,9 @@ export class Landing extends Component {
       <div className="auth">
         <div className="mobileNavWrap">{/* <MobileNav /> */}</div>
         <HomepageNav />
-        <div class="main-wrapper">
+        <div className="main-wrapper">
           <div className="main-cta-spotify">
-            <div class="img-container">
+            <div className="img-container">
               <img src={albums_background} alt="" className="bd-box" />
             </div>
             <div className="text-content-container">
