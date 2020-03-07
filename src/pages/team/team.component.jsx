@@ -42,8 +42,9 @@ const Team = () => {
           </Grid>
         </Grid>
         <Grid style={{ padding: "80px 0" }} container spacing={5}>
-          {teamInfo.map(({ image, name, position, linkedIn }) => (
-            <TeamCard
+          {teamInfo.map(({ image, name, position, linkedIn }, i) => (
+            <TeamCard 
+              key={i}
               image={image}
               name={name}
               position={position}
