@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { Radar, RadarChart, PolarGrid, PolarAngleAxis } from "recharts";
 
-import "../App.css";
+import "../../App.css"
 
 class Chart extends Component {
   static displayName = "RadarChartDemo";

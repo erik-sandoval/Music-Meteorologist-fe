@@ -11,12 +11,12 @@ import {
   createPlaylist,
   getCurrentUser,
   removeTrack
-} from "../Redux/Spotify/spotify.actions";
-import { postDSSong } from "../Redux/DS/ds.actions";
+} from "../../redux/Spotify/spotify.actions";
+import { postDSSong } from "../../redux/DS/ds.actions";
 import MusicPlayer from "../../components/music-player/music.player.component";
 
 // Styling
-import "../App.css";
+import "../../App.css";
 
 class Dashboard extends React.Component {
   state = {

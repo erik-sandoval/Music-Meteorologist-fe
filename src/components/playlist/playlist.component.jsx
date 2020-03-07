@@ -4,7 +4,7 @@ import {
   getlikedSongs,
   getUsers,
   getPlaylist
-} from "../../Redux/Spotify/spotify.actions";
+} from "../../redux/Spotify/spotify.actions";
 import PlaylistSong from "../playlist-song/playlist-song.component";
 
 import axios from "axios";

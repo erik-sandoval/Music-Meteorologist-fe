@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import { Direction, Slider, FormattedTime } from "react-player-controls";
-import { seekTrackTime } from "../playerActions/playerActions";
+import { seekTrackTime } from "../../utils/playerActions";
 
 import { ProgressBarContainer, SliderBar } from "./player-seek-bar.styles";
 

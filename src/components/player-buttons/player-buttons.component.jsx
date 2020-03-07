@@ -3,7 +3,7 @@ import { connect } from "react-redux";
 import {
   saveLikedSong,
   removeTrack
-} from "../../Redux/Spotify/spotify.actions";
+} from "../../redux/Spotify/spotify.actions";
 
 import { LikeDislikeContainer, PlayerButton } from "./player-buttons.styles";
 
@@ -12,7 +12,7 @@ import {
   onNextClick,
   onPrevClick,
   toggleLikeButton
-} from "../../playerActions/playerActions";
+} from "../../utils/playerActions";
 
 const PlayerButtons = props => {
   const { player, playing } = props;

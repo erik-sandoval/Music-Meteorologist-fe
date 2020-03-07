@@ -2,7 +2,7 @@ import React from "react";
 import "./navbar.css";
 import MusicLogo from "../../../assets/sounddrip.svg";
 
-import MenuListComposition from "./Dropdown";
+import MenuListComposition from "../../dropdown-menu/dropdown.component";
 
 import {
   Nav1,

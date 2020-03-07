@@ -49,16 +49,16 @@ export class Landing extends Component {
         <div class="main-wrapper">
           <div className="main-cta-spotify">
             <div class="img-container">
-              <img src={albums_background} alt="" class="bd-box" />
+              <img src={albums_background} alt="" className="bd-box" />
             </div>
-            <div class="text-content-container">
-              <div class="text-content">
+            <div className="text-content-container">
+              <div className="text-content">
                 <h2>Discover songs by their traits</h2>
                 <p>
                   We'll curate a playlist based on the different traits of songs
                   you like in your Spotify library.
                 </p>
-                <div class="cta-signup">
+                <div className="cta-signup">
                   <ButtonAuth
                     className="loginHover"
                     style={{ zIndex: "0" }}
@@ -69,8 +69,8 @@ export class Landing extends Component {
                   >
                     Login With Spotify
                   </ButtonAuth>
-                  <div class="img-container-mobile">
-                    <img src={albums_background_mobile} alt="" class="bd-box" />
+                  <div className="img-container-mobile">
+                    <img src={albums_background_mobile} alt="" className="bd-box" />
                   </div>
                 </div>
               </div>

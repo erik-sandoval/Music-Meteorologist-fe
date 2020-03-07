@@ -5,7 +5,7 @@ import {
   createPlaylist,
   getSeveralTracks,
   addToPlaylist
-} from "../../../Redux/Spotify/spotify.actions";
+} from "../../redux/Spotify/spotify.actions";
 import axios from "axios";
 
 import {

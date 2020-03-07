@@ -1,10 +1,10 @@
 import React from "react";
 import { connect } from "react-redux";
 import { Grid, Typography } from "@material-ui/core";
-import { getTrackInfo } from "../../Redux/Spotify/spotify.actions";
+import { getTrackInfo } from "../../redux/Spotify/spotify.actions";
 import "../../App.css";
 
-import { onPlayClick } from "../../playerActions/playerActions";
+import { onPlayClick } from "../../utils/playerActions";
 
 class PlaylistSong extends React.Component {
   msToTime(s) {

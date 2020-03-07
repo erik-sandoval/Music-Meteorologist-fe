@@ -7,8 +7,8 @@ import {
   getTrackInfo,
   getSeveralTracks,
   getPlayStatus
-} from "../../Redux/Spotify/spotify.actions";
-import { postDSSong } from "../../Redux/DS/ds.actions";
+} from "../../redux/Spotify/spotify.actions";
+import { postDSSong } from "../../redux/DS/ds.actions";
 import PlayListContainer from "../playlist-container/playlist-container.component";
 
 // Features

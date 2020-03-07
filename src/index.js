@@ -9,11 +9,23 @@ import { Router } from "react-router-dom";
 import "./index.css";
 import App from "./App";
 
+import rootReducer from './redux/reducers'
+
 const history = createBrowserHistory();
 
+let store = null;
+
+if (process.env.NODE_ENV === "development") {
+  store = createStore(rootReducer, applyMiddleware(logger, thunk));
+} else {
+  store = createStore(rootReducer, applyMiddleware(thunk));
+}
+
 ReactDOM.render(
-  <Router history={history}>
-    <App />
-  </Router>,
+  <Provider store={store}>
+    <Router history={history}>
+      <App />
+    </Router>
+  </Provider>,
   document.getElementById("root")
 );

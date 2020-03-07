@@ -11,8 +11,8 @@ import {
   createPlaylist,
   getCurrentUser,
   removeTrack
-} from "../../Redux/Spotify/spotify.actions";
-import { postDSSong } from "../../Redux/DS/ds.actions";
+} from "../../redux/Spotify/spotify.actions";
+import { postDSSong } from "../../redux/DS/ds.actions";
 import Playlist from '../playlist/playlist.component'
 import "../../App.css";
 

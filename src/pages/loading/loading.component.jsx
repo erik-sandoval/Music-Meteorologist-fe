@@ -5,7 +5,7 @@ import React from "react";
 import { LoadContainer } from "./loading.styles";
 
 // assets
-import Loader from "../assets/loader.gif";
+import Loader from "../../assets/loader.gif";
 
 const LoaderContainer = () => {
   return (
