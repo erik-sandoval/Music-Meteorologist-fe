@@ -1,5 +1,5 @@
 import React from "react";
-import "../../../views/styles/navbar.css";
+import "./navbar.css";
 import MusicLogo from "../../../assets/sounddrip.svg";
 
 import MenuListComposition from "./Dropdown";

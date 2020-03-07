@@ -26,8 +26,8 @@ import NavBar from "../navigation-bar/dashboard-nav/dashboard-nav.component";
 
 import {
   ElementContainer,
-  SideBar,
-  MainBar,
+  SideBarContainer,
+  MainBarContainer,
   PlaylistSongsContainer
 } from "./music-player.styles";
 
@@ -216,7 +216,7 @@ class MusicPlayer extends Component {
           deviceId={this.state.deviceId}
         />
         <ElementContainer>
-          <SideBar id="sideBarLD">
+          <SideBarContainer id="sideBarLD">
             <div id="sideBarLD1" className="music-player joyride-player-2">
               <AlbumInfo
                 imageSpotify={imageSpotify}
@@ -273,8 +273,8 @@ class MusicPlayer extends Component {
                 </Grid>
               </div>
             </div>
-          </SideBar>
-          <MainBar id="mainBarLD" className="mainBar">
+          </SideBarContainer>
+          <MainBarContainer id="mainBarLD" className="mainBar">
             <PlaylistInfo
               spotifyId={this.props.spotifyId.id}
               spotifyName={this.props.spotifyId.display_name}
@@ -285,7 +285,7 @@ class MusicPlayer extends Component {
                 deviceId={this.state.deviceId}
               ></PlayListContainer>
             </PlaylistSongsContainer>
-          </MainBar>
+          </MainBarContainer>
         </ElementContainer>
       </div>
     );
