@@ -2,8 +2,8 @@
 import React from "react";
 
 // components
-import MobileNav from "../../components/navigation-bar/mobile-nav.component";
-import HomepageNav from "../../components/navigation-bar/homepage-nav.component";
+import MobileNav from "../../components/navigation-bar/mobile-nav/mobile-nav.component";
+import HomepageNav from "../../components/navigation-bar/desktop-nav/desktop-nav.component";
 import Footer from "../../components/footer/footer.component";
 
 // styles

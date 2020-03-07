@@ -1,8 +1,8 @@
 import React from "react";
 
-import MusicLogo from "../../assets/sounddrip.svg";
+import MusicLogo from "../../../assets/sounddrip.svg";
 
-import { HomepageNavbar, NavbarLinks } from "./homepage-nav.styles";
+import { HomepageNavbar, NavbarLinks } from "./desktop-nav.styles";
 
 const HomepageNav = () => {
   return (

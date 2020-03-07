@@ -6,7 +6,7 @@ import { useStyles, HomepageNavbar, NavbarLinks } from "./team.styles";
 
 import { Grid, Typography, Container } from "@material-ui/core";
 
-import MobileNav from "../../components/navigation-bar/mobile-nav.component";
+import MobileNav from "../../components/navigation-bar/mobile-nav/mobile-nav.component";
 import Footer from "../../components/footer/footer.component";
 
 import { teamInfo } from "./teamInfo";

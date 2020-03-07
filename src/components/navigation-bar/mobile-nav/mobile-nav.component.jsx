@@ -1,6 +1,6 @@
 import React, { useState, useRef } from "react";
 
-import MusicLogo from "../../assets/sounddrip.svg";
+import MusicLogo from "../../../assets/sounddrip.svg";
 // import "../../views/styles/mobileNav.css";
 
 import { StyledBurger, StyledMenu } from "./mobile-nav.styles";
