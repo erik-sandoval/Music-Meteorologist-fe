@@ -1,10 +1,10 @@
 import React, { Component } from "react";
 
 import ButtonAuth from "../../components/buttons/auth-button.styles";
-import MobileNav from "../../components/navigation-bar/mobile-nav.component";
+import MobileNav from "../../components/navigation-bar/mobile-nav/mobile-nav.component";
 
 import Footer from "../../components/footer/footer.component";
-import HomepageNav from "../../components/navigation-bar/homepage-nav.component";
+import HomepageNav from "../../components/navigation-bar/desktop-nav/homepage-nav.component";
 import "./landing.styles.css";
 import { scopes } from "../../utils/spotifyScopes";
 import albums_background from "../../assets/albums-background.svg";
