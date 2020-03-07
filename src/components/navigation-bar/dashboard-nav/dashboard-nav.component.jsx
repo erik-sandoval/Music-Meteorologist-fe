@@ -12,21 +12,11 @@ import {
   Relog
 } from "./dashboard-nav.styles";
 
+import { scopes } from "../../../utils/spotifyScopes";
+
 const authEndpoint = "https://accounts.spotify.com/authorize";
 const clientId = "256aebf9b04a4f5480a757f770864028";
 const redirectUri = process.env.REACT_APP_REDIRECT_URL;
-const scopes = [
-  "streaming",
-  "user-read-currently-playing",
-  "user-read-playback-state",
-  "user-library-read",
-  "user-library-modify",
-  "user-modify-playback-state",
-  "user-read-email",
-  "user-read-private",
-  "playlist-modify-public",
-  "playlist-modify-private"
-];
 
 class NavBar extends React.Component {
   homeButton = e => {
