@@ -9,7 +9,7 @@ import {
   getPlayStatus
 } from "../../Redux/Spotify/spotify.actions";
 import { postDSSong } from "../../Redux/DS/ds.actions";
-import PlaylistItems from "./PlaylistItems";
+import PlayListContainer from "../playlist-container/playlist-container.component";
 
 // Features
 import AlbumInfo from "../album-info/album-info.component";
@@ -280,10 +280,10 @@ class MusicPlayer extends Component {
               spotifyName={this.props.spotifyId.display_name}
             ></PlaylistInfo>
             <PlaylistSongsContainer>
-              <PlaylistItems
+              <PlayListContainer
                 player={this.player}
                 deviceId={this.state.deviceId}
-              ></PlaylistItems>
+              ></PlayListContainer>
             </PlaylistSongsContainer>
           </MainBar>
         </ElementContainer>
