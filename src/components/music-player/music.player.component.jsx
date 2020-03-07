@@ -12,20 +12,24 @@ import { postDSSong } from "../../Redux/DS/ds.actions";
 import PlaylistItems from "./PlaylistItems";
 
 // Features
-import LinearDeterminate from "../LinearDeterminate";
-import AlbumInfo from "./AlbumInfo.component";
-import PlayerButtons from "./PlayerButtons.component";
-import AudioDetailsContainer from "./AudioDetailsContainer";
+import AlbumInfo from "../album-info/album-info.component";
+import PlayerButtons from "../player-buttons/player-buttons.component";
+import AudioDetails from "../audio-details/audio-details.component";
 
 // Styles
-import "../../App.css";
-import ElementContainer from "./element-styles/ElementContainer";
-import SideBar from "./element-styles/SideBar";
-import MainBar from "./element-styles/MainBarContainer";
-import PlaylistInfoContainer from "./element-styles/PlaylistInfo";
-import PlaylistSongsContainer from "./element-styles/PlaylistSongs";
-import NavBar from "./element-styles/NavBarMusicPlayer";
-import PlayerSeekBar from "../PlayerSeekBar.component";
+
+import PlaylistInfo from "../../components/playlist-info/playlist-info.component";
+
+import PlayerSeekBar from "../player-seek-bar/player-seek-bar.component";
+
+import NavBar from "../navigation-bar/dashboard-nav/dashboard-nav.component";
+
+import {
+  ElementContainer,
+  SideBar,
+  MainBar,
+  PlaylistSongsContainer
+} from "./music-player.styles";
 
 class MusicPlayer extends Component {
   state = {
@@ -244,7 +248,7 @@ class MusicPlayer extends Component {
                   justify="center"
                   alignItems="center"
                 >
-                  <AudioDetailsContainer />
+                  <AudioDetails />
                   <Grid item>
                     {window.Spotify !== undefined &&
                       this.state.imageUrl !== "" && (
@@ -271,10 +275,10 @@ class MusicPlayer extends Component {
             </div>
           </SideBar>
           <MainBar id="mainBarLD" className="mainBar">
-            <PlaylistInfoContainer
+            <PlaylistInfo
               spotifyId={this.props.spotifyId.id}
               spotifyName={this.props.spotifyId.display_name}
-            ></PlaylistInfoContainer>
+            ></PlaylistInfo>
             <PlaylistSongsContainer>
               <PlaylistItems
                 player={this.player}
