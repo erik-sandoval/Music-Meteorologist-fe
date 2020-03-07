@@ -13,7 +13,7 @@ import {
   removeTrack
 } from "../../redux/Spotify/spotify.actions";
 import { postDSSong } from "../../redux/DS/ds.actions";
-import Playlist from '../playlist/playlist.component'
+import Playlist from "../playlist/playlist.component";
 import "../../App.css";
 
 // Styling
