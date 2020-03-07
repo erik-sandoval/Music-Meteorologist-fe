@@ -35,51 +35,50 @@ class PlaylistInfo extends React.Component {
       return mins + ":" + secs;
     }
   }
+  songTime = () => {
+    let trackslist = this.props.several_tracks.tracks.map(
+      track => track.duration_ms
+    );
+    const reducer = (accumulator, currentValue) => accumulator + currentValue;
+    let songTime = trackslist.reduce(reducer);
+    let total = this.msToTime(songTime);
+  };
+
+  addPlaylist = () => {
+    let trackUris = this.props.several_tracks.tracks
+      ? this.props.several_tracks.tracks.map(track => track.uri)
+      : 0;
+    if (trackUris === 0) {
+      window.alert("Playlist hasn't populated yet.");
+    }
+    var config = {
+      headers: {
+        Authorization: "Bearer " + localStorage.getItem("token"),
+        "Content-Type": "application/json"
+      }
+    };
+    var playlistName = {
+      name: "Sound Drip Playlist",
+      description: "A playlist of songs curated by Sound Drip"
+    };
+    if (this.props.several_tracks.tracks) {
+      axios
+        .post(
+          `https://api.spotify.com/v1/users/${this.props.spotifyId}/playlists`,
+          playlistName,
+          config
+        )
+        .then(res => {
+          axios.post(
+            `https://api.spotify.com/v1/playlists/${res.data.id}/tracks`,
+            { uris: trackUris },
+            config
+          );
+        });
+    }
+  };
 
   render() {
-    let songTime = () => {
-      let trackslist = this.props.several_tracks.tracks.map(
-        track => track.duration_ms
-      );
-      const reducer = (accumulator, currentValue) => accumulator + currentValue;
-      let songTime = trackslist.reduce(reducer);
-      let total = this.msToTime(songTime);
-    };
-
-    const addPlaylist = () => {
-      let trackUris = this.props.several_tracks.tracks
-        ? this.props.several_tracks.tracks.map(track => track.uri)
-        : 0;
-      if (trackUris === 0) {
-        window.alert("Playlist hasn't populated yet.");
-      }
-      var config = {
-        headers: {
-          Authorization: "Bearer " + localStorage.getItem("token"),
-          "Content-Type": "application/json"
-        }
-      };
-      var playlistName = {
-        name: "Sound Drip Playlist",
-        description: "A playlist of songs curated by Sound Drip"
-      };
-      if (this.props.several_tracks.tracks) {
-        axios
-          .post(
-            `https://api.spotify.com/v1/users/${this.props.spotifyId}/playlists`,
-            playlistName,
-            config
-          )
-          .then(res => {
-            axios.post(
-              `https://api.spotify.com/v1/playlists/${res.data.id}/tracks`,
-              { uris: trackUris },
-              config
-            );
-          });
-      }
-    };
-
     return (
       <Container id="playInfoLD">
         <DivLeft>
@@ -99,12 +98,14 @@ class PlaylistInfo extends React.Component {
             <div className="playH2" style={{ display: "flex" }}>
               <div className="playlisticon" />
               <PlayH2>20 Songs</PlayH2>
-              <PlayH2 onClick={songTime}>{songTime}</PlayH2>
+              <PlayH2 onClick={this.songTime}>{this.songTime}</PlayH2>
             </div>
           </PlayInfo>
         </DivLeft>
         <DivRight>
-          <MakePlaylist onClick={addPlaylist}>Add This Playlist!</MakePlaylist>
+          <MakePlaylist onClick={this.addPlaylist}>
+            Add This Playlist!
+          </MakePlaylist>
         </DivRight>
       </Container>
     );
