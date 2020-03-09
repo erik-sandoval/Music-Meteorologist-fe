@@ -5,6 +5,8 @@ import LoadingPage from "../loading/loading.component";
 
 import MusicPlayer from "../../components/music-player/music.player.component";
 
+import { postDSSong } from "../../redux/DS/ds.actions";
+
 // Styling
 import "../../App.css";
 
@@ -16,7 +18,9 @@ class Dashboard extends React.Component {
     userDataFetching: false
   };
 
-  componentDidMount() {}
+  componentDidMount() {
+    this.props.postDSSong(localStorage.getItem("token"));
+  }
 
   logout = e => {
     e.preventDefault();
@@ -39,6 +43,8 @@ class Dashboard extends React.Component {
   }
 }
 
-const mapStateToProps = state => ({});
+const mapStateToProps = state => ({
+  dsSongsData: state.getSongsReducer.dsSongsData
+});
 
-export default connect(mapStateToProps, {})(Dashboard);
+export default connect(mapStateToProps, { postDSSong })(Dashboard);
