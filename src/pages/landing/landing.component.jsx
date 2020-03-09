@@ -10,19 +10,24 @@ import { scopes } from "../../utils/spotifyScopes";
 import albums_background from "../../assets/albums-background.svg";
 import albums_background_mobile from "../../assets/albums-background-mobile.svg";
 
+//
 const authEndpoint = "https://accounts.spotify.com/authorize";
-
 const clientId = "256aebf9b04a4f5480a757f770864028"; // testing ENV
-
 const redirectUri = process.env.REACT_APP_REDIRECT_URL;
+
 // gets the access token from the callback url paramaters
 const url = window.location;
-
 const accessToken = new URLSearchParams(url.hash).get("#access_token");
 
 export class Landing extends Component {
+  componentDidMount() {
+    if (accessToken) {
+      localStorage.setItem("token", accessToken);
+      this.props.history.push("/dashboard");
+    }
+  }
+
   render() {
-    console.log(accessToken);
     return (
       <div className="auth">
         <div className="mobileNavWrap">{/* <MobileNav /> */}</div>
