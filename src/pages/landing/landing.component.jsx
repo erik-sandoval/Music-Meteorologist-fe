@@ -15,22 +15,14 @@ const authEndpoint = "https://accounts.spotify.com/authorize";
 const clientId = "256aebf9b04a4f5480a757f770864028"; // testing ENV
 
 const redirectUri = process.env.REACT_APP_REDIRECT_URL;
+// gets the access token from the callback url paramaters
+const url = window.location;
 
-// const hash = window.location.hash
-//   .substring(1)
-//   .split("&")
-//   .reduce(function(initial, item) {
-//     if (item) {
-//       var parts = item.split("=");
-//       initial[parts[0]] = decodeURIComponent(parts[1]);
-//     }
-//     return initial;
-//   }, {});
-
-// window.location.hash = "";
+const accessToken = new URLSearchParams(url.hash).get("#access_token");
 
 export class Landing extends Component {
   render() {
+    console.log(accessToken);
     return (
       <div className="auth">
         <div className="mobileNavWrap">{/* <MobileNav /> */}</div>
