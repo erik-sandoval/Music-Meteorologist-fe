@@ -1,11 +1,7 @@
 import React from "react";
 
 import { connect } from "react-redux";
-import {
-  createPlaylist,
-  getSeveralTracks,
-  addToPlaylist
-} from "../../redux/Spotify/spotify.actions";
+
 import axios from "axios";
 
 import {
@@ -112,13 +108,6 @@ class PlaylistInfo extends React.Component {
   }
 }
 
-const mapStateToProps = state => ({
-  several_tracks: state.queueReducer.several_tracks,
-  playlistId: state.createPlaylistReducer.playlistId
-});
+const mapStateToProps = state => ({});
 
-export default connect(mapStateToProps, {
-  getSeveralTracks,
-  createPlaylist,
-  addToPlaylist
-})(PlaylistInfo);
+export default connect(mapStateToProps, {})(PlaylistInfo);

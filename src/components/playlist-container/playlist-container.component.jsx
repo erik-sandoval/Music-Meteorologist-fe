@@ -27,45 +27,6 @@ class PlayListContainer extends React.Component {
     userDataFetching: false
   };
 
-  componentDidMount() {
-    this.props.getSpotifyAccountDetails();
-
-    if (this.props.spotifyUser.length > 0) {
-      this.props.persistUser(this.props.spotifyUser);
-    }
-    this.props.getlikedSongs();
-  }
-
-  componentDidUpdate(prevProps) {
-    if (this.state.userDataFetching === false && this.props.spotifyUser.id) {
-      this.props.getCurrentUser(this.props.spotifyUser.id);
-      this.setState({
-        userDataFetching: true
-      });
-    }
-    setTimeout(() => {
-      if (
-        !this.state.playlistCreated &&
-        /* this.props.spotifyUser.id && */
-        !this.props.fetchingCreatePlaylist &&
-        // this.props.playlistId === null &&
-        !this.props.currentUser.spotify_playlist_id
-      ) {
-        this.props.createPlaylist(this.props.spotifyUser.id);
-      }
-    }, 4000);
-
-    if (this.props.playlistId && !this.state.playlistCreated) {
-      this.props.persistUser(this.props.spotifyUser, this.props.playlistId);
-      this.setState({
-        playlistCreated: true
-      });
-      setTimeout(() => {
-        this.props.getCurrentUser(this.props.spotifyUser.id);
-      }, 5000);
-    }
-  }
-
   openPlaylist() {
     this.setState({
       collapse: !this.state.collapse
@@ -84,21 +45,6 @@ class PlayListContainer extends React.Component {
     this.props.history.push("/logout");
   };
 
-  checkPremiumUser = () => {
-    return this.props.spotifyUser.product &&
-      this.props.fetchingSpotifyUser === false &&
-      this.props.spotifyUser.product !== "premium"
-      ? true
-      : false;
-  };
-
-  checkNoIOS = () => {
-    return window.navigator.platform === "iPhone" ||
-      window.navigator.platform === "iPad" ||
-      window.navigator.platform === "iPod"
-      ? true
-      : false;
-  };
   render() {
     return (
       <div className="dashboard">

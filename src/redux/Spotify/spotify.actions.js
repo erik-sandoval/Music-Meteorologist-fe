@@ -1,11 +1,27 @@
 import SpotifyActionTypes from "./spotify.types.js";
 import axios from "axios";
 
+import { scopes } from "../../utils/spotifyScopes";
+
 const url = "https://music-meteorology.herokuapp.com/";
 
 const spotifyBaseUrl = "https://api.spotify.com/v1";
 
 const spotifyToken = localStorage.getItem("token");
+
+const authEndpoint = "https://accounts.spotify.com/authorize";
+
+const clientId = "256aebf9b04a4f5480a757f770864028"; // testing ENV
+
+const redirectUri = process.env.REACT_APP_REDIRECT_URL;
+
+export const authenticateUser = () => dispatch => {
+  axios.get();
+
+  return `${authEndpoint}?client_id=${clientId}&redirect_uri=${redirectUri}&scope=${encodeURIComponent(
+    scopes
+  )}&response_type=token&show_dialog=true`;
+};
 
 export const getUsers = () => dispatch => {
   dispatch({

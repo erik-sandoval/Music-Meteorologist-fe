@@ -10,37 +10,26 @@ import { scopes } from "../../utils/spotifyScopes";
 import albums_background from "../../assets/albums-background.svg";
 import albums_background_mobile from "../../assets/albums-background-mobile.svg";
 
-export const authEndpoint = "https://accounts.spotify.com/authorize";
+const authEndpoint = "https://accounts.spotify.com/authorize";
 
 const clientId = "256aebf9b04a4f5480a757f770864028"; // testing ENV
-// const redirectUri = process.env.REACT_APP_REDIRECT_URL;
 
 const redirectUri = process.env.REACT_APP_REDIRECT_URL;
 
-// const redirectUri = process.env.REACT_APP_REDIRECT_URL // has to match exactly with spotify dashboard redirect uri
+// const hash = window.location.hash
+//   .substring(1)
+//   .split("&")
+//   .reduce(function(initial, item) {
+//     if (item) {
+//       var parts = item.split("=");
+//       initial[parts[0]] = decodeURIComponent(parts[1]);
+//     }
+//     return initial;
+//   }, {});
 
-const hash = window.location.hash
-  .substring(1)
-  .split("&")
-  .reduce(function(initial, item) {
-    if (item) {
-      var parts = item.split("=");
-      initial[parts[0]] = decodeURIComponent(parts[1]);
-    }
-    return initial;
-  }, {});
-
-window.location.hash = "";
+// window.location.hash = "";
 
 export class Landing extends Component {
-  componentDidMount() {
-    let token = hash.access_token;
-    if (token) {
-      localStorage.setItem("token", token);
-      this.props.history.push("/dashboard");
-    }
-  }
-
   render() {
     return (
       <div className="auth">
@@ -70,7 +59,11 @@ export class Landing extends Component {
                     Login With Spotify
                   </ButtonAuth>
                   <div className="img-container-mobile">
-                    <img src={albums_background_mobile} alt="" className="bd-box" />
+                    <img
+                      src={albums_background_mobile}
+                      alt=""
+                      className="bd-box"
+                    />
                   </div>
                 </div>
               </div>

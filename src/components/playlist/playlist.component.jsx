@@ -1,10 +1,6 @@
 import React from "react";
 import { connect } from "react-redux";
-import {
-  getlikedSongs,
-  getUsers,
-  getPlaylist
-} from "../../redux/Spotify/spotify.actions";
+
 import PlaylistSong from "../playlist-song/playlist-song.component";
 
 import axios from "axios";
@@ -13,21 +9,7 @@ class Playlist extends React.Component {
   state = {
     getList: false
   };
-  componentDidMount() {
-    this.props.getUsers();
-  }
-
-  componentDidUpdate() {
-    if (this.props.addedTo && this.state.getList && this.props.playlistId) {
-      this.props.getPlaylist(this.props.playlistId);
-
-      if (this.props.playlistId) {
-        this.setState({
-          getList: true
-        });
-      }
-    }
-  }
+  componentDidMount() {}
 
   playSong = (trackUris, songUri) => {
     let songIndex = null;
@@ -82,18 +64,6 @@ class Playlist extends React.Component {
   }
 }
 
-const mapStateToProps = state => ({
-  currentSong: state.currentSongReducer.item,
-  spotifyUser: state.getUserReducer.spotifyUser,
-  several_tracks: state.queueReducer.several_tracks,
-  playlistTracks: state.getPlaylistReducer,
-  playlistId: state.createPlaylistReducer,
-  playlistCreated: state.createPlaylistReducer.playlistCreated,
-  addedTo: state.addToPlaylistReducer.addedTo
-});
+const mapStateToProps = state => ({});
 
-export default connect(mapStateToProps, {
-  getlikedSongs,
-  getUsers,
-  getPlaylist
-})(Playlist);
+export default connect(mapStateToProps, {})(Playlist);
