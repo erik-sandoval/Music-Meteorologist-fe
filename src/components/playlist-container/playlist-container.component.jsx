@@ -2,17 +2,7 @@ import React from "react";
 import { connect } from "react-redux";
 import Paper from "@material-ui/core/Paper";
 import List from "@material-ui/core/List";
-import {
-  getlikedSongs,
-  getUsers,
-  getSpotifyAccountDetails,
-  persistUser,
-  getSeveralTracks,
-  createPlaylist,
-  getCurrentUser,
-  removeTrack
-} from "../../redux/Spotify/spotify.actions";
-import { postDSSong } from "../../redux/DS/ds.actions";
+import { postDSSong } from "../../redux/ds/ds.actions";
 import Playlist from "../playlist/playlist.component";
 import "../../App.css";
 
@@ -105,25 +95,6 @@ class PlayListContainer extends React.Component {
   }
 }
 
-const mapStateToProps = state => ({
-  spotifyUser: state.getUserReducer.spotifyUser,
-  currentUser: state.getCurrentUserReducer.currentUser,
-  fetchingSpotifyUser: state.getUserReducer.fetchingSpotifyUser,
-  ds_songs: state.queueReducer.ds_songs,
-  several_tracks: state.queueReducer.several_tracks,
-  playlistId: state.createPlaylistReducer.playlistId,
-  fetchingCreatePlaylist: state.createPlaylistReducer.fetchingPlaylist,
-  status: state.removeTrackReducer.status
-});
+const mapStateToProps = state => ({});
 
-export default connect(mapStateToProps, {
-  getlikedSongs,
-  getUsers,
-  getSpotifyAccountDetails,
-  persistUser,
-  postDSSong,
-  getSeveralTracks,
-  createPlaylist,
-  getCurrentUser,
-  removeTrack
-})(PlayListContainer);
+export default connect(mapStateToProps, {})(PlayListContainer);

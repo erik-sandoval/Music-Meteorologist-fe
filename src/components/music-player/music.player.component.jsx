@@ -3,12 +3,9 @@ import { connect } from "react-redux";
 import { Grid } from "@material-ui/core";
 // import axios from "axios";
 import {
-  getCurrentSong,
-  getTrackInfo,
-  getSeveralTracks,
-  getPlayStatus
-} from "../../redux/Spotify/spotify.actions";
-import { postDSSong } from "../../redux/DS/ds.actions";
+
+} from "../../redux/spotify/spotify.actions";
+import { postDSSong } from "../../redux/ds/ds.actions";
 import PlayListContainer from "../playlist-container/playlist-container.component";
 
 // Features
@@ -126,23 +123,8 @@ class MusicPlayer extends Component {
 }
 
 const mapStateToProps = state => ({
-  song: state.currentSongReducer.item,
-  imageUrl: state.currentSongReducer.imageUrl,
-  traits: state.getTrackInfoReducer,
-  ds_songs: state.queueReducer.ds_songs,
-  several_tracks: state.queueReducer.several_tracks,
-  playlistId: state.createPlaylistReducer.playlistId,
-  song_id: state.likedSongsReducer.song_id,
-  savingLike: state.likedSongsReducer.savingLike,
-  isFetchingSuccessful: state.queueReducer.isFetchingSuccessful,
-  isFetchingDSSongs: state.queueReducer.isFetchingDSSongs,
-  playing: state.currentSongReducer.playing
+
 });
 
 export default connect(mapStateToProps, {
-  getTrackInfo,
-  getCurrentSong,
-  postDSSong,
-  getSeveralTracks,
-  getPlayStatus
 })(MusicPlayer);

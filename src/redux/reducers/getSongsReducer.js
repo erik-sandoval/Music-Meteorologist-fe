@@ -1,5 +1,5 @@
-import SpotifyActionTypes from "../Spotify/spotify.types";
-import DSActionTypes from "../DS/ds.types";
+import SpotifyActionTypes from "../spotify/spotify.types";
+import DSActionTypes from "../ds/ds.types";
 
 const initialState = {
   dsSongsData: [],

@@ -1,9 +1,9 @@
-import SpotifyActionTypes from "../Spotify/spotify.types";
+import SpotifyActionTypes from "../spotify/spotify.types";
 
 const initialState = {
   item: [],
   imageUrl: [],
-  fetchingSongError: "",
+  fetchingSongError: null,
   playing: false
 };
 

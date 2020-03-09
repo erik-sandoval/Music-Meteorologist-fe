@@ -1,9 +1,5 @@
 import React from "react";
 import { connect } from "react-redux";
-import {
-  saveLikedSong,
-  removeTrack
-} from "../../redux/Spotify/spotify.actions";
 
 import { LikeDislikeContainer, PlayerButton } from "./player-buttons.styles";
 
@@ -49,11 +45,6 @@ const PlayerButtons = props => {
   );
 };
 
-const mapStateToProps = state => ({
-  song: state.currentSongReducer.item,
-  playing: state.currentSongReducer.playing
-});
+const mapStateToProps = state => ({});
 
-export default connect(mapStateToProps, { saveLikedSong, removeTrack })(
-  PlayerButtons
-);
+export default connect(mapStateToProps, {})(PlayerButtons);

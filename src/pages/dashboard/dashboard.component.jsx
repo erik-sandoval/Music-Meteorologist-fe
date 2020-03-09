@@ -5,7 +5,7 @@ import LoadingPage from "../loading/loading.component";
 
 import MusicPlayer from "../../components/music-player/music.player.component";
 
-import { postDSSong } from "../../redux/DS/ds.actions";
+import { postDSSong } from "../../redux/ds/ds.actions";
 
 // Styling
 import "../../App.css";

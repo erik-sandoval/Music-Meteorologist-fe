@@ -1,7 +1,7 @@
 import React from "react";
 import { connect } from "react-redux";
 import { Grid, Typography } from "@material-ui/core";
-import { getTrackInfo } from "../../redux/Spotify/spotify.actions";
+
 import "../../App.css";
 
 import { onPlayClick } from "../../utils/playerActions";
@@ -103,10 +103,6 @@ class PlaylistSong extends React.Component {
   }
 }
 
-const mapStateToProps = state => ({
-  tracksInfo: state.getTrackInfoReducer,
-  currentSong: state.currentSongReducer.item,
-  playing: state.currentSongReducer.playing
-});
+const mapStateToProps = state => ({});
 
-export default connect(mapStateToProps, { getTrackInfo })(PlaylistSong);
+export default connect(mapStateToProps, {})(PlaylistSong);
