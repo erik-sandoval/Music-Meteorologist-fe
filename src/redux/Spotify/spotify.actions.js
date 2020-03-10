@@ -72,13 +72,15 @@ export const getCurrentSong = spotifyState => dispatch => {
 };
 
 export const getLikedSongStatus = songId => dispatch => {
-  axios
+  return axios
     .get(`${spotifyBaseUrl}/me/tracks/contains?ids=${songId}`, config)
     .then(res => {
       dispatch({
         type: SpotifyActionTypes.GET_LIKED_STATUS,
         payload: res.data[0]
       });
+
+      return res.data[0]
     })
     .catch(err => {});
 };

@@ -58,18 +58,23 @@ export const onNextClick = () => {
     .catch(err => {
       console.log(err);
     });
-
-  var element = document.getElementById("like1");
-  element.classList.remove("fullHeart");
 };
 
-export const saveLikedSong = songId => {
-  axios.put(`https://api.spotify.com/v1/me/tracks`, { ids: [songId] }, config);
-  var element = document.getElementById("like1");
-  element.classList.add("fullHeart");
+export const saveLikedSong = (songId, liked) => {
+  if (liked) {
+    axios({
+      method: "delete",
+      url: `https://api.spotify.com/v1/me/tracks?ids=${songId}`,
+      headers: { Authorization: "Bearer " + token }
+    });
+  } else {
+    axios({
+      method: "put",
+      url: `https://api.spotify.com/v1/me/tracks?ids=${songId}`,
+      headers: { Authorization: "Bearer " + token }
+    });
+  }
 };
-
-export const toggleDislikeButton = () => {};
 
 export const seekTrackTime = position_ms => {
   position_ms = Math.floor(position_ms);
