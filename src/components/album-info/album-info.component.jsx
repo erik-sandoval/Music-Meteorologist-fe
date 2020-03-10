@@ -7,6 +7,7 @@ import { AlbumImg } from "./album-info.styles";
 
 const AlbumInfo = props => {
   const { currentSong } = props;
+
   const trackName = currentSong.name;
   const artistName = currentSong.artists[0].name;
   const albumName = currentSong.album.name;
@@ -31,7 +32,7 @@ const AlbumInfo = props => {
 };
 
 const mapStateToProps = state => ({
-  currentSong: state.currentSong
+  currentSong: state.currentSong.currentSong
 });
 
 export default connect(mapStateToProps)(AlbumInfo);

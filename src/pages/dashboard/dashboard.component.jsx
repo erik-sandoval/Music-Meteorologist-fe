@@ -73,7 +73,7 @@ class Dashboard extends Component {
   render() {
     return (
       <div className="dashboard">
-        {this.props.spotifySongsFetchingSuccess ? (
+        {this.props.currentSongFetchingSuccess ? (
           <div>
             <MusicPlayer />
           </div>
@@ -87,7 +87,7 @@ class Dashboard extends Component {
 
 const mapStateToProps = state => ({
   dsSongsData: state.dsSongs.dsSongsData,
-  spotifySongsFetchingSuccess: state.spotifyUris.spotifySongsFetchingSuccess
+  currentSongFetchingSuccess: state.currentSong.currentSongFetchingSuccess
 });
 
 export default connect(mapStateToProps, {

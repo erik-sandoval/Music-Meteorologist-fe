@@ -11,8 +11,11 @@ class Playlist extends React.Component {
   };
   componentDidMount() {}
 
-  playSong = (trackUris, songUri) => {
+  playSong = (songs, songUri) => {
     let songIndex = null;
+
+    const trackUris = songs.map(track => track.uri);
+
     for (let i = 0; i < trackUris.length; i++) {
       if (trackUris[i] === songUri) {
         songIndex = i;
@@ -20,12 +23,15 @@ class Playlist extends React.Component {
       }
     }
 
+
+    const oldPlayList = trackUris.map(track => track.uri);
+
     const newPlaylist = trackUris
       .slice(songIndex)
       .concat(trackUris.slice(0, songIndex));
 
     axios.put(
-      `https://api.spotify.com/v1/me/player/play?device_id=${this.props.deviceId}`,
+      `https://api.spotify.com/v1/me/player/play`,
       {
         uris: newPlaylist
       },

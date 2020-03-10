@@ -16,7 +16,8 @@ class PlaylistSong extends React.Component {
   }
 
   render() {
-    const { song, playing, id, currentSong, tracks, playSong } = this.props;
+    const { song, id, songPlaying, tracks, playSong } = this.props;
+
 
     return (
       <div>
@@ -37,7 +38,7 @@ class PlaylistSong extends React.Component {
                 outline: "none"
               }}
             >
-              {playing && id === currentSong.id ? (
+              {!songPlaying.paused && id === songPlaying.currentSong.id ? (
                 <div
                   className="pauseicon2"
                   onClick={() => onPlayClick(this.props)}
@@ -103,6 +104,9 @@ class PlaylistSong extends React.Component {
   }
 }
 
-const mapStateToProps = state => ({});
+const mapStateToProps = state => ({
+  songPlaying: state.currentSong,
+  tracks: state.spotifyUris.spotifySongUris
+});
 
 export default connect(mapStateToProps, {})(PlaylistSong);
