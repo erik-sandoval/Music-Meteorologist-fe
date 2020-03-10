@@ -1,7 +1,7 @@
 import SpotifyActionTypes from "../spotify/spotify.types";
 
 const initialState = {
-  currentSong: [],
+  currentSong: null,
   currentSongFetching: false,
   currentSongFetchingSuccess: false,
   currentSongError: null,
@@ -21,7 +21,8 @@ const getCurrentSongReducer = (state = initialState, action) => {
         ...state,
         currentSong: action.payload,
         currentSongError: null,
-        currentSongFetching: false
+        currentSongFetching: false,
+        currentSongFetchingSuccess: true
       };
     case SpotifyActionTypes.GET_CURRENT_SONG_FAILURE:
       return {

@@ -26,7 +26,7 @@ export const getSeveralTracks = ids => dispatch => {
     .catch(err => {
       dispatch({
         type: SpotifyActionTypes.GET_SPOTIFY_SONGS_FAILURE,
-        payload: err.response.data
+        payload: err
       });
     });
 };
