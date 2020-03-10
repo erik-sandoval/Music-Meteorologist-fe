@@ -27,6 +27,13 @@
     <title>React App</title>
   </head>
   <body>
+    <!-- script is needed to get a device id to transfer user playback  -->
+    <script src="https://sdk.scdn.co/spotify-player.js"></script>
+    <script>
+      window.onSpotifyWebPlaybackSDKReady = () => {
+        window.Spotify = Spotify; // assign window Spotify variable to global Spotify variable granting React access
+      };
+    </script>
     <noscript>You need to enable JavaScript to run this app.</noscript>
     <div id="root"></div>
     <!--

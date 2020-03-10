@@ -35,5 +35,16 @@ export const getSeveralTracks = ids => dispatch => {
         type: SpotifyActionTypes.GET_SPOTIFY_SONGS_FAILURE,
         payload: err.data
       });
+export const getCurrentSong = spotifyState => dispatch => {
+  if (spotifyState) {
+    console.log(spotifyState);
+    dispatch({
+      type: SpotifyActionTypes.GET_CURRENT_SONG_SUCCESS,
+      payload: spotifyState.track_window.current_track
     });
+  } else {
+    dispatch({
+      type: SpotifyActionTypes.GET_CURRENT_SONG_FETCHING
+    });
+  }
 };

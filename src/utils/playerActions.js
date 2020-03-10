@@ -5,7 +5,23 @@ const spotifyApiUrl = "https://api.spotify.com/v1/me/player";
 const token = localStorage.getItem("token");
 
 const config = {
-  headers: { Authorization: "Bearer " + token }
+  headers: {
+    Authorization: "Bearer " + token
+  }
+};
+
+export const transferPlaybackHere = (accessToken, deviceId) => {
+  axios.put(
+    `${spotifyApiUrl}`,
+    {
+      device_ids: [deviceId]
+    },
+    {
+      headers: {
+        Authorization: `Bearer ${accessToken}`
+      }
+    }
+  );
 };
 
 export const onPrevClick = player => {

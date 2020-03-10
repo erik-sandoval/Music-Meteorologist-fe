@@ -1,29 +1,33 @@
 import SpotifyActionTypes from "../spotify/spotify.types";
 
 const initialState = {
-  item: [],
-  imageUrl: [],
-  fetchingSongError: null,
+  currentSong: [],
+  currentSongFetching: false,
+  currentSongFetchingSuccess: false,
+  currentSongError: null,
   playing: false
 };
 
-const currentSongReducer = (state = initialState, action) => {
+const getCurrentSongReducer = (state = initialState, action) => {
   switch (action.type) {
     case SpotifyActionTypes.GET_CURRENT_SONG_FETCHING:
       return {
         ...state,
-        fetchingSongError: ""
+        currentSongError: null,
+        currentSongFetching: true
       };
     case SpotifyActionTypes.GET_CURRENT_SONG_SUCCESS:
       return {
         ...state,
-        item: action.payload,
-        fetchingSongError: ""
+        currentSong: action.payload,
+        currentSongError: null,
+        currentSongFetching: false
       };
     case SpotifyActionTypes.GET_CURRENT_SONG_FAILURE:
       return {
         ...state,
-        fetchingSongError: action.payload
+        currentSongError: action.payload,
+        currentSongFetching: false
       };
     case SpotifyActionTypes.GET_PLAY_STATUS:
       return {
@@ -35,4 +39,4 @@ const currentSongReducer = (state = initialState, action) => {
   }
 };
 
-export default currentSongReducer;
+export default getCurrentSongReducer;
