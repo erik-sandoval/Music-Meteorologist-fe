@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { connect, shallowEqual, useSelector } from "react-redux";
+import { connect, useSelector } from "react-redux";
 
 import { LikeDislikeContainer, PlayerButton } from "./player-buttons.styles";
 
@@ -13,7 +13,6 @@ import { getLikedSongStatus } from "../../redux/spotify/spotify.actions";
 
 const PlayerButtons = props => {
   const songPlaying = useSelector(state => state.currentSong);
-  const likedStatus = useSelector(state => state.currentSong.liked);
   const currentSong = useSelector(state => state.currentSong.currentSong);
 
   const [liked, setLiked] = useState(false);

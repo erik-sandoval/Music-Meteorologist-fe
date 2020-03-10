@@ -1,6 +1,7 @@
 import React from "react";
 import { connect } from "react-redux";
 import { Grid, Typography } from "@material-ui/core";
+import { Add as AddIcon, Check as CheckIcon } from "@material-ui/icons";
 
 import "../../App.css";
 
@@ -17,7 +18,6 @@ class PlaylistSong extends React.Component {
 
   render() {
     const { song, id, songPlaying, tracks, playSong } = this.props;
-
 
     return (
       <div>
@@ -94,9 +94,9 @@ class PlaylistSong extends React.Component {
           <Grid
             className="songReleaseDate"
             item
-            style={{ padding: 5, fontSize: 13, width: "100px", marginLeft: 65 }}
+            style={{ padding: 5, fontSize: 13, width: "100px", marginLeft: 95 }}
           >
-            {song.album.release_date}
+            <AddIcon></AddIcon>
           </Grid>
         </Grid>
       </div>
