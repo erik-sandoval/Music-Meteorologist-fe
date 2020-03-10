@@ -48,12 +48,7 @@ class MusicPlayer extends Component {
         <ElementContainer>
           <SideBarContainer id="sideBarLD">
             <div id="sideBarLD1" className="music-player joyride-player-2">
-              <AlbumInfo
-                imageSpotify={imageSpotify}
-                trackName={trackName}
-                artistName={artistName}
-                albumName={albumName}
-              />
+              <AlbumInfo />
               <div>
                 <Grid
                   container
