@@ -63,9 +63,8 @@ export const onNextClick = () => {
   element.classList.remove("fullHeart");
 };
 
-export const toggleLikeButton = props => {
-  props.saveLikedSong(props.song.id);
-
+export const saveLikedSong = songId => {
+  axios.put(`https://api.spotify.com/v1/me/tracks`, { ids: [songId] }, config);
   var element = document.getElementById("like1");
   element.classList.add("fullHeart");
 };
