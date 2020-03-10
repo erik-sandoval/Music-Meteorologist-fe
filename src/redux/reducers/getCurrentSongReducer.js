@@ -5,7 +5,8 @@ const initialState = {
   currentSongFetching: false,
   currentSongFetchingSuccess: false,
   currentSongError: null,
-  paused: false
+  paused: false,
+  liked: null
 };
 
 const getCurrentSongReducer = (state = initialState, action) => {
@@ -34,6 +35,11 @@ const getCurrentSongReducer = (state = initialState, action) => {
       return {
         ...state,
         paused: action.payload
+      };
+    case SpotifyActionTypes.GET_LIKED_STATUS:
+      return {
+        ...state,
+        liked: action.payload
       };
     default:
       return state;

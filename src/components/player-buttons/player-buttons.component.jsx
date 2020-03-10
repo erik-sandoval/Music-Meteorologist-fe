@@ -21,7 +21,7 @@ const PlayerButtons = props => {
             <div className="previcon" style={{ maxHeight: 35 }} />
           </PlayerButton>
 
-          <PlayerButton id="playpause" onClick={() => onPlayClick(props)}>
+          <PlayerButton id="playpause" onClick={() => onPlayClick(!songPlaying.paused)}>
             {!songPlaying.paused ? (
               <div className="pauseicon" style={{ maxHeight: 35 }} />
             ) : (
