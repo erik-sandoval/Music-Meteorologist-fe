@@ -23,7 +23,7 @@ class Dashboard extends Component {
   };
 
   componentDidMount() {
-    const { postDSSong, getSpotifyUser, getCurrentSong } = this.props;
+    const { postDSSong, getSpotifyUser } = this.props;
     const token = localStorage.getItem("token");
 
     getSpotifyUser();
@@ -73,7 +73,7 @@ class Dashboard extends Component {
   render() {
     return (
       <div className="dashboard">
-        {this.props.fetchingDsSongs ? (
+        {this.props.spotifySongsFetchingSuccess ? (
           <div>
             <MusicPlayer />
           </div>
@@ -86,7 +86,8 @@ class Dashboard extends Component {
 }
 
 const mapStateToProps = state => ({
-  dsSongsData: state.dsSongs.dsSongsData
+  dsSongsData: state.dsSongs.dsSongsData,
+  spotifySongsFetchingSuccess: state.spotifyUris.spotifySongsFetchingSuccess
 });
 
 export default connect(mapStateToProps, {

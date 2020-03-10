@@ -36,22 +36,22 @@ class Playlist extends React.Component {
   };
 
   render() {
-    const { several_tracks, deviceId, fetchingLikedSongs } = this.props;
+    const {
+      spotifySongs: { spotifySongsFetching, spotifySongUris }
+    } = this.props;
 
-    if (fetchingLikedSongs) {
+    if (spotifySongsFetching) {
       return <h1>Loading...</h1>;
     }
     return (
       <div container>
         <div id="songLD" item>
-          {several_tracks.tracks ? (
-            several_tracks.tracks.map(song => (
+          {spotifySongUris ? (
+            spotifySongUris.map(song => (
               <PlaylistSong
                 song={song}
                 id={song.id}
                 key={song.id}
-                deviceId={deviceId}
-                tracks={several_tracks.tracks.map(track => track.uri)}
                 playSong={this.playSong}
               />
             ))
@@ -64,6 +64,8 @@ class Playlist extends React.Component {
   }
 }
 
-const mapStateToProps = state => ({});
+const mapStateToProps = state => ({
+  spotifySongs: state.spotifyUris
+});
 
 export default connect(mapStateToProps, {})(Playlist);

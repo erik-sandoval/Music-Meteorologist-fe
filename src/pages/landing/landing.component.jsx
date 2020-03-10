@@ -12,7 +12,7 @@ import albums_background_mobile from "../../assets/albums-background-mobile.svg"
 
 //
 const authEndpoint = "https://accounts.spotify.com/authorize";
-const clientId = "256aebf9b04a4f5480a757f770864028"; // testing ENV
+const clientId = "28f8b522c3af41e6929c5054f333c924";
 const redirectUri = process.env.REACT_APP_REDIRECT_URL;
 
 // gets the access token from the callback url paramaters
