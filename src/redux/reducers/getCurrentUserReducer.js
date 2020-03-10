@@ -1,28 +1,29 @@
-import SpotifyActionTypes from '../spotify/spotify.types'
+import SpotifyActionTypes from "../spotify/spotify.types";
 
 const initialState = {
-  currentUser: {},
+  currentUser: [],
   currentUserFetching: false,
-  error: '',
+  error: null
 };
 
 const getCurrentUserReducer = (state = initialState, action) => {
   switch (action.type) {
-    case SpotifyActionTypes.GET_LOGGED_IN_FETCHING:
+    case SpotifyActionTypes.GET_SPOTIFY_USER_FETCHING:
       return {
         ...state,
-        currentUserFetching: true,
+        currentUserFetching: true
       };
-    case SpotifyActionTypes.GET_LOGGED_IN_SUCCESS:
+    case SpotifyActionTypes.GET_SPOTIFY_USER_SUCCESS:
       return {
         ...state,
         currentUser: action.payload,
-        currentUserFetching: false,
+        currentUserFetching: false
       };
-    case SpotifyActionTypes.GET_LOGGED_IN_FAILURE:
+    case SpotifyActionTypes.GET_SPOTIFY_USER_FAILURE:
       return {
         ...state,
-        error: '',
+        error: action.payload,
+        currentUserFetching: false
       };
     default:
       return state;
