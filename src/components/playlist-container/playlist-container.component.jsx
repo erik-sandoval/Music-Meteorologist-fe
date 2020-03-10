@@ -2,7 +2,6 @@ import React from "react";
 import { connect } from "react-redux";
 import Paper from "@material-ui/core/Paper";
 import List from "@material-ui/core/List";
-import { postDSSong } from "../../redux/ds/ds.actions";
 import Playlist from "../playlist/playlist.component";
 import "../../App.css";
 
@@ -86,7 +85,7 @@ class PlayListContainer extends React.Component {
                 textAlign: "left"
               }}
             >
-              <Playlist deviceId={this.props.deviceId} />
+              <Playlist />
             </Paper>
           </List>
         </div>

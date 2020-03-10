@@ -2,10 +2,7 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import { Grid } from "@material-ui/core";
 // import axios from "axios";
-import {
-
-} from "../../redux/spotify/spotify.actions";
-import { postDSSong } from "../../redux/ds/ds.actions";
+import {} from "../../redux/spotify/spotify.actions";
 import PlayListContainer from "../playlist-container/playlist-container.component";
 
 // Features
@@ -30,21 +27,9 @@ import {
 
 class MusicPlayer extends Component {
   render() {
-    const {
-      trackName,
-      artistName,
-      albumName,
-      error,
-      imageSpotify
-    } = this.state;
-
     return (
       <div>
-        <NavBar
-          musicPlayerProps={this.props}
-          userName={this.props.spotifyId.display_name}
-          deviceId={this.state.deviceId}
-        />
+        <NavBar />
         <ElementContainer>
           <SideBarContainer id="sideBarLD">
             <div id="sideBarLD1" className="music-player joyride-player-2">
@@ -58,14 +43,10 @@ class MusicPlayer extends Component {
                   style={{ width: 377, height: "60px", marginBottom: "10px" }}
                 >
                   <div>
-                    {/* <LinearDeterminate player={this.player} /> */}
-                    <PlayerSeekBar player={this.player}></PlayerSeekBar>
+                    {/* currently causing memory leak */}
+                    {/* <PlayerSeekBar></PlayerSeekBar> */}
                   </div>
-                  <PlayerButtons
-                    player={this.player}
-                    playing={this.props.playing}
-                    trueSimilarity={this.state.trueSimilarity}
-                  />
+                  <PlayerButtons />
                 </Grid>
                 <Grid
                   container
@@ -73,21 +54,8 @@ class MusicPlayer extends Component {
                   justify="center"
                   alignItems="center"
                 >
-                  <AudioDetails />
-                  <Grid item>
-                    {window.Spotify !== undefined &&
-                      this.state.imageUrl !== "" && (
-                        <div className="album-art">
-                          <h4 style={{ textAlign: "center" }}>Now Playing</h4>
-                          <img
-                            className="album-artwork"
-                            src={this.state.imageUrl}
-                            alt="album-art"
-                          />
-                        </div>
-                      )}
-                  </Grid>
-                  {error && <p>Error: {error}</p>}
+                  {/* currently causing memory leak */}
+                  {/* <AudioDetails /> */}
                   <Grid
                     container
                     direction="row"
@@ -100,15 +68,9 @@ class MusicPlayer extends Component {
             </div>
           </SideBarContainer>
           <MainBarContainer id="mainBarLD" className="mainBar">
-            <PlaylistInfo
-              spotifyId={this.props.spotifyId.id}
-              spotifyName={this.props.spotifyId.display_name}
-            ></PlaylistInfo>
+            <PlaylistInfo></PlaylistInfo>
             <PlaylistSongsContainer>
-              <PlayListContainer
-                player={this.player}
-                deviceId={this.state.deviceId}
-              ></PlayListContainer>
+              <PlayListContainer></PlayListContainer>
             </PlaylistSongsContainer>
           </MainBarContainer>
         </ElementContainer>
@@ -117,9 +79,6 @@ class MusicPlayer extends Component {
   }
 }
 
-const mapStateToProps = state => ({
+const mapStateToProps = state => ({});
 
-});
-
-export default connect(mapStateToProps, {
-})(MusicPlayer);
+export default connect(mapStateToProps, {})(MusicPlayer);
