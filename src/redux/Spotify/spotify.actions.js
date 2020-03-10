@@ -20,7 +20,7 @@ export const getSeveralTracks = ids => dispatch => {
     .then(res => {
       dispatch({
         type: SpotifyActionTypes.GET_SPOTIFY_SONGS_SUCCESS,
-        payload: res.data.tracks
+        payload: res.data.tracks.map(track => ({ ...track, liked: false }))
       });
     })
     .catch(err => {
@@ -54,7 +54,6 @@ export const getSpotifyUser = () => dispatch => {
 
 export const getCurrentSong = spotifyState => dispatch => {
   if (spotifyState) {
-    console.log(spotifyState);
     dispatch({
       type: SpotifyActionTypes.GET_CURRENT_SONG_SUCCESS,
       payload: spotifyState.track_window.current_track
