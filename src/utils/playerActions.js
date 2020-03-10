@@ -24,7 +24,7 @@ export const transferPlaybackHere = (accessToken, deviceId) => {
   );
 };
 
-export const onPrevClick = player => {
+export const onPrevClick = () => {
   axios
     .post(`${spotifyApiUrl}/previous`, {}, config)
     .then(res => {})
@@ -33,8 +33,8 @@ export const onPrevClick = player => {
     });
 };
 
-export const onPlayClick = props => {
-  if (props.playing) {
+export const onPlayClick = playStatus => {
+  if (playStatus) {
     axios
       .put(`${spotifyApiUrl}/pause`, {}, config)
       .then(res => {})
@@ -51,7 +51,7 @@ export const onPlayClick = props => {
   }
 };
 
-export const onNextClick = player => {
+export const onNextClick = () => {
   axios
     .post(`${spotifyApiUrl}/next`, {}, config)
     .then(res => {})
@@ -63,16 +63,14 @@ export const onNextClick = player => {
   element.classList.remove("fullHeart");
 };
 
-export const toggleLikeButton = (player, props) => {
+export const toggleLikeButton = props => {
   props.saveLikedSong(props.song.id);
-
-  player.setVolume(0.5);
 
   var element = document.getElementById("like1");
   element.classList.add("fullHeart");
 };
 
-export const toggleDislikeButton = (player, props) => {};
+export const toggleDislikeButton = () => {};
 
 export const seekTrackTime = position_ms => {
   position_ms = Math.floor(position_ms);
