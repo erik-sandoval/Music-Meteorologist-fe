@@ -5,7 +5,7 @@ const initialState = {
   currentSongFetching: false,
   currentSongFetchingSuccess: false,
   currentSongError: null,
-  playing: false
+  paused: false
 };
 
 const getCurrentSongReducer = (state = initialState, action) => {
@@ -32,7 +32,7 @@ const getCurrentSongReducer = (state = initialState, action) => {
     case SpotifyActionTypes.GET_PLAY_STATUS:
       return {
         ...state,
-        playing: action.payload
+        paused: action.payload
       };
     default:
       return state;

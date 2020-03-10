@@ -1,11 +1,16 @@
 import React from "react";
 import { Grid } from "@material-ui/core";
+import { connect } from "react-redux";
 
 import "../../App.css";
 import { AlbumImg } from "./album-info.styles";
 
 const AlbumInfo = props => {
-  const { imageSpotify, trackName, artistName, albumName } = props;
+  const { currentSong } = props;
+  const trackName = currentSong.name;
+  const artistName = currentSong.artists[0].name;
+  const albumName = currentSong.album.name;
+  const imageSpotify = currentSong.album.images[0].url;
 
   return (
     <div className="music-component">
@@ -25,4 +30,8 @@ const AlbumInfo = props => {
   );
 };
 
-export default AlbumInfo;
+const mapStateToProps = state => ({
+  currentSong: state.currentSong
+});
+
+export default connect(mapStateToProps)(AlbumInfo);

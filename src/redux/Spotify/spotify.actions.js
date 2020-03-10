@@ -59,6 +59,11 @@ export const getCurrentSong = spotifyState => dispatch => {
       type: SpotifyActionTypes.GET_CURRENT_SONG_SUCCESS,
       payload: spotifyState.track_window.current_track
     });
+
+    dispatch({
+      type: SpotifyActionTypes.GET_PLAY_STATUS,
+      payload: spotifyState.paused
+    });
   } else {
     dispatch({
       type: SpotifyActionTypes.GET_CURRENT_SONG_FETCHING
