@@ -9,37 +9,22 @@ class PlayerSeekBar extends Component {
   state = {
     isEnabled: true,
     direction: Direction.HORIZONTAL,
-    position: null,
-    duration: null,
     lastValueStart: null,
     lastValueEnd: null,
     value: null
   };
 
-  changeTime = async (duration, lastValueEnd) => {
+  changeTime = (duration, lastValueEnd) => {
     const msSeconds = duration * lastValueEnd;
 
     seekTrackTime(msSeconds);
   };
 
-  checkPosition = (song_position, song_length) => {
-    for (; song_position < song_length; ) {
-      this.setState({
-        duration: song_length,
-        position: song_position
-      });
-      let progress = (song_position / song_length) * 100;
-      return progress;
-    }
-  };
-
   render() {
-    const {
-      songPosition,
-      duration_ms
-    } = this.props.currentSongInfo.currentSong;
+    const { position, duration } = this.state;
+    const { songPosition, duration_ms } = this.props.currentSong;
+    const timePercentValue = position / duration;
 
-    const timePercentValue = songPosition / duration_ms;
     return (
       <ProgressBarContainer>
         <FormattedTime
@@ -90,7 +75,7 @@ class PlayerSeekBar extends Component {
 }
 
 const mapStateToProps = state => ({
-  currentSongInfo: state.currentSong
+  currentSong: state.currentSong.currentSong
 });
 
 export default connect(mapStateToProps)(PlayerSeekBar);

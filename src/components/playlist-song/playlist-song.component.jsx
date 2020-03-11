@@ -38,7 +38,7 @@ class PlaylistSong extends React.Component {
                 outline: "none"
               }}
             >
-              {!songPlaying.paused && id === songPlaying.currentSong.id ? (
+              {!songPlaying.paused && id === songPlaying.id ? (
                 <div
                   className="pauseicon2"
                   onClick={() => onPlayClick(this.props)}
@@ -105,7 +105,7 @@ class PlaylistSong extends React.Component {
 }
 
 const mapStateToProps = state => ({
-  songPlaying: state.currentSong,
+  songPlaying: state.currentSong.currentSong,
   tracks: state.spotifyUris.spotifySongUris
 });
 

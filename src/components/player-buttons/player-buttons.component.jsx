@@ -12,14 +12,13 @@ import {
 import { getLikedSongStatus } from "../../redux/spotify/spotify.actions";
 
 const PlayerButtons = props => {
-  const songPlaying = useSelector(state => state.currentSong);
-  const currentSong = useSelector(state => state.currentSong.currentSong);
+  const songPlaying = useSelector(state => state.currentSong.currentSong);
 
   const [liked, setLiked] = useState(false);
 
   useEffect(() => {
-    props.getLikedSongStatus(currentSong.id).then(res => setLiked(res));
-  }, [currentSong]);
+    props.getLikedSongStatus(songPlaying.id).then(res => setLiked(res));
+  }, [songPlaying]);
 
   return (
     <LikeDislikeContainer>
@@ -48,7 +47,7 @@ const PlayerButtons = props => {
           id="heart"
           className="like-dislike like"
           onClick={() => {
-            saveLikedSong(currentSong.id, liked);
+            saveLikedSong(songPlaying.id, liked);
             setLiked(!liked);
           }}
         >
@@ -63,8 +62,6 @@ const PlayerButtons = props => {
   );
 };
 
-const mapStateToProps = state => ({
-  songPlaying: state.currentSong
-});
+const mapStateToProps = state => ({});
 
 export default connect(mapStateToProps, { getLikedSongStatus })(PlayerButtons);

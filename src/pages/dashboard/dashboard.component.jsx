@@ -35,9 +35,8 @@ class Dashboard extends Component {
   componentDidUpdate() {
     const { dsSongsData, getSeveralTracks, getCurrentSong } = this.props;
 
-    this.initializePlayer();
     getCurrentSong();
-    this.player.setVolume(0.5);
+    this.initializePlayer();
     getSeveralTracks(dsSongsData);
   }
 
