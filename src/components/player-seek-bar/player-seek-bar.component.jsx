@@ -21,9 +21,8 @@ class PlayerSeekBar extends Component {
   };
 
   render() {
-    const { position, duration } = this.state;
     const { songPosition, duration_ms } = this.props.currentSong;
-    const timePercentValue = position / duration;
+    const timePercentValue = songPosition / duration_ms;
 
     return (
       <ProgressBarContainer>
