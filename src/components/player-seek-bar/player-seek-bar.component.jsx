@@ -22,22 +22,6 @@ class PlayerSeekBar extends Component {
     seekTrackTime(msSeconds);
   };
 
-  checkPlayer = (player, song) => {
-    if (player !== undefined && song.length !== 0) {
-      player.getCurrentState().then(state => {
-        if (!state) {
-          console.error(
-            "User is not playing music through the Web Playback SDK"
-          );
-          return;
-        }
-
-        let { position, duration } = state;
-        this.checkPosition(position, duration);
-      });
-    }
-  };
-
   checkPosition = (song_position, song_length) => {
     for (; song_position < song_length; ) {
       this.setState({
@@ -50,18 +34,16 @@ class PlayerSeekBar extends Component {
   };
 
   render() {
-    const { duration, position, lastValueEnd } = this.state;
-    const { player, song } = this.props;
-    const timePercentValue = position / duration;
+    const {
+      songPosition,
+      duration_ms
+    } = this.props.currentSongInfo.currentSong;
 
-    if (song) {
-      this.checkPlayer(player, song);
-    }
-
+    const timePercentValue = songPosition / duration_ms;
     return (
       <ProgressBarContainer>
         <FormattedTime
-          numSeconds={this.state.position / 1000}
+          numSeconds={songPosition / 1000}
           style={{ marginRight: 14 }}
         />
         <Slider
@@ -73,7 +55,7 @@ class PlayerSeekBar extends Component {
           }
           onChangeEnd={endValue => {
             this.setState({ lastValueEnd: endValue });
-            this.changeTime(duration, endValue);
+            this.changeTime(duration_ms, endValue);
           }}
           onIntent={intent => this.setState(() => ({ lastIntent: intent }))}
           onIntentStart={intent =>
@@ -91,14 +73,6 @@ class PlayerSeekBar extends Component {
             width: "10rem"
           }}
         >
-          {/* Here we render whatever we want. Nothings is rendered by default. */}
-          <SliderBar
-            direction={this.state.direction}
-            value={this.state.lastIntent}
-            style={{
-              background: "#D0D0D0"
-            }}
-          />
           <SliderBar
             direction={this.state.direction}
             value={timePercentValue}
@@ -107,7 +81,7 @@ class PlayerSeekBar extends Component {
         </Slider>
 
         <FormattedTime
-          numSeconds={this.state.duration / 1000}
+          numSeconds={duration_ms / 1000}
           style={{ marginLeft: 8 }}
         />
       </ProgressBarContainer>
@@ -116,7 +90,7 @@ class PlayerSeekBar extends Component {
 }
 
 const mapStateToProps = state => ({
-  song: state.currentSongReducer.item
+  currentSongInfo: state.currentSong
 });
 
 export default connect(mapStateToProps)(PlayerSeekBar);
