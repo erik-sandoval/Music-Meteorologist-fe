@@ -75,6 +75,7 @@ class PlaylistInfo extends React.Component {
   };
 
   render() {
+    const { display_name } = this.props.currentUser;
     return (
       <Container id="playInfoLD">
         <DivLeft>
@@ -89,7 +90,7 @@ class PlaylistInfo extends React.Component {
                 marginLeft: 15
               }}
             >
-              {this.props.spotifyName + "'s Sound Drip Playlist"}
+              {`${display_name}'s Sound Drip Playlist`}
             </PlayH1>
             <div className="playH2" style={{ display: "flex" }}>
               <div className="playlisticon" />
@@ -108,6 +109,8 @@ class PlaylistInfo extends React.Component {
   }
 }
 
-const mapStateToProps = state => ({});
+const mapStateToProps = state => ({
+  currentUser: state.currentUser.currentUser
+});
 
 export default connect(mapStateToProps, {})(PlaylistInfo);
