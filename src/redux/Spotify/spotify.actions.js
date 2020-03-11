@@ -79,7 +79,32 @@ export const getLikedSongStatus = songId => dispatch => {
         payload: res.data[0]
       });
 
-      return res.data[0]
+      return res.data[0];
     })
     .catch(err => {});
+};
+
+export const getChartTrackInfo = id => dispatch => {
+  dispatch({
+    type: SpotifyActionTypes.GET_CHART_INFO_FETCHING
+  });
+
+  var config = {
+    headers: { Authorization: "Bearer " + spotifyToken }
+  };
+
+  axios
+    .get(`${spotifyBaseUrl}/audio-features/${id}`, config)
+    .then(res => {
+      dispatch({
+        type: SpotifyActionTypes.GET_CHART_INFO_SUCCESS,
+        payload: res.data
+      });
+    })
+    .catch(err => {
+      dispatch({
+        type: SpotifyActionTypes.GET_CHART_INFO_FAILURE,
+        payload: err.data
+      });
+    });
 };

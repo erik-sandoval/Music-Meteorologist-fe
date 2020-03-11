@@ -10,7 +10,8 @@ import {
   getSeveralTracks,
   getSpotifyUser,
   getCurrentSong,
-  getLikedSongStatus
+  getLikedSongStatus,
+  getChartTrackInfo
 } from "../../redux/spotify/spotify.actions";
 // Styling
 import "../../App.css";
@@ -42,7 +43,11 @@ class Dashboard extends Component {
 
   // this is needed in order to get a device id to transfer playback to browser
   initializePlayer = () => {
-    const { getCurrentSong, getLikedSongStatus } = this.props;
+    const {
+      getCurrentSong,
+      getLikedSongStatus,
+      getChartTrackInfo
+    } = this.props;
     const token = localStorage.getItem("token");
 
     this.player = new window.Spotify.Player({
@@ -55,6 +60,7 @@ class Dashboard extends Component {
     this.player.on("player_state_changed", spotifyState => {
       getCurrentSong(spotifyState);
       getLikedSongStatus(spotifyState.track_window.current_track.id);
+      getChartTrackInfo(spotifyState.track_window.current_track.id);
     });
 
     this.player.on("ready", data => {
@@ -97,5 +103,6 @@ export default connect(mapStateToProps, {
   getSeveralTracks,
   getSpotifyUser,
   getCurrentSong,
-  getLikedSongStatus
+  getLikedSongStatus,
+  getChartTrackInfo
 })(Dashboard);
