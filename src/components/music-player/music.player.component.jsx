@@ -44,7 +44,7 @@ class MusicPlayer extends Component {
                 >
                   <div>
                     {/* currently causing memory leak */}
-                    {/* <PlayerSeekBar></PlayerSeekBar> */}
+                    <PlayerSeekBar></PlayerSeekBar>
                   </div>
                   <PlayerButtons />
                 </Grid>
@@ -55,7 +55,7 @@ class MusicPlayer extends Component {
                   alignItems="center"
                 >
                   {/* currently causing memory leak */}
-                  {/* <AudioDetails /> */}
+                  <AudioDetails />
                   <Grid
                     container
                     direction="row"

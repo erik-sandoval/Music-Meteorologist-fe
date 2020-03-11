@@ -1,6 +1,6 @@
 import React from "react";
 
-const AudioDetails = ({ name, description }) => {
+const AudioDetailsText = ({ name, description }) => {
   return (
     <div className="audio-detail">
       <h4>{name}</h4>
@@ -9,4 +9,4 @@ const AudioDetails = ({ name, description }) => {
   );
 };
 
-export default AudioDetails;
+export default AudioDetailsText;

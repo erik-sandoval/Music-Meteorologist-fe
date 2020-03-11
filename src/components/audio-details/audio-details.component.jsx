@@ -4,10 +4,10 @@ import { Grid, Paper, List } from "@material-ui/core";
 import Chart from "../chart/chart.component";
 import { AudioDetailsContainer } from "./audio-details.styles";
 import { connect } from "react-redux";
+import AudioDetailsText from "./audio-details-text.component";
 
-const AudioDetails = props => {
+const AudioDetails = () => {
   const [collapse, setCollapse] = useState(false);
-  const { traits } = props;
 
   const openAudioDetails = () => {
     setCollapse(!collapse);
@@ -47,27 +47,22 @@ const AudioDetails = props => {
         >
           <div className="scroll">
             {audioDetailsText.map(({ name, description }) => (
-              <AudioDetails
+              <AudioDetailsText
                 name={name}
                 description={description}
-              ></AudioDetails>
+              ></AudioDetailsText>
             ))}
           </div>
         </Paper>
       </List>
       <Grid item>
-        <Chart
-          features={traits}
-          style={{ width: "100%", objectFit: "scale-down" }}
-        />
+        <Chart />
         <div style={{ textAlign: "center", marginTop: "10px" }}></div>
       </Grid>
     </AudioDetailsContainer>
   );
 };
 
-const mapStateToProps = state => ({
-  traits: state.getTrackInfoReducer
-});
+const mapStateToProps = state => ({});
 
 export default connect(mapStateToProps)(AudioDetails);
