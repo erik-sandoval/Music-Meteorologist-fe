@@ -1,8 +1,8 @@
-import React, { Component } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { connect } from "react-redux";
 import { Grid } from "@material-ui/core";
 // import axios from "axios";
-import {} from "../../redux/spotify/spotify.actions";
+import { setLocalTrackTime } from "../../redux/spotify/spotify.actions";
 import PlayListContainer from "../playlist-container/playlist-container.component";
 
 // Features
@@ -26,6 +26,14 @@ import {
 } from "./music-player.styles";
 
 const MusicPlayer = props => {
+  const { setLocalTrackTime, currentSong } = props;
+
+  useInterval(
+    () => {
+      setLocalTrackTime();
+    },
+    currentSong.paused ? null : 1050
+  );
 
   return (
     <div>
@@ -76,7 +84,28 @@ const MusicPlayer = props => {
   );
 };
 
+const useInterval = (callback, delay) => {
+  const savedCallback = useRef();
 
-const mapStateToProps = state => ({});
+  // Remember the latest callback.
+  useEffect(() => {
+    savedCallback.current = callback;
+  }, [callback]);
 
-export default connect(mapStateToProps, {})(MusicPlayer);
+  // Set up the interval.
+  useEffect(() => {
+    function tick() {
+      savedCallback.current();
+    }
+    if (delay !== null) {
+      let id = setInterval(tick, delay);
+      return () => clearInterval(id);
+    }
+  }, [delay]);
+};
+
+const mapStateToProps = state => ({
+  currentSong: state.currentSong.currentSong
+});
+
+export default connect(mapStateToProps, { setLocalTrackTime })(MusicPlayer);
