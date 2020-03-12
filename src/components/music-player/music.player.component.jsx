@@ -25,59 +25,57 @@ import {
   PlaylistSongsContainer
 } from "./music-player.styles";
 
-class MusicPlayer extends Component {
-  render() {
-    return (
-      <div>
-        <NavBar />
-        <ElementContainer>
-          <SideBarContainer id="sideBarLD">
-            <div id="sideBarLD1" className="music-player joyride-player-2">
-              <AlbumInfo />
-              <div>
+const MusicPlayer = props => {
+
+  return (
+    <div>
+      <NavBar />
+      <ElementContainer>
+        <SideBarContainer id="sideBarLD">
+          <div id="sideBarLD1" className="music-player joyride-player-2">
+            <AlbumInfo />
+            <div>
+              <Grid
+                container
+                direction="column"
+                justify="space-around"
+                alignItems="center"
+                style={{ width: 377, height: "60px", marginBottom: "10px" }}
+              >
+                <div>
+                  <PlayerSeekBar></PlayerSeekBar>
+                </div>
+                <PlayerButtons />
+              </Grid>
+              <Grid
+                container
+                direction="column"
+                justify="center"
+                alignItems="center"
+              >
+                <AudioDetails />
                 <Grid
                   container
-                  direction="column"
-                  justify="space-around"
-                  alignItems="center"
-                  style={{ width: 377, height: "60px", marginBottom: "10px" }}
-                >
-                  <div>
-                    {/* currently causing memory leak */}
-                    <PlayerSeekBar></PlayerSeekBar>
-                  </div>
-                  <PlayerButtons />
-                </Grid>
-                <Grid
-                  container
-                  direction="column"
+                  direction="row"
                   justify="center"
                   alignItems="center"
-                >
-                  {/* currently causing memory leak */}
-                  <AudioDetails />
-                  <Grid
-                    container
-                    direction="row"
-                    justify="center"
-                    alignItems="center"
-                    style={{ width: 300, marginBottom: "5%" }}
-                  ></Grid>
-                </Grid>
-              </div>
+                  style={{ width: 300, marginBottom: "5%" }}
+                ></Grid>
+              </Grid>
             </div>
-          </SideBarContainer>
-          <MainBarContainer id="mainBarLD" className="mainBar">
-            <PlaylistInfo></PlaylistInfo>
-            <PlaylistSongsContainer>
-              <PlayListContainer></PlayListContainer>
-            </PlaylistSongsContainer>
-          </MainBarContainer>
-        </ElementContainer>
-      </div>
-    );
-  }
-}
+          </div>
+        </SideBarContainer>
+        <MainBarContainer id="mainBarLD" className="mainBar">
+          <PlaylistInfo></PlaylistInfo>
+          <PlaylistSongsContainer>
+            <PlayListContainer></PlayListContainer>
+          </PlaylistSongsContainer>
+        </MainBarContainer>
+      </ElementContainer>
+    </div>
+  );
+};
+
 
 const mapStateToProps = state => ({});
 
