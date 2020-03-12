@@ -3,13 +3,12 @@ import axios from "axios";
 
 const spotifyBaseUrl = "https://api.spotify.com/v1";
 
-const spotifyToken = localStorage.getItem("token");
-
-const config = {
-  headers: { Authorization: "Bearer " + spotifyToken }
-};
-
 export const getSeveralTracks = ids => dispatch => {
+  const spotifyToken = localStorage.getItem("token");
+
+  const config = {
+    headers: { Authorization: "Bearer " + spotifyToken }
+  };
   const idString = ids.map(song => song.values).join(",");
 
   dispatch({
@@ -32,6 +31,11 @@ export const getSeveralTracks = ids => dispatch => {
 };
 
 export const getSpotifyUser = () => dispatch => {
+  const spotifyToken = localStorage.getItem("token");
+
+  const config = {
+    headers: { Authorization: "Bearer " + spotifyToken }
+  };
   dispatch({
     type: SpotifyActionTypes.GET_SPOTIFY_USER_FETCHING
   });
@@ -70,6 +74,12 @@ export const getCurrentSong = spotifyState => dispatch => {
 };
 
 export const getLikedSongStatus = songId => dispatch => {
+  const spotifyToken = localStorage.getItem("token");
+
+  const config = {
+    headers: { Authorization: "Bearer " + spotifyToken }
+  };
+
   return axios
     .get(`${spotifyBaseUrl}/me/tracks/contains?ids=${songId}`, config)
     .then(res => {
@@ -84,13 +94,15 @@ export const getLikedSongStatus = songId => dispatch => {
 };
 
 export const getChartTrackInfo = id => dispatch => {
+  const spotifyToken = localStorage.getItem("token");
+
+  const config = {
+    headers: { Authorization: "Bearer " + spotifyToken }
+  };
+
   dispatch({
     type: SpotifyActionTypes.GET_CHART_INFO_FETCHING
   });
-
-  var config = {
-    headers: { Authorization: "Bearer " + spotifyToken }
-  };
 
   axios
     .get(`${spotifyBaseUrl}/audio-features/${id}`, config)

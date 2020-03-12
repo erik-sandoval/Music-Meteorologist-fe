@@ -3,7 +3,8 @@ import axios from "axios";
 
 const url = process.env.REACT_APP_BACKEND_BASE_URL;
 
-export const postDSSong = token => dispatch => {
+export const postDSSong = () => dispatch => {
+  const token = localStorage.getItem("token");
   dispatch({
     type: DsActionTypes.GET_DS_SONGS_FETCHING
   });

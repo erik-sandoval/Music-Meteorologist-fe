@@ -16,18 +16,18 @@ const clientId = "28f8b522c3af41e6929c5054f333c924";
 const redirectUri = process.env.REACT_APP_REDIRECT_URL;
 
 // gets the access token from the callback url paramaters
-const url = window.location;
-const accessToken = new URLSearchParams(url.hash).get("#access_token");
 
 export class Landing extends Component {
-  componentDidMount() {
+  componentDidMount() {}
+
+  render() {
+    const url = window.location;
+    const accessToken = new URLSearchParams(url.hash).get("#access_token");
+
     if (accessToken) {
       localStorage.setItem("token", accessToken);
       this.props.history.push("/dashboard");
     }
-  }
-
-  render() {
     return (
       <div className="auth">
         <div className="mobileNavWrap">{/* <MobileNav /> */}</div>
@@ -51,7 +51,7 @@ export class Landing extends Component {
                     as="a"
                     href={`${authEndpoint}?client_id=${clientId}&redirect_uri=${redirectUri}&scope=${encodeURIComponent(
                       scopes
-                    )}&response_type=token&show_dialog=true`}
+                    )}&response_type=token`}
                   >
                     Login With Spotify
                   </ButtonAuth>
