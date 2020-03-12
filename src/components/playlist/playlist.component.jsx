@@ -23,9 +23,6 @@ class Playlist extends React.Component {
       }
     }
 
-
-    const oldPlayList = trackUris.map(track => track.uri);
-
     const newPlaylist = trackUris
       .slice(songIndex)
       .concat(trackUris.slice(0, songIndex));

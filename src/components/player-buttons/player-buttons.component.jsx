@@ -15,10 +15,11 @@ const PlayerButtons = props => {
   const songPlaying = useSelector(state => state.currentSong.currentSong);
 
   const [liked, setLiked] = useState(false);
+  const { getLikedSongStatus } = props;
 
   useEffect(() => {
-    props.getLikedSongStatus(songPlaying.id).then(res => setLiked(res));
-  }, [songPlaying]);
+    getLikedSongStatus(songPlaying.id).then(res => setLiked(res));
+  }, [getLikedSongStatus, songPlaying]);
 
   return (
     <LikeDislikeContainer>
