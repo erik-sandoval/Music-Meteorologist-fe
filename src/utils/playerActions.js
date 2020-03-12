@@ -2,15 +2,15 @@ import axios from "axios";
 
 const spotifyApiUrl = "https://api.spotify.com/v1/me/player";
 
-const token = localStorage.getItem("token");
-
-const config = {
-  headers: {
-    Authorization: "Bearer " + token
-  }
-};
-
 export const transferPlaybackHere = (accessToken, deviceId) => {
+  const token = localStorage.getItem("token");
+
+  const config = {
+    headers: {
+      Authorization: "Bearer " + token
+    }
+  };
+
   axios.put(
     `${spotifyApiUrl}`,
     {
@@ -25,6 +25,14 @@ export const transferPlaybackHere = (accessToken, deviceId) => {
 };
 
 export const onPrevClick = () => {
+  const token = localStorage.getItem("token");
+
+  const config = {
+    headers: {
+      Authorization: "Bearer " + token
+    }
+  };
+
   axios
     .post(`${spotifyApiUrl}/previous`, {}, config)
     .then(res => {})
@@ -34,6 +42,14 @@ export const onPrevClick = () => {
 };
 
 export const onPlayClick = playStatus => {
+  const token = localStorage.getItem("token");
+
+  const config = {
+    headers: {
+      Authorization: "Bearer " + token
+    }
+  };
+
   if (playStatus) {
     axios
       .put(`${spotifyApiUrl}/pause`, {}, config)
@@ -52,6 +68,14 @@ export const onPlayClick = playStatus => {
 };
 
 export const onNextClick = () => {
+  const token = localStorage.getItem("token");
+
+  const config = {
+    headers: {
+      Authorization: "Bearer " + token
+    }
+  };
+
   axios
     .post(`${spotifyApiUrl}/next`, {}, config)
     .then(res => {})
@@ -61,6 +85,14 @@ export const onNextClick = () => {
 };
 
 export const saveLikedSong = (songId, liked) => {
+  const token = localStorage.getItem("token");
+
+  const config = {
+    headers: {
+      Authorization: "Bearer " + token
+    }
+  };
+
   if (liked) {
     axios({
       method: "delete",
@@ -77,6 +109,14 @@ export const saveLikedSong = (songId, liked) => {
 };
 
 export const seekTrackTime = position_ms => {
+  const token = localStorage.getItem("token");
+
+  const config = {
+    headers: {
+      Authorization: "Bearer " + token
+    }
+  };
+
   position_ms = Math.floor(position_ms);
 
   axios

@@ -26,10 +26,8 @@ class Dashboard extends Component {
 
   componentDidMount() {
     const { postDSSong, getSpotifyUser } = this.props;
-    const token = localStorage.getItem("token");
-
     getSpotifyUser();
-    postDSSong(token);
+    postDSSong();
   }
 
   componentDidUpdate() {

@@ -9,7 +9,7 @@ import { Router } from "react-router-dom";
 import "./index.css";
 import App from "./App";
 
-import rootReducer from './redux/reducers'
+import rootReducer from "./redux/reducers";
 
 const history = createBrowserHistory();
 
