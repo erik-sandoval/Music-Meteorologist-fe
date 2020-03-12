@@ -83,12 +83,11 @@ export const PlayH1 = styled.h1`
   font-weight: bold;
 `;
 export const PlayH2 = styled.h1`
-
   font-family: Work Sans;
   text-align: left;
-  font-size: 18,
-  padding-top: 5,
-  margin-left: 8,
-  padding-bottom: 0,
-  margin-top: 0
+  font-size: 18;
+  padding-top: 5;
+  margin-left: 8;
+  padding-bottom: 0;
+  margin-top: 0;
 `;
