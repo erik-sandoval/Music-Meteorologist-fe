@@ -4,6 +4,7 @@ import { Direction, Slider, FormattedTime } from "react-player-controls";
 import { seekTrackTime } from "../../utils/playerActions";
 
 import { ProgressBarContainer, SliderBar } from "./player-seek-bar.styles";
+import { setLocalTrackTime } from "../../redux/spotify/spotify.actions";
 
 class PlayerSeekBar extends Component {
   state = {
@@ -11,7 +12,8 @@ class PlayerSeekBar extends Component {
     direction: Direction.HORIZONTAL,
     lastValueStart: null,
     lastValueEnd: null,
-    value: null
+    value: null,
+    songPosition: this.props.currentSong.songPosition
   };
 
   changeTime = (duration, lastValueEnd) => {
@@ -20,15 +22,20 @@ class PlayerSeekBar extends Component {
     seekTrackTime(msSeconds);
   };
 
+  componentDidUpdate(prevProps) {
+    console.log(prevProps.currentSong.paused, this.props.currentSong.paused);
+  }
+
   render() {
-    const { songPosition, duration_ms } = this.props.currentSong;
-    const timePercentValue = songPosition / duration_ms;
+    const { localTrackPosition } = this.props;
+    const { duration_ms } = this.props.currentSong;
+    const timePercentValue = localTrackPosition / duration_ms;
 
     return (
       <ProgressBarContainer>
         <FormattedTime
-          numSeconds={songPosition / 1000}
-          style={{ marginRight: 14 }}
+          numSeconds={localTrackPosition / 1000}
+          style={{ width: "45px" }}
         />
         <Slider
           isEnabled={this.state.isEnabled}
@@ -74,7 +81,8 @@ class PlayerSeekBar extends Component {
 }
 
 const mapStateToProps = state => ({
-  currentSong: state.currentSong.currentSong
+  currentSong: state.currentSong.currentSong,
+  localTrackPosition: state.currentSong.localTrackTime
 });
 
-export default connect(mapStateToProps)(PlayerSeekBar);
+export default connect(mapStateToProps, { setLocalTrackTime })(PlayerSeekBar);
