@@ -10,6 +10,7 @@ import MusicPlayer from "./components/music-player/music.player.component";
 import "./App.css";
 import Landing from "./pages/landing/landing.component";
 import { ProtectedRoute } from "./components/protected-route/protected-route.component";
+import SliderContainer from "./components/slider-container/slider-container.component";
 
 /* import LikedSongs from './components/LikedSongs'; */
 
@@ -18,11 +19,12 @@ class App extends Component {
     return (
       <div className="App">
         <Route exact path="/" component={Landing} />
+        <ProtectedRoute exact path="/dashboard" component={Dashboard} />
         <Route exact path="/logout" component={Logout} />
         <Route exact path="/about" component={About} />
         <Route exact path="/player" component={MusicPlayer} />
         <Route exact path="/team" component={Team} />
-        <ProtectedRoute exact path="/dashboard" component={Dashboard} />
+        <Route exact path="/slider" component={SliderContainer} />
       </div>
     );
   }
