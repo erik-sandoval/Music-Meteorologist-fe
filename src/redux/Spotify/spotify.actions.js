@@ -107,3 +107,7 @@ export const getChartTrackInfo = id => dispatch => {
       });
     });
 };
+
+export const setLocalTrackTime = () => dispatch => {
+  dispatch({ type: SpotifyActionTypes.SET_LOCAL_TRACK_TIME });
+};
