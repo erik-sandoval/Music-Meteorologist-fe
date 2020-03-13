@@ -100,18 +100,27 @@ export const getChartTrackInfo = id => dispatch => {
     headers: { Authorization: "Bearer " + spotifyToken }
   };
 
+  const chartFeatures = axios.get(
+    `${spotifyBaseUrl}/audio-features/${id}`,
+    config
+  );
+
+  const popularReq = axios.get(`${spotifyBaseUrl}/tracks/${id}`, config);
+
   dispatch({
     type: SpotifyActionTypes.GET_CHART_INFO_FETCHING
   });
 
   axios
-    .get(`${spotifyBaseUrl}/audio-features/${id}`, config)
-    .then(res => {
-      dispatch({
-        type: SpotifyActionTypes.GET_CHART_INFO_SUCCESS,
-        payload: res.data
-      });
-    })
+    .all([chartFeatures, popularReq])
+    .then(
+      axios.spread((chart, popular) => {
+        dispatch({
+          type: SpotifyActionTypes.GET_CHART_INFO_SUCCESS,
+          payload: { ...chart.data, popularity: popular.data.popularity }
+        });
+      })
+    )
     .catch(err => {
       dispatch({
         type: SpotifyActionTypes.GET_CHART_INFO_FAILURE,
