@@ -9,20 +9,38 @@ import {
 
 class SliderContainer extends Component {
   state = {
-    danceability: this.props.songFeatures.danceability,
-    energy: this.props.songFeatures.energy,
-    key: this.props.songFeatures.key,
-    loudness: this.props.songFeatures.loudness,
-    mode: this.props.songFeatures.mode,
-    speechiness: this.props.songFeatures.speechiness,
-    acousticness: this.props.songFeatures.acousticness,
-    instrumentalness: this.props.songFeatures.instrumentalness,
-    liveness: this.props.songFeatures.liveness,
-    valence: this.props.songFeatures.valence,
-    tempo: this.props.songFeatures.tempo,
-    popularity: 50,
-    time_signature: 4
+    danceability: 0,
+    energy: 0,
+    key: 0,
+    loudness: 0,
+    mode: 0,
+    speechiness: 0,
+    acousticness: 0,
+    instrumentalness: 0,
+    liveness: 0,
+    valence: 0,
+    tempo: 0,
+    popularity: 0,
+    time_signature: 0
   };
+
+  componentWillReceiveProps() {
+    this.setState({
+      danceability: this.props.songFeatures.danceability,
+      energy: this.props.songFeatures.energy,
+      key: this.props.songFeatures.key,
+      loudness: this.props.songFeatures.loudness,
+      mode: this.props.songFeatures.mode,
+      speechiness: this.props.songFeatures.speechiness,
+      acousticness: this.props.songFeatures.acousticness,
+      instrumentalness: this.props.songFeatures.instrumentalness,
+      liveness: this.props.songFeatures.liveness,
+      valence: this.props.songFeatures.valence,
+      tempo: this.props.songFeatures.tempo,
+      popularity: this.props.songFeatures.popularity,
+      time_signature: this.props.songFeatures.time_signature
+    });
+  }
 
   handleChange = e => {
     e.persist();
@@ -168,4 +186,4 @@ const mapStateToProps = state => ({
   songFeatures: state.chartInfo
 });
 
-export default connect(mapStateToProps)(SliderContainer);
+export default connect(mapStateToProps, {})(SliderContainer);
