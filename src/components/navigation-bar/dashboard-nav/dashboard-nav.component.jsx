@@ -1,6 +1,7 @@
 import React from "react";
 import "./navbar.css";
 import MusicLogo from "../../../assets/sounddrip.svg";
+import { connect } from "react-redux";
 
 import MenuListComposition from "../../dropdown-menu/dropdown.component";
 
@@ -9,7 +10,8 @@ import {
   NavContainer,
   Logo1,
   Navname,
-  Relog
+  Relog,
+  NavItem
 } from "./dashboard-nav.styles";
 
 import { scopes } from "../../../utils/spotifyScopes";
@@ -24,19 +26,30 @@ class NavBar extends React.Component {
     window.location.href = "/";
   };
   render() {
+    const { currentUser } = this.props;
     return (
       <Nav1>
         <NavContainer>
-          <Logo1
-            src={MusicLogo}
-            alt={"Navbar logo"}
-            onClick={e => {
-              this.homeButton(e);
-            }}
-          ></Logo1>
+          <div
+            style={{ display: "flex", alignItems: "center", width: "840px" }}
+          >
+            <Logo1
+              src={MusicLogo}
+              alt={"Navbar logo"}
+              onClick={e => {
+                this.homeButton(e);
+              }}
+            ></Logo1>
+            <NavItem onClick={e => this.props.toggleSlider(e)}>
+              <span>Dashboard</span>
+            </NavItem>
+            <NavItem onClick={e => this.props.toggleSlider(e)}>
+              <span>Preferences</span>
+            </NavItem>
+          </div>
           <Navname>
-            {this.props.userName ? (
-              this.props.userName
+            {currentUser.display_name ? (
+              currentUser.display_name
             ) : (
               <Relog
                 as="a"
@@ -59,4 +72,8 @@ class NavBar extends React.Component {
   }
 }
 
-export default NavBar;
+const mapStateToProps = state => ({
+  currentUser: state.currentUser.currentUser
+});
+
+export default connect(mapStateToProps)(NavBar);
