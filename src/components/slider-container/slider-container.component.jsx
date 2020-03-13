@@ -41,8 +41,6 @@ class SliderContainer extends Component {
         maxValue: 1.0,
         value: this.state.acousticness,
         step: 0.01
-        // leftDescription,
-        // rightDescription
       },
       {
         name: "danceability",
@@ -51,8 +49,6 @@ class SliderContainer extends Component {
         maxValue: 1.0,
         value: this.state.danceability,
         step: 0.01
-        // leftDescription,
-        // rightDescription
       },
       {
         name: "energy",
@@ -61,8 +57,6 @@ class SliderContainer extends Component {
         maxValue: 1.0,
         value: this.state.energy,
         step: 0.01
-        // leftDescription,
-        // rightDescription
       },
       {
         name: "instrumentalness",
@@ -71,8 +65,6 @@ class SliderContainer extends Component {
         maxValue: 1.0,
         value: this.state.instrumentalness,
         step: 0.01
-        // leftDescription,
-        // rightDescription
       },
       {
         name: "key",
@@ -81,8 +73,6 @@ class SliderContainer extends Component {
         maxValue: 11,
         value: this.state.key,
         step: 1
-        // leftDescription,
-        // rightDescription
       },
       {
         name: "liveness",
@@ -91,8 +81,6 @@ class SliderContainer extends Component {
         maxValue: 1.0,
         value: this.state.liveness,
         step: 0.01
-        // leftDescription,
-        // rightDescription
       },
       {
         name: "loudness",
@@ -101,8 +89,6 @@ class SliderContainer extends Component {
         maxValue: 0,
         value: this.state.loudness,
         step: 1
-        // leftDescription,
-        // rightDescription
       },
       {
         name: "mode",
@@ -111,8 +97,6 @@ class SliderContainer extends Component {
         maxValue: 1,
         value: this.state.mode,
         step: 1
-        // leftDescription,
-        // rightDescription
       },
       {
         name: "popularity",
@@ -121,8 +105,6 @@ class SliderContainer extends Component {
         maxValue: 100,
         value: this.state.popularity,
         step: 1
-        // leftDescription,
-        // rightDescription
       },
       {
         name: "speechiness",
@@ -131,8 +113,6 @@ class SliderContainer extends Component {
         maxValue: 1.0,
         value: this.state.speechiness,
         step: 0.01
-        // leftDescription,
-        // rightDescription
       },
       {
         name: "tempo",
@@ -141,8 +121,6 @@ class SliderContainer extends Component {
         maxValue: 200,
         value: this.state.tempo,
         step: 1
-        // leftDescription,
-        // rightDescription
       },
       {
         name: "time_signature",
@@ -151,8 +129,6 @@ class SliderContainer extends Component {
         maxValue: 4,
         value: this.state.time_signature,
         step: 1
-        // leftDescription,
-        // rightDescription
       },
       {
         name: "valence",
@@ -161,8 +137,6 @@ class SliderContainer extends Component {
         maxValue: 1.0,
         value: this.state.valence,
         step: 0.01
-        // leftDescription,
-        // rightDescription
       }
     ];
 
