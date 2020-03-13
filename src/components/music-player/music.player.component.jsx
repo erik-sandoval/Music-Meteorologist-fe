@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { connect } from "react-redux";
 import { Grid } from "@material-ui/core";
 // import axios from "axios";
@@ -11,7 +11,7 @@ import PlayerButtons from "../player-buttons/player-buttons.component";
 import AudioDetails from "../audio-details/audio-details.component";
 
 // Styles
-import SliderContainer from "../../components/slider-container/slider-container.component";
+
 import PlaylistInfo from "../../components/playlist-info/playlist-info.component";
 
 import PlayerSeekBar from "../player-seek-bar/player-seek-bar.component";
@@ -27,17 +27,6 @@ import {
 
 const MusicPlayer = props => {
   const { setLocalTrackTime, currentSong } = props;
-  const [collapsed, setCollapsed] = useState(true);
-
-  const toggleSlider = e => {
-    e.persist();
-
-    if (e.target.innerText === "Preferences") {
-      setCollapsed(false);
-    } else {
-      setCollapsed(true);
-    }
-  };
 
   useInterval(
     () => {
@@ -48,7 +37,7 @@ const MusicPlayer = props => {
 
   return (
     <div>
-      <NavBar toggleSlider={toggleSlider} />
+      <NavBar />
       <ElementContainer>
         <SideBarContainer id="sideBarLD">
           <div id="sideBarLD1" className="music-player joyride-player-2">
@@ -85,16 +74,10 @@ const MusicPlayer = props => {
           </div>
         </SideBarContainer>
         <MainBarContainer id="mainBarLD" className="mainBar">
-          {collapsed ? (
-            <>
-              <PlaylistInfo></PlaylistInfo>
-              <PlaylistSongsContainer>
-                <PlayListContainer></PlayListContainer>
-              </PlaylistSongsContainer>
-            </>
-          ) : (
-            <SliderContainer toggleSlider={toggleSlider}></SliderContainer>
-          )}
+          <PlaylistInfo></PlaylistInfo>
+          <PlaylistSongsContainer>
+            <PlayListContainer></PlayListContainer>
+          </PlaylistSongsContainer>
         </MainBarContainer>
       </ElementContainer>
     </div>

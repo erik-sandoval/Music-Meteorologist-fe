@@ -23,19 +23,3 @@ export const postDSSong = () => dispatch => {
       });
     });
 };
-
-export const getSliderSongs = audioFeatures => dispatch => {
-  const token = localStorage.getItem("token");
-  dispatch({
-    type: DsActionTypes.GET_DS_SONGS_FETCHING
-  });
-  axios
-    .post("https://ds-prod.sound-drip.com/slider", audioFeatures, { token })
-    .then(res => {
-      dispatch({
-        type: DsActionTypes.GET_DS_SONGS_SUCCESS,
-        payload: res.data
-      });
-    })
-    .catch(err => console.log(err));
-};
