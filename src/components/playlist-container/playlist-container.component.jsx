@@ -66,9 +66,6 @@ class PlayListContainer extends React.Component {
               <div className="hideTitle" style={{ marginLeft: 180 }}>
                 Duration
               </div>
-              <div className="hideTitle" style={{ marginLeft: 55 }}>
-                Release Date
-              </div>
             </div>
             <Paper
               className="scroll listItems"

@@ -9,8 +9,7 @@ import {
   PlayLogo,
   PlayInfo,
   PlayH1,
-  PlayH2,
-  MakePlaylist
+  PlayH2
 } from "./playlist-info.styles";
 
 class PlaylistInfo extends React.Component {
@@ -38,9 +37,6 @@ class PlaylistInfo extends React.Component {
             </div>
           </PlayInfo>
         </DivLeft>
-        <DivRight>
-          <MakePlaylist>Add This Playlist!</MakePlaylist>
-        </DivRight>
       </Container>
     );
   }
