@@ -1,6 +1,7 @@
 import React from "react";
 import "./navbar.css";
 import MusicLogo from "../../../assets/sounddrip.svg";
+import { connect } from "react-redux";
 
 import MenuListComposition from "../../dropdown-menu/dropdown.component";
 
@@ -24,6 +25,7 @@ class NavBar extends React.Component {
     window.location.href = "/";
   };
   render() {
+    const { currentUser } = this.props;
     return (
       <Nav1>
         <NavContainer>
@@ -35,8 +37,8 @@ class NavBar extends React.Component {
             }}
           ></Logo1>
           <Navname>
-            {this.props.userName ? (
-              this.props.userName
+            {currentUser.display_name ? (
+              currentUser.display_name
             ) : (
               <Relog
                 as="a"
@@ -58,5 +60,8 @@ class NavBar extends React.Component {
     );
   }
 }
+const mapStateToProps = state => ({
+  currentUser: state.currentUser.currentUser
+});
 
-export default NavBar;
+export default connect(mapStateToProps)(NavBar);
