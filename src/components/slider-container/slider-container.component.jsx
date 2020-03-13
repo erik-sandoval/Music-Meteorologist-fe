@@ -6,6 +6,7 @@ import {
   OuterSliderContainerDiv,
   GetNewSongsButton
 } from "./slider.styles";
+import { getSliderSongs } from "../../redux/ds/ds.actions";
 
 class SliderContainer extends Component {
   state = {
@@ -26,31 +27,54 @@ class SliderContainer extends Component {
 
   componentWillReceiveProps() {
     this.setState({
-      danceability: this.props.songFeatures.danceability,
-      energy: this.props.songFeatures.energy,
-      key: this.props.songFeatures.key,
-      loudness: this.props.songFeatures.loudness,
-      mode: this.props.songFeatures.mode,
+      time_signature: this.props.songFeatures.time_signature,
       speechiness: this.props.songFeatures.speechiness,
       acousticness: this.props.songFeatures.acousticness,
-      instrumentalness: this.props.songFeatures.instrumentalness,
-      liveness: this.props.songFeatures.liveness,
-      valence: this.props.songFeatures.valence,
+      danceability: this.props.songFeatures.danceability,
       tempo: this.props.songFeatures.tempo,
+      loudness: this.props.songFeatures.loudness,
+      mode: this.props.songFeatures.mode,
       popularity: this.props.songFeatures.popularity,
-      time_signature: this.props.songFeatures.time_signature
+      valence: this.props.songFeatures.valence,
+      key: this.props.songFeatures.key,
+      liveness: this.props.songFeatures.liveness,
+      instrumentalness: this.props.songFeatures.instrumentalness,
+      energy: this.props.songFeatures.energy
     });
   }
+
+  handleSubmit = e => {
+    e.persist();
+
+    const audioFeatures = {
+      audio_features: {
+        time_signature: this.state.time_signature,
+        speechiness: this.state.speechiness,
+        acousticness: this.state.acousticness,
+        danceability: this.state.danceability,
+        tempo: this.state.tempo,
+        loudness: this.state.loudness,
+        mode: this.state.mode,
+        popularity: this.state.popularity,
+        valence: this.state.valence,
+        key: this.state.key,
+        liveness: this.state.liveness,
+        instrumentalness: this.state.instrumentalness,
+        energy: this.state.energy
+      }
+    };
+
+    this.props.getSliderSongs(audioFeatures);
+  };
 
   handleChange = e => {
     e.persist();
     this.setState({
       ...this.state,
-      [e.target.name]: e.target.value
+      [e.target.name]: parseFloat(e.target.value)
     });
   };
   render() {
-    console.log(this.state);
     const acousticFeatures = [
       {
         name: "acousticness",
@@ -176,7 +200,9 @@ class SliderContainer extends Component {
             )
           )}
         </InnerSliderContainerDiv>
-        <GetNewSongsButton>Generate New Songs</GetNewSongsButton>
+        <GetNewSongsButton onClick={this.handleSubmit}>
+          Generate New Songs
+        </GetNewSongsButton>
       </OuterSliderContainerDiv>
     );
   }
@@ -186,4 +212,4 @@ const mapStateToProps = state => ({
   songFeatures: state.chartInfo
 });
 
-export default connect(mapStateToProps, {})(SliderContainer);
+export default connect(mapStateToProps, { getSliderSongs })(SliderContainer);

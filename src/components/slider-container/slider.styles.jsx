@@ -1,7 +1,6 @@
 import styled from "styled-components";
 
 export const OuterSliderContainerDiv = styled.div`
-  height: 450px;
   background: #17191c;
   display: flex;
   flex-direction: column;
@@ -13,7 +12,6 @@ export const InnerSliderContainerDiv = styled.div`
   display: flex;
   flex-wrap: wrap;
   width: 900px;
-  height: 324px;
   background: #17191c;
   justify-content: flex-start;
   align-items: center;
@@ -23,9 +21,9 @@ export const InnerSliderContainerDiv = styled.div`
 export const SliderValueContainer = styled.div`
   margin-right: 5%;
   width: 186px;
-  height: 68px;
   left: 1152px;
   top: 219px;
+  height: 102px;
 
   &:nth-of-type(4n + 4) {
     margin-right: 0;
@@ -33,13 +31,12 @@ export const SliderValueContainer = styled.div`
 `;
 
 export const SliderCategoryName = styled.div`
-  width: 39px;
   height: 16px;
   font-family: Work Sans;
   font-style: normal;
   font-weight: 600;
   font-size: 14px;
-  line-height: 16px;
+  line-height: 34px;
   color: #ffffff;
 `;
 
