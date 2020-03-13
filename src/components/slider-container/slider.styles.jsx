@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 export const OuterSliderContainerDiv = styled.div`
   height: 450px;
-  background: #1c1e22;
+  background: #17191c;
   display: flex;
   flex-direction: column;
   width: 1063px;
@@ -14,7 +14,7 @@ export const InnerSliderContainerDiv = styled.div`
   flex-wrap: wrap;
   width: 900px;
   height: 324px;
-  background: #1c1e22;
+  background: #17191c;
   justify-content: flex-start;
   align-items: center;
   margin-top: 2%;
