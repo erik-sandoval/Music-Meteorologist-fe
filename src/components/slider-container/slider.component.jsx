@@ -6,20 +6,31 @@ import {
   RangeLevelNameDiv
 } from "./slider.styles";
 
-const Slider = ({ name, leftDescription, rightDescription, handleChange }) => {
+const Slider = ({
+  name,
+  inputName,
+  minValue,
+  maxValue,
+  value,
+  step,
+  handleChange
+}) => {
   return (
     <SliderValueContainer>
-      <SliderCategoryName>{name}</SliderCategoryName>
+      <SliderCategoryName>{inputName}</SliderCategoryName>
       <RangeSliderInput
         type="range"
-        min="0"
-        max="100"
-        value="50"
+        name={name}
+        min={minValue}
+        max={maxValue}
+        value={value}
+        step={step}
         onChange={handleChange}
       ></RangeSliderInput>
       <div style={{ display: "flex", justifyContent: "space-between" }}>
-        <RangeLevelNameDiv right>{leftDescription}</RangeLevelNameDiv>
-        <RangeLevelNameDiv left>{rightDescription}</RangeLevelNameDiv>
+        <RangeLevelNameDiv>{minValue}</RangeLevelNameDiv>
+        <RangeLevelNameDiv>{value}</RangeLevelNameDiv>
+        <RangeLevelNameDiv>{maxValue}</RangeLevelNameDiv>
       </div>
     </SliderValueContainer>
   );

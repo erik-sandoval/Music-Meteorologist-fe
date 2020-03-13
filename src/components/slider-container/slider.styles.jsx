@@ -12,11 +12,12 @@ export const OuterSliderContainerDiv = styled.div`
 export const InnerSliderContainerDiv = styled.div`
   display: flex;
   flex-wrap: wrap;
-  width: 1063px;
+  width: 900px;
   height: 324px;
   background: #1c1e22;
-  justify-content: center;
+  justify-content: flex-start;
   align-items: center;
+  margin-top: 2%;
 `;
 
 export const SliderValueContainer = styled.div`
@@ -80,7 +81,7 @@ export const GetNewSongsButton = styled.button`
   border-radius: 6px;
   font-family: Work Sans;
   font-style: normal;
-  font-weight: 500;
+  font-weight: 700;
   font-size: 13px;
   line-height: 18px;
   text-align: center;
