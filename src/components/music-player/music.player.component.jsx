@@ -29,6 +29,10 @@ const MusicPlayer = props => {
   const { setLocalTrackTime, currentSong } = props;
   const [collapsed, setCollapsed] = useState(true);
 
+  const toggleSlider = () => {
+    setCollapsed(!collapsed);
+  };
+
   useInterval(
     () => {
       setLocalTrackTime();
@@ -38,7 +42,7 @@ const MusicPlayer = props => {
 
   return (
     <div>
-      <NavBar />
+      <NavBar toggleSlider={toggleSlider} />
       <ElementContainer>
         <SideBarContainer id="sideBarLD">
           <div id="sideBarLD1" className="music-player joyride-player-2">

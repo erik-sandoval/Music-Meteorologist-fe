@@ -41,7 +41,7 @@ class NavBar extends React.Component {
               }}
             ></Logo1>
             <NavItem>Dashboard</NavItem>
-            <NavItem>Preferences</NavItem>
+            <NavItem onClick={this.props.toggleSlider}>Preferences</NavItem>
           </div>
           <Navname>
             {currentUser.display_name ? (
