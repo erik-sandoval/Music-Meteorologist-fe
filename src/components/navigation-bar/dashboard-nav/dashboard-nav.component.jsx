@@ -10,7 +10,8 @@ import {
   NavContainer,
   Logo1,
   Navname,
-  Relog
+  Relog,
+  NavItem
 } from "./dashboard-nav.styles";
 
 import { scopes } from "../../../utils/spotifyScopes";
@@ -29,13 +30,19 @@ class NavBar extends React.Component {
     return (
       <Nav1>
         <NavContainer>
-          <Logo1
-            src={MusicLogo}
-            alt={"Navbar logo"}
-            onClick={e => {
-              this.homeButton(e);
-            }}
-          ></Logo1>
+          <div
+            style={{ display: "flex", alignItems: "center", width: "840px" }}
+          >
+            <Logo1
+              src={MusicLogo}
+              alt={"Navbar logo"}
+              onClick={e => {
+                this.homeButton(e);
+              }}
+            ></Logo1>
+            <NavItem>Dashboard</NavItem>
+            <NavItem>Preferences</NavItem>
+          </div>
           <Navname>
             {currentUser.display_name ? (
               currentUser.display_name
