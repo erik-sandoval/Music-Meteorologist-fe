@@ -82,6 +82,7 @@ export const PlayH1 = styled.h1`
   font-family: Work Sans;
   font-weight: bold;
 `;
+
 export const PlayH2 = styled.h1`
   font-family: Work Sans;
   text-align: left;
