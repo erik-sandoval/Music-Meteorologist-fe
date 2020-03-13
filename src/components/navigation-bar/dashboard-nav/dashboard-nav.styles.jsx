@@ -42,6 +42,11 @@ export const NavItem = styled.div`
   font-weight: 500;
   font-size: 18px;
   color: #9da4af;
+  span {
+    &:hover {
+      cursor: pointer;
+    }
+  }
 `;
 
 export const NavContainer = styled.div`

@@ -40,8 +40,12 @@ class NavBar extends React.Component {
                 this.homeButton(e);
               }}
             ></Logo1>
-            <NavItem>Dashboard</NavItem>
-            <NavItem onClick={this.props.toggleSlider}>Preferences</NavItem>
+            <NavItem onClick={e => this.props.toggleSlider(e)}>
+              <span>Dashboard</span>
+            </NavItem>
+            <NavItem onClick={e => this.props.toggleSlider(e)}>
+              <span>Preferences</span>
+            </NavItem>
           </div>
           <Navname>
             {currentUser.display_name ? (

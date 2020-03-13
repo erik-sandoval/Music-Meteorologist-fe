@@ -63,8 +63,8 @@ class SliderContainer extends Component {
         energy: this.state.energy
       }
     };
-
     this.props.getSliderSongs(audioFeatures);
+    this.props.toggleSlider(e);
   };
 
   handleChange = e => {

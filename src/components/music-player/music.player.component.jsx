@@ -29,8 +29,14 @@ const MusicPlayer = props => {
   const { setLocalTrackTime, currentSong } = props;
   const [collapsed, setCollapsed] = useState(true);
 
-  const toggleSlider = () => {
-    setCollapsed(!collapsed);
+  const toggleSlider = e => {
+    e.persist();
+
+    if (e.target.innerText === "Preferences") {
+      setCollapsed(false);
+    } else {
+      setCollapsed(true);
+    }
   };
 
   useInterval(
@@ -79,7 +85,7 @@ const MusicPlayer = props => {
           </div>
         </SideBarContainer>
         <MainBarContainer id="mainBarLD" className="mainBar">
-          {false ? (
+          {collapsed ? (
             <>
               <PlaylistInfo></PlaylistInfo>
               <PlaylistSongsContainer>
@@ -87,7 +93,7 @@ const MusicPlayer = props => {
               </PlaylistSongsContainer>
             </>
           ) : (
-            <SliderContainer></SliderContainer>
+            <SliderContainer toggleSlider={toggleSlider}></SliderContainer>
           )}
         </MainBarContainer>
       </ElementContainer>
