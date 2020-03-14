@@ -1,4 +1,5 @@
 import axios from "axios";
+import { configure } from "@testing-library/react";
 
 const spotifyApiUrl = "https://api.spotify.com/v1/me/player";
 
@@ -16,11 +17,7 @@ export const transferPlaybackHere = (accessToken, deviceId) => {
     {
       device_ids: [deviceId]
     },
-    {
-      headers: {
-        Authorization: `Bearer ${accessToken}`
-      }
-    }
+    config
   );
 };
 
@@ -122,7 +119,5 @@ export const seekTrackTime = position_ms => {
   axios
     .put(`${spotifyApiUrl}/seek?position_ms=${position_ms}`, {}, config)
     .then(res => {})
-    .catch(err => {
-      console.log(err);
-    });
+    .catch(err => {});
 };
