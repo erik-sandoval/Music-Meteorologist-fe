@@ -30,11 +30,14 @@ class Dashboard extends Component {
     postDSSong();
   }
 
-  componentDidUpdate() {
+  componentDidUpdate(prevProps, prevState, snapshot) {
     const { dsSongsData, getSeveralTracks, getCurrentSong } = this.props;
 
+    if (prevProps.dsSongsData.length === 0) {
+      this.initializePlayer();
+    } else {
+    }
     getCurrentSong();
-    this.initializePlayer();
     getSeveralTracks(dsSongsData);
   }
 
@@ -47,26 +50,26 @@ class Dashboard extends Component {
     } = this.props;
     const token = localStorage.getItem("token");
 
-    this.player = new window.Spotify.Player({
+    const player = new window.Spotify.Player({
       name: "Sound Drip Spotify Player",
       getOAuthToken: cb => {
         cb(token);
       }
     });
 
-    this.player.on("player_state_changed", spotifyState => {
+    player.on("player_state_changed", spotifyState => {
       getCurrentSong(spotifyState);
       getLikedSongStatus(spotifyState.track_window.current_track.id);
       getChartTrackInfo(spotifyState.track_window.current_track.id);
     });
 
-    this.player.on("ready", data => {
+    player.on("ready", data => {
       const { device_id } = data;
-      console.log({ data });
+
       transferPlaybackHere(token, device_id);
     });
 
-    this.player.connect();
+    player.connect();
   };
 
   logout = e => {
