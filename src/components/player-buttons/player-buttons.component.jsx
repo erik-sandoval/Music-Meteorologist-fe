@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { connect, useSelector } from "react-redux";
+import { ReactComponent as ShuffleIcon } from "../../assets/shuffle.svg";
 
-import { LikeDislikeContainer, PlayerButton } from "./player-buttons.styles";
+import { PlayerButtonsController, PlayerButton } from "./player-buttons.styles";
 
 import {
   onPlayClick,
@@ -22,47 +23,49 @@ const PlayerButtons = props => {
   }, [getLikedSongStatus, songPlaying]);
 
   return (
-    <LikeDislikeContainer>
-      <div className="display-flex">
-        <div style={{ display: "flex" }}>
-          <PlayerButton id="prev" onClick={() => onPrevClick()}>
-            <div className="previcon" style={{ maxHeight: 35 }} />
-          </PlayerButton>
+    <PlayerButtonsController>
+      <PlayerButton shuffled={props.shuffled} onClick={() => onPrevClick()}>
+        <ShuffleIcon className="shuffle-icon"></ShuffleIcon>
+      </PlayerButton>
 
-          <PlayerButton
-            id="playpause"
-            onClick={() => onPlayClick(!songPlaying.paused)}
-          >
-            {!songPlaying.paused ? (
-              <div className="pauseicon" style={{ maxHeight: 35 }} />
-            ) : (
-              <div className="playicon" style={{ maxHeight: 35 }} />
-            )}
-          </PlayerButton>
+      <PlayerButton id="prev" onClick={() => onPrevClick()}>
+        <div className="previcon" style={{ maxHeight: 35 }} />
+      </PlayerButton>
 
-          <PlayerButton id="next" onClick={() => onNextClick()}>
-            <div className="nexticon" style={{ maxHeight: 35 }} />
-          </PlayerButton>
-        </div>
-        <PlayerButton
-          id="heart"
-          className="like-dislike like"
-          onClick={() => {
-            saveLikedSong(songPlaying.id, liked);
-            setLiked(!liked);
-          }}
-        >
-          <div
-            className={`likeicon ${liked ? "fullHeart" : ""}`}
-            id="like1"
-            style={{ maxHeight: 70 }}
-          />
-        </PlayerButton>
-      </div>
-    </LikeDislikeContainer>
+      <PlayerButton
+        id="playpause"
+        onClick={() => onPlayClick(!songPlaying.paused)}
+      >
+        {!songPlaying.paused ? (
+          <div className="pauseicon" style={{ maxHeight: 35 }} />
+        ) : (
+          <div className="playicon" style={{ maxHeight: 35 }} />
+        )}
+      </PlayerButton>
+
+      <PlayerButton id="next" onClick={() => onNextClick()}>
+        <div className="nexticon" style={{ maxHeight: 35 }} />
+      </PlayerButton>
+      <PlayerButton
+        id="heart"
+        className="like-dislike like"
+        onClick={() => {
+          saveLikedSong(songPlaying.id, liked);
+          setLiked(!liked);
+        }}
+      >
+        <div
+          className={`likeicon ${liked ? "fullHeart" : ""}`}
+          id="like1"
+          style={{ maxHeight: 70 }}
+        />
+      </PlayerButton>
+    </PlayerButtonsController>
   );
 };
 
-const mapStateToProps = state => ({});
+const mapStateToProps = state => ({
+  shuffled: state.currentSong.currentSong.shuffledStatus
+});
 
 export default connect(mapStateToProps, { getLikedSongStatus })(PlayerButtons);

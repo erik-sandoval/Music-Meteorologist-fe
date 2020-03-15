@@ -61,7 +61,8 @@ class PlayerSeekBar extends Component {
             borderRadius: 3,
             background: "white",
             height: "10px",
-            width: "10rem"
+            width: "10rem",
+            cursor: "pointer"
           }}
         >
           <SliderBar

@@ -43,3 +43,13 @@ export const PlaylistSongsContainer = styled.div`
   background: #17191c;
   font-family: Work Sans;
 `;
+
+export const PlayerBarAndControlsContainer = styled.div`
+  width: 377px;
+  height: 60px;
+  margin-bottom: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+`;

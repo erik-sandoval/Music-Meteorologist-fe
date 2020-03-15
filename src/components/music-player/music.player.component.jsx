@@ -1,28 +1,26 @@
 import React, { useEffect, useRef, useState } from "react";
 import { connect } from "react-redux";
-import { Grid } from "@material-ui/core";
-// import axios from "axios";
+
 import { setLocalTrackTime } from "../../redux/spotify/spotify.actions";
-import PlayListContainer from "../playlist-container/playlist-container.component";
 
 // Features
-import AlbumInfo from "../album-info/album-info.component";
-import PlayerButtons from "../player-buttons/player-buttons.component";
-import AudioDetails from "../audio-details/audio-details.component";
-
-// Styles
-import SliderContainer from "../../components/slider-container/slider-container.component";
-import PlaylistInfo from "../../components/playlist-info/playlist-info.component";
-
-import PlayerSeekBar from "../player-seek-bar/player-seek-bar.component";
 
 import NavBar from "../navigation-bar/dashboard-nav/dashboard-nav.component";
+import SliderContainer from "../../components/slider-container/slider-container.component";
+import AlbumInfo from "../album-info/album-info.component";
+import AudioDetails from "../audio-details/audio-details.component";
+import PlayerSeekBar from "../player-seek-bar/player-seek-bar.component";
+import PlayerButtons from "../player-buttons/player-buttons.component";
+import PlayListContainer from "../playlist-container/playlist-container.component";
+import PlaylistInfo from "../../components/playlist-info/playlist-info.component";
 
+// Styles
 import {
   ElementContainer,
   SideBarContainer,
   MainBarContainer,
-  PlaylistSongsContainer
+  PlaylistSongsContainer,
+  PlayerBarAndControlsContainer
 } from "./music-player.styles";
 
 const MusicPlayer = props => {
@@ -54,33 +52,11 @@ const MusicPlayer = props => {
           <div id="sideBarLD1" className="music-player joyride-player-2">
             <AlbumInfo />
             <div>
-              <Grid
-                container
-                direction="column"
-                justify="space-around"
-                alignItems="center"
-                style={{ width: 377, height: "60px", marginBottom: "10px" }}
-              >
-                <div>
-                  <PlayerSeekBar></PlayerSeekBar>
-                </div>
+              <PlayerBarAndControlsContainer>
+                <PlayerSeekBar></PlayerSeekBar>
                 <PlayerButtons />
-              </Grid>
-              <Grid
-                container
-                direction="column"
-                justify="center"
-                alignItems="center"
-              >
-                <AudioDetails />
-                <Grid
-                  container
-                  direction="row"
-                  justify="center"
-                  alignItems="center"
-                  style={{ width: 300, marginBottom: "5%" }}
-                ></Grid>
-              </Grid>
+              </PlayerBarAndControlsContainer>
+              <AudioDetails />
             </div>
           </div>
         </SideBarContainer>
@@ -122,7 +98,8 @@ const useInterval = (callback, delay) => {
 };
 
 const mapStateToProps = state => ({
-  currentSong: state.currentSong.currentSong
+  currentSong: state.currentSong.currentSong,
+  dsSongsFetching: state.dsSongs.dsSongsFetching
 });
 
 export default connect(mapStateToProps, { setLocalTrackTime })(MusicPlayer);
