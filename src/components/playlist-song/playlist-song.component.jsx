@@ -92,13 +92,6 @@ class PlaylistSong extends React.Component {
           >
             {this.msToTime(song.duration_ms)}
           </Grid>
-          <Grid
-            className="songReleaseDate"
-            item
-            style={{ padding: 5, fontSize: 13, width: "100px", marginLeft: 95 }}
-          >
-            <AddIcon></AddIcon>
-          </Grid>
         </Grid>
       </div>
     );

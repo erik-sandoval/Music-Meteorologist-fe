@@ -10,8 +10,7 @@ import {
   NavContainer,
   Logo1,
   Navname,
-  Relog,
-  NavItem
+  Relog
 } from "./dashboard-nav.styles";
 
 import { scopes } from "../../../utils/spotifyScopes";
@@ -30,23 +29,13 @@ class NavBar extends React.Component {
     return (
       <Nav1>
         <NavContainer>
-          <div
-            style={{ display: "flex", alignItems: "center", width: "840px" }}
-          >
-            <Logo1
-              src={MusicLogo}
-              alt={"Navbar logo"}
-              onClick={e => {
-                this.homeButton(e);
-              }}
-            ></Logo1>
-            <NavItem onClick={e => this.props.toggleSlider(e)}>
-              <span>Dashboard</span>
-            </NavItem>
-            <NavItem onClick={e => this.props.toggleSlider(e)}>
-              <span>Preferences</span>
-            </NavItem>
-          </div>
+          <Logo1
+            src={MusicLogo}
+            alt={"Navbar logo"}
+            onClick={e => {
+              this.homeButton(e);
+            }}
+          ></Logo1>
           <Navname>
             {currentUser.display_name ? (
               currentUser.display_name
@@ -71,7 +60,6 @@ class NavBar extends React.Component {
     );
   }
 }
-
 const mapStateToProps = state => ({
   currentUser: state.currentUser.currentUser
 });

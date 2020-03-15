@@ -33,9 +33,7 @@ export const onPrevClick = () => {
   axios
     .post(`${spotifyApiUrl}/previous`, {}, config)
     .then(res => {})
-    .catch(err => {
-      console.log(err);
-    });
+    .catch(err => {});
 };
 
 export const onPlayClick = playStatus => {
@@ -52,15 +50,12 @@ export const onPlayClick = playStatus => {
       .put(`${spotifyApiUrl}/pause`, {}, config)
       .then(res => {})
       .catch(err => {
-        console.log(err);
       });
   } else {
     axios
       .put(`${spotifyApiUrl}/play`, {}, config)
       .then(res => {})
-      .catch(err => {
-        console.log(err);
-      });
+      .catch(err => {});
   }
 };
 
@@ -76,9 +71,7 @@ export const onNextClick = () => {
   axios
     .post(`${spotifyApiUrl}/next`, {}, config)
     .then(res => {})
-    .catch(err => {
-      console.log(err);
-    });
+    .catch(err => {});
 };
 
 export const saveLikedSong = (songId, liked) => {

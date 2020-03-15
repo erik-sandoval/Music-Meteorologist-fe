@@ -13,7 +13,7 @@ const HomepageNav = () => {
       <NavbarLinks href="/about">How it works?</NavbarLinks>
       <NavbarLinks href="/team">Team</NavbarLinks>
       <NavbarLinks
-        href="https://github.com/Lambda-School-Labs/Music-Meteorologist-fe"
+        href="https://github.com/erik-sandoval/Sound-Drip-V2"
         target="_blank"
       >
         Github

@@ -22,10 +22,6 @@ class PlayerSeekBar extends Component {
     seekTrackTime(msSeconds);
   };
 
-  componentDidUpdate(prevProps) {
-    console.log(prevProps.currentSong.paused, this.props.currentSong.paused);
-  }
-
   render() {
     const { localTrackPosition } = this.props;
     const { duration_ms } = this.props.currentSong;
