@@ -1,7 +1,5 @@
 import React from "react";
 import { connect } from "react-redux";
-import Paper from "@material-ui/core/Paper";
-import List from "@material-ui/core/List";
 import Playlist from "../playlist/playlist.component";
 import "../../App.css";
 
@@ -38,56 +36,50 @@ class PlayListContainer extends React.Component {
     return (
       <div className="dashboard">
         <div id="mainBarLD1">
-          <List>
-            <div
-              className="listTitles"
-              style={{
-                borderBottom: "1px solid #454B54",
-                fontSize: 15,
-                height: 20,
-                color: "#454B54",
-                fontWeight: "bold",
-                display: "flex",
-                width: "auto",
-                marginLeft: "35px",
-                marginRight: "35px",
-                marginBottom: "2px"
-              }}
-            >
-              <div
-                className="moveTitle"
-                style={{ marginLeft: 168, minWidth: 100 }}
-              >
-                Track / Artist{" "}
-              </div>
-              <div className="hideTitle" style={{ marginLeft: 100 }}>
-                Album
-              </div>
-              <div className="hideTitle" style={{ marginLeft: 180 }}>
-                Duration
-              </div>
-              <div className="hideTitle" style={{ marginLeft: 55 }}>
-                Release Date
-              </div>
+          {/* <List> */}
+          <div
+            className="listTitles"
+            style={{
+              borderBottom: "1px solid #454B54",
+              fontSize: 15,
+              height: 20,
+              color: "#454B54",
+              fontWeight: "bold",
+              display: "flex",
+              width: "auto",
+              marginBottom: "2px"
+            }}
+          >
+            <div className="moveTitle" style={{ marginLeft: 220 }}>
+              Track / Artist{" "}
             </div>
-            <Paper
-              className="scroll listItems"
-              style={{
-                width: "auto",
-                minWidth: "850px",
-                overflow: "auto",
-                color: "white",
-                marginLeft: "45px",
-                overflowY: "scroll",
-                height: "68vh",
-                background: "transparent",
-                boxShadow: "none",
-                textAlign: "left"
-              }}
-            >
-              <Playlist />
-            </Paper>
-          </List>
+            <div className="hideTitle" style={{ marginLeft: 108 }}>
+              Album
+            </div>
+            <div className="hideTitle" style={{ marginLeft: 145 }}>
+              Duration
+            </div>
+            <div className="hideTitle" style={{ marginLeft: 62 }}>
+              Release Date
+            </div>
+          </div>
+          <div
+            style={{
+              width: "auto",
+              minWidth: "850px",
+              overflow: "auto",
+              color: "white",
+              marginLeft: "45px",
+              overflowY: "scroll",
+              height: "68vh",
+              background: "transparent",
+              boxShadow: "none",
+              textAlign: "left"
+            }}
+          >
+            <Playlist />
+          </div>
+          {/* </List> */}
         </div>
       </div>
     );
