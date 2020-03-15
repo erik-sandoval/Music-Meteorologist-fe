@@ -25,7 +25,7 @@ class SliderContainer extends Component {
     time_signature: 0
   };
 
-  componentWillReceiveProps() {
+  componentDidMount() {
     this.setState({
       time_signature: this.props.songFeatures.time_signature,
       speechiness: this.props.songFeatures.speechiness,

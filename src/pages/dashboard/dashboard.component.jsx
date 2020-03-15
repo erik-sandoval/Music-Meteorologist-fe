@@ -18,12 +18,6 @@ import "../../App.css";
 import { transferPlaybackHere } from "../../utils/playerActions";
 
 class Dashboard extends Component {
-  state = {
-    collapse: false,
-    popout: false,
-    playlistCreated: false
-  };
-
   componentDidMount() {
     const { postDSSong, getSpotifyUser } = this.props;
     getSpotifyUser();
