@@ -57,20 +57,33 @@ export const getSpotifyUser = () => dispatch => {
 };
 
 export const getCurrentSong = spotifyState => dispatch => {
-  if (spotifyState) {
-    dispatch({
-      type: SpotifyActionTypes.GET_CURRENT_SONG_SUCCESS,
-      payload: {
-        ...spotifyState.track_window.current_track,
-        songPosition: spotifyState.position,
-        paused: spotifyState.paused
+  const spotifyToken = localStorage.getItem("token");
+
+  const config = {
+    headers: { Authorization: "Bearer " + spotifyToken }
+  };
+
+  axios
+    .get(`${spotifyBaseUrl}/me/player`, config)
+    .then(res => {
+      console.log(res);
+      if (spotifyState) {
+        dispatch({
+          type: SpotifyActionTypes.GET_CURRENT_SONG_SUCCESS,
+          payload: {
+            ...spotifyState.track_window.current_track,
+            songPosition: spotifyState.position,
+            paused: spotifyState.paused,
+            shuffledStatus: res.data.shuffle_state
+          }
+        });
+      } else {
+        dispatch({
+          type: SpotifyActionTypes.GET_CURRENT_SONG_FETCHING
+        });
       }
-    });
-  } else {
-    dispatch({
-      type: SpotifyActionTypes.GET_CURRENT_SONG_FETCHING
-    });
-  }
+    })
+    .catch(err => {});
 };
 
 export const getLikedSongStatus = songId => dispatch => {
@@ -92,6 +105,8 @@ export const getLikedSongStatus = songId => dispatch => {
     })
     .catch(err => {});
 };
+
+export const getCurrentPlaybackStatus = () => dispatch => {};
 
 export const getChartTrackInfo = id => dispatch => {
   const spotifyToken = localStorage.getItem("token");
