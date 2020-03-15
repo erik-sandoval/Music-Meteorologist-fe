@@ -6,7 +6,8 @@ const initialState = {
   currentSongFetchingSuccess: false,
   currentSongError: null,
   liked: null,
-  localTrackTime: 0
+  localTrackTime: 0,
+  shuffledStatus: null
 };
 
 const getCurrentSongReducer = (state = initialState, action) => {
@@ -24,7 +25,8 @@ const getCurrentSongReducer = (state = initialState, action) => {
         currentSongError: null,
         currentSongFetching: false,
         currentSongFetchingSuccess: true,
-        localTrackTime: action.payload.songPosition
+        localTrackTime: action.payload.songPosition,
+        shuffledStatus: action.shuffledStatus
       };
     case SpotifyActionTypes.GET_CURRENT_SONG_FAILURE:
       return {
@@ -41,6 +43,11 @@ const getCurrentSongReducer = (state = initialState, action) => {
       return {
         ...state,
         localTrackTime: state.localTrackTime + 1000
+      };
+    case SpotifyActionTypes.TOGGLE_SHUFFLE_STATE:
+      return {
+        ...state,
+        shuffledStatus: !action.payload
       };
     default:
       return state;

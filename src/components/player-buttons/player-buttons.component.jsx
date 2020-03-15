@@ -10,13 +10,20 @@ import {
   onPrevClick,
   saveLikedSong
 } from "../../utils/playerActions";
-import { getLikedSongStatus } from "../../redux/spotify/spotify.actions";
+import {
+  getLikedSongStatus,
+  toggleShuffle
+} from "../../redux/spotify/spotify.actions";
 
 const PlayerButtons = props => {
   const songPlaying = useSelector(state => state.currentSong.currentSong);
 
   const [liked, setLiked] = useState(false);
-  const { getLikedSongStatus } = props;
+  const { getLikedSongStatus, toggleShuffle, shuffled } = props;
+
+  const toggleFunction = () => {
+    toggleShuffle(shuffled);
+  };
 
   useEffect(() => {
     getLikedSongStatus(songPlaying.id).then(res => setLiked(res));
@@ -24,7 +31,7 @@ const PlayerButtons = props => {
 
   return (
     <PlayerButtonsController>
-      <PlayerButton shuffled={props.shuffled} onClick={() => onPrevClick()}>
+      <PlayerButton shuffled={shuffled} onClick={toggleFunction}>
         <ShuffleIcon className="shuffle-icon"></ShuffleIcon>
       </PlayerButton>
 
@@ -65,7 +72,9 @@ const PlayerButtons = props => {
 };
 
 const mapStateToProps = state => ({
-  shuffled: state.currentSong.currentSong.shuffledStatus
+  shuffled: state.currentSong.shuffledStatus
 });
 
-export default connect(mapStateToProps, { getLikedSongStatus })(PlayerButtons);
+export default connect(mapStateToProps, { getLikedSongStatus, toggleShuffle })(
+  PlayerButtons
+);

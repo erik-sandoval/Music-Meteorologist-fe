@@ -73,9 +73,9 @@ export const getCurrentSong = spotifyState => dispatch => {
           payload: {
             ...spotifyState.track_window.current_track,
             songPosition: spotifyState.position,
-            paused: spotifyState.paused,
-            shuffledStatus: res.data.shuffle_state
-          }
+            paused: spotifyState.paused
+          },
+          shuffledStatus: res.data.shuffle_state
         });
       } else {
         dispatch({
@@ -106,7 +106,27 @@ export const getLikedSongStatus = songId => dispatch => {
     .catch(err => {});
 };
 
-export const getCurrentPlaybackStatus = () => dispatch => {};
+export const toggleShuffle = shuffleState => dispatch => {
+  const spotifyToken = localStorage.getItem("token");
+
+  const config = {
+    headers: { Authorization: "Bearer " + spotifyToken }
+  };
+
+  axios
+    .put(
+      `${spotifyBaseUrl}/me/player/shuffle?state=${!shuffleState}`,
+      {},
+      config
+    )
+    .then(res => {
+      dispatch({
+        type: SpotifyActionTypes.TOGGLE_SHUFFLE_STATE,
+        payload: shuffleState
+      });
+    })
+    .catch(err => {});
+};
 
 export const getChartTrackInfo = id => dispatch => {
   const spotifyToken = localStorage.getItem("token");
