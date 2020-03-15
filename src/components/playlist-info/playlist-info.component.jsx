@@ -1,45 +1,39 @@
 import React from "react";
-
+import playLogo from "../../assets/rectangle.png";
 import { connect } from "react-redux";
+import { postDSSong } from "../../redux/ds/ds.actions";
 
 import {
   Container,
-  DivLeft,
+  LeftSideDiv,
   DivRight,
   PlayLogo,
   PlayInfo,
   PlayH1,
   PlayH2,
-  MakePlaylist
+  PlaylistButton
 } from "./playlist-info.styles";
 
 class PlaylistInfo extends React.Component {
   render() {
     const { display_name } = this.props.currentUser;
     return (
-      <Container id="playInfoLD">
-        <DivLeft>
-          <PlayLogo className="playLogo" />
-          <PlayInfo>
-            <PlayH1
-              className="playH1"
-              style={{
-                fontSize: 24,
-                paddingTop: 30,
-                paddingBottom: 0,
-                marginLeft: 15
-              }}
-            >
-              {`${display_name}'s Sound Drip Playlist`}
-            </PlayH1>
-            <div className="playH2" style={{ display: "flex" }}>
+      <Container>
+        <LeftSideDiv>
+          <PlayLogo src={playLogo} />
+          <div>
+            <PlayH1>{`${display_name}'s Sound Drip Playlist`}</PlayH1>
+            <div style={{ display: "flex" }}>
               <div className="playlisticon" />
               <PlayH2>20 Songs</PlayH2>
             </div>
-          </PlayInfo>
-        </DivLeft>
+          </div>
+        </LeftSideDiv>
         <DivRight>
-          <MakePlaylist>Add This Playlist!</MakePlaylist>
+          <PlaylistButton>Add This Playlist!</PlaylistButton>
+          <PlaylistButton onClick={this.props.postDSSong}>
+            Get New PlayList
+          </PlaylistButton>
         </DivRight>
       </Container>
     );
@@ -50,4 +44,4 @@ const mapStateToProps = state => ({
   currentUser: state.currentUser.currentUser
 });
 
-export default connect(mapStateToProps, {})(PlaylistInfo);
+export default connect(mapStateToProps, { postDSSong })(PlaylistInfo);
