@@ -30,7 +30,7 @@ class Dashboard extends Component {
     postDSSong();
   }
 
-  componentDidUpdate(prevProps, prevState, snapshot) {
+  componentDidUpdate(prevProps) {
     const { dsSongsData, getSeveralTracks, getCurrentSong } = this.props;
 
     if (prevProps.dsSongsData.length === 0) {
@@ -80,7 +80,7 @@ class Dashboard extends Component {
 
   render() {
     return (
-      <div className="dashboard">
+      <div className="dashboard" styles={{ height: "100vh" }}>
         {this.props.currentSongFetchingSuccess ? (
           <div>
             <MusicPlayer />

@@ -2,6 +2,7 @@ import React from "react";
 import { connect } from "react-redux";
 
 import PlaylistSong from "../playlist-song/playlist-song.component";
+import Loader from "../../pages/loading/loading.component";
 
 import axios from "axios";
 
@@ -40,11 +41,11 @@ class Playlist extends React.Component {
 
   render() {
     const {
-      spotifySongs: { spotifySongsFetching, spotifySongUris }
+      spotifySongs: { spotifySongsFetching, spotifySongUris, dsSongsFetching }
     } = this.props;
 
-    if (spotifySongsFetching) {
-      return <h1>Loading...</h1>;
+    if (spotifySongsFetching || dsSongsFetching) {
+      return <Loader></Loader>;
     }
     return (
       <div container>
@@ -59,7 +60,7 @@ class Playlist extends React.Component {
               />
             ))
           ) : (
-            <h1>Loading...</h1>
+            <Loader></Loader>
           )}
         </div>
       </div>
@@ -68,7 +69,8 @@ class Playlist extends React.Component {
 }
 
 const mapStateToProps = state => ({
-  spotifySongs: state.spotifyUris
+  spotifySongs: state.spotifyUris,
+  dsSongsFetching: state.dsSongs.dsSongsFetching
 });
 
 export default connect(mapStateToProps, {})(Playlist);

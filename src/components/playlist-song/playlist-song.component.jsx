@@ -9,8 +9,8 @@ import { onPlayClick } from "../../utils/playerActions";
 
 class PlaylistSong extends React.Component {
   msToTime(s) {
-    var minutes = Math.floor(s / 60000);
-    var seconds = ((s % 60000) / 1000).toFixed(0);
+    const minutes = Math.floor(s / 60000);
+    const seconds = ((s % 60000) / 1000).toFixed(0);
     return seconds === 60
       ? minutes + 1 + ":00"
       : minutes + ":" + (seconds < 10 ? "0" : "") + seconds;
@@ -35,7 +35,8 @@ class PlaylistSong extends React.Component {
               style={{
                 background: "none",
                 border: "none",
-                outline: "none"
+                outline: "none",
+                cursor: "pointer"
               }}
             >
               {!songPlaying.paused && id === songPlaying.id ? (
