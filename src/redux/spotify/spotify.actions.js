@@ -172,20 +172,22 @@ export const setLocalTrackTime = () => dispatch => {
 export const addToPlaylist = (tracksToAdd, spotifyId) => dispatch => {
   const spotifyToken = localStorage.getItem("token");
 
+  console.log(tracksToAdd, spotifyId);
   const config = {
     headers: { Authorization: "Bearer " + spotifyToken }
   };
 
   axios.get("https://api.spotify.com/v1/me/playlists", config).then(res => {
     const playlists = res.data.items;
+    console.log(playlists);
     if (playlists.length > 0) {
-      const newPlaylist = playlists.map(
+      const playlistIndex = playlists.indexOf(
         playlist => playlist.name === "Sound Drip Playlist"
       );
-
-      if (newPlaylist.length > 0) {
+      console.log(playlistIndex);
+      if (playlistIndex !== -1) {
         axios.post(
-          `https://api.spotify.com/v1/playlists/${newPlaylist[0].id}/tracks`,
+          `https://api.spotify.com/v1/playlists/${playlists[playlistIndex].id}/tracks`,
           { uris: tracksToAdd },
           config
         );
