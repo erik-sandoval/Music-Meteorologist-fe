@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { connect } from "react-redux";
 
 import { setLocalTrackTime } from "../../redux/spotify/spotify.actions";
@@ -6,13 +6,12 @@ import { setLocalTrackTime } from "../../redux/spotify/spotify.actions";
 // Features
 
 import NavBar from "../navigation-bar/dashboard-nav/dashboard-nav.component";
-
+import SliderContainer from "../../components/slider-container/slider-container.component";
 import AlbumInfo from "../album-info/album-info.component";
 import AudioDetails from "../audio-details/audio-details.component";
 // Styles
 
 import PlaylistInfo from "../../components/playlist-info/playlist-info.component";
-import SliderContainer from "../../components/slider-container/slider-container.component";
 
 import PlayerSeekBar from "../player-seek-bar/player-seek-bar.component";
 import PlayerButtons from "../player-buttons/player-buttons.component";
@@ -29,6 +28,17 @@ import {
 
 const MusicPlayer = props => {
   const { setLocalTrackTime, currentSong } = props;
+  const [collapsed, setCollapsed] = useState(true);
+
+  const toggleSlider = e => {
+    e.persist();
+
+    if (e.target.innerText === "Preferences") {
+      setCollapsed(false);
+    } else {
+      setCollapsed(true);
+    }
+  };
 
   const [collapsed, setCollapsed] = useState(true);
 

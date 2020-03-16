@@ -59,6 +59,7 @@ class Dashboard extends Component {
 
     player.on("ready", data => {
       const { device_id } = data;
+
       transferPlaybackHere(token, device_id);
     });
 

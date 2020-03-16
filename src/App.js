@@ -18,6 +18,7 @@ class App extends Component {
     return (
       <div className="App">
         <Route exact path="/" component={Landing} />
+        <ProtectedRoute exact path="/dashboard" component={Dashboard} />
         <Route exact path="/logout" component={Logout} />
         <Route exact path="/about" component={About} />
         <Route exact path="/player" component={MusicPlayer} />
