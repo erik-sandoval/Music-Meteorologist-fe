@@ -50,17 +50,17 @@ class PlayListContainer extends React.Component {
               marginBottom: "2px"
             }}
           >
-            <div className="moveTitle" style={{ marginLeft: 220 }}>
+            <div className="moveTitle" style={{ marginLeft: 205 }}>
               Track / Artist{" "}
             </div>
-            <div className="hideTitle" style={{ marginLeft: 108 }}>
+            <div className="hideTitle" style={{ marginLeft: 120 }}>
               Album
             </div>
-            <div className="hideTitle" style={{ marginLeft: 145 }}>
+            <div className="hideTitle" style={{ marginLeft: 150 }}>
               Duration
             </div>
-            <div className="hideTitle" style={{ marginLeft: 62 }}>
-              Release Date
+            <div className="hideTitle" style={{ marginLeft: 63 }}>
+              Add to Playlist
             </div>
           </div>
           <div
@@ -79,7 +79,6 @@ class PlayListContainer extends React.Component {
           >
             <Playlist />
           </div>
-          {/* </List> */}
         </div>
       </div>
     );
