@@ -8,7 +8,6 @@ import {
   LeftSideDiv,
   DivRight,
   PlayLogo,
-  PlayInfo,
   PlayH1,
   PlayH2,
   PlaylistButton
@@ -31,7 +30,7 @@ class PlaylistInfo extends React.Component {
         </LeftSideDiv>
         <DivRight>
           <PlaylistButton>Add This Playlist!</PlaylistButton>
-          <PlaylistButton onClick={this.props.postDSSong}>
+          <PlaylistButton onClick={() => this.props.postDSSong()}>
             Get New PlayList
           </PlaylistButton>
         </DivRight>

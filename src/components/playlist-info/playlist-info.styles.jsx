@@ -37,7 +37,7 @@ export const DivRight = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  margin-right: 1%;
+  margin-right: 4%;
   @media (max-width: 600px) {
     justify-content: center;
     width: 100vw;

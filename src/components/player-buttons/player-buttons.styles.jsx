@@ -25,6 +25,16 @@ export const PlayerButton = styled.div`
       fill: ${props => (props.shuffled ? "white" : "#e20351")};
     }
   }
+
+  .heart-icon {
+    height: 25px;
+    width: 25px;
+    fill: ${props => (props.liked ? "#e20351" : "white")};
+
+    &:hover {
+      fill: ${props => (props.liked ? "white" : "#e20351")};
+    }
+  }
 `;
 
 export const sdasd = styled.svg``;
