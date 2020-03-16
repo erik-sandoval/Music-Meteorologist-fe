@@ -40,18 +40,6 @@ const MusicPlayer = props => {
     }
   };
 
-  const [collapsed, setCollapsed] = useState(true);
-
-  const toggleSlider = e => {
-    e.persist();
-
-    if (e.target.innerText === "Preferences") {
-      setCollapsed(false);
-    } else {
-      setCollapsed(true);
-    }
-  };
-
   useInterval(
     () => {
       setLocalTrackTime();
