@@ -7,9 +7,10 @@ export const Nav1 = styled.div`
 `;
 
 export const Logo1 = styled.img`
-  height: 50px;
+  height: 40px;
   margin-left: 105px;
-  margin-top: 20px;
+  margin-top: 5px;
+  margin-right: 16%;
 
   @media (max-width: 600px) {
     margin-left: 10px;
@@ -30,6 +31,21 @@ export const Navname = styled.p`
   @media (max-width: 600px) {
     margin-right: 20px;
     margin-top: 43px;
+  }
+`;
+
+export const NavItem = styled.div`
+  width: 160px;
+  height: 21px;
+  font-family: Work Sans;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 18px;
+  color: #9da4af;
+  span {
+    &:hover {
+      cursor: pointer;
+    }
   }
 `;
 
