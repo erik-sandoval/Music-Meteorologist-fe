@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { connect } from "react-redux";
 
 import { setLocalTrackTime } from "../../redux/spotify/spotify.actions";
@@ -28,6 +28,18 @@ import {
 
 const MusicPlayer = props => {
   const { setLocalTrackTime, currentSong } = props;
+
+  const [collapsed, setCollapsed] = useState(true);
+
+  const toggleSlider = e => {
+    e.persist();
+
+    if (e.target.innerText === "Preferences") {
+      setCollapsed(false);
+    } else {
+      setCollapsed(true);
+    }
+  };
 
   useInterval(
     () => {
