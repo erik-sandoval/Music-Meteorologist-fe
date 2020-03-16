@@ -12,6 +12,7 @@ import AudioDetails from "../audio-details/audio-details.component";
 // Styles
 
 import PlaylistInfo from "../../components/playlist-info/playlist-info.component";
+import SliderContainer from "../../components/slider-container/slider-container.component";
 
 import PlayerSeekBar from "../player-seek-bar/player-seek-bar.component";
 import PlayerButtons from "../player-buttons/player-buttons.component";
@@ -65,10 +66,16 @@ const MusicPlayer = props => {
           </div>
         </SideBarContainer>
         <MainBarContainer id="mainBarLD" className="mainBar">
-          <PlaylistInfo></PlaylistInfo>
-          <PlaylistSongsContainer>
-            <PlayListContainer></PlayListContainer>
-          </PlaylistSongsContainer>
+          {collapsed ? (
+            <>
+              <PlaylistInfo></PlaylistInfo>
+              <PlaylistSongsContainer>
+                <PlayListContainer></PlayListContainer>
+              </PlaylistSongsContainer>
+            </>
+          ) : (
+            <SliderContainer toggleSlider={toggleSlider}></SliderContainer>
+          )}
         </MainBarContainer>
       </ElementContainer>
     </div>
