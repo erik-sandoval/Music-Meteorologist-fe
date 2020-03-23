@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React, { Component, createContext } from "react";
 import { connect } from "react-redux";
 
 import LoadingPage from "../loading/loading.component";
@@ -16,6 +16,8 @@ import {
 // Styling
 import "../../App.css";
 import { transferPlaybackHere } from "../../utils/playerActions";
+
+export let PlayerContext;
 
 class Dashboard extends Component {
   componentDidMount() {
@@ -64,6 +66,8 @@ class Dashboard extends Component {
     });
 
     player.connect();
+
+    PlayerContext = createContext(player);
   };
 
   logout = e => {

@@ -116,7 +116,7 @@ export const toggleShuffle = shuffleState => dispatch => {
 
   axios
     .put(
-      `${spotifyBaseUrl}/me/player/shuffle?state=${!shuffleState}`,
+      `${spotifyBaseUrl}/me/player/shuffle?state=${shuffleState}`,
       {},
       config
     )

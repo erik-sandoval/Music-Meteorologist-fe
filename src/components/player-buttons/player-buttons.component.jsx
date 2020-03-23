@@ -5,12 +5,7 @@ import { ReactComponent as HeartIcon } from "../../assets/heart.svg";
 
 import { PlayerButtonsController, PlayerButton } from "./player-buttons.styles";
 
-import {
-  onPlayClick,
-  onNextClick,
-  onPrevClick,
-  saveLikedSong
-} from "../../utils/playerActions";
+import { saveLikedSong } from "../../utils/playerActions";
 import {
   getLikedSongStatus,
   toggleShuffle
@@ -18,32 +13,34 @@ import {
 
 const PlayerButtons = props => {
   const songPlaying = useSelector(state => state.currentSong.currentSong);
-
-  const [liked, setLiked] = useState(false);
   const { getLikedSongStatus, toggleShuffle, shuffled } = props;
 
+  const [liked, setLiked] = useState(false);
+  const [isShuffled, setShuffled] = useState(null);
+
   const toggleFunction = () => {
-    toggleShuffle(shuffled);
+    toggleShuffle(isShuffled);
+    setShuffled(!isShuffled);
   };
 
   useEffect(() => {
+    console.log("rendering again");
+    setShuffled(shuffled);
     getLikedSongStatus(songPlaying.id).then(res => setLiked(res));
-  }, [getLikedSongStatus, songPlaying]);
+  }, [getLikedSongStatus, shuffled, songPlaying]);
 
+  console.log({ playerbuttonprops: props, isShuffled, shuffled });
   return (
     <PlayerButtonsController>
-      <PlayerButton shuffled={shuffled} onClick={toggleFunction}>
+      <PlayerButton shuffled={isShuffled} onClick={toggleFunction}>
         <ShuffleIcon className="shuffle-icon"></ShuffleIcon>
       </PlayerButton>
 
-      <PlayerButton id="prev" onClick={() => onPrevClick()}>
+      <PlayerButton id="prev" onClick={() => props.player.previousTrack()}>
         <div className="previcon" style={{ maxHeight: 35 }} />
       </PlayerButton>
 
-      <PlayerButton
-        id="playpause"
-        onClick={() => onPlayClick(!songPlaying.paused)}
-      >
+      <PlayerButton id="playpause" onClick={() => props.player.togglePlay()}>
         {!songPlaying.paused ? (
           <div className="pauseicon" style={{ maxHeight: 35 }} />
         ) : (
@@ -51,7 +48,7 @@ const PlayerButtons = props => {
         )}
       </PlayerButton>
 
-      <PlayerButton id="next" onClick={() => onNextClick()}>
+      <PlayerButton id="next" onClick={() => props.player.nextTrack()}>
         <div className="nexticon" style={{ maxHeight: 35 }} />
       </PlayerButton>
       <PlayerButton
