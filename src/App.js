@@ -1,29 +1,28 @@
 import React, { Component } from "react";
 import { Route } from "react-router-dom";
-import { ProtectedRoute } from "./components/protected.route";
 
-import Auth from "./components/Auth";
-import MusicPlayer from "./components/dashboard/MusicPlayer";
+import About from "./pages/about/about.component";
+import Team from "./pages/team/team.component";
+import Dashboard from "./pages/dashboard/dashboard.component";
+import Logout from "./pages/logout/logout.component";
+import MusicPlayer from "./components/music-player/music.player.component";
 
-import Logout from "./views/Logout";
-import Dashboard from "./views/Dashboard.js";
 import "./App.css";
-import About from "./components/About";
-import Team from "./components/Team";
+import Landing from "./pages/landing/landing.component";
+import { ProtectedRoute } from "./components/protected-route/protected-route.component";
 
 /* import LikedSongs from './components/LikedSongs'; */
 
 class App extends Component {
   render() {
     return (
-      <div className='App'>
-        <Route exact path='/' render={props => <Auth {...props} />} />
-        <Route exact path='/logout' component={Logout} />
-        <Route exact path='/player' component={MusicPlayer} />
-        <Route exact path='/about' component={About} />
-        <Route exact path='/team' component={Team} />
-        <ProtectedRoute exact path='/dashboard' component={Dashboard} />
-        {/* <FooterContainer /> */}
+      <div className="App">
+        <Route exact path="/" component={Landing} />
+        <Route exact path="/logout" component={Logout} />
+        <Route exact path="/about" component={About} />
+        <Route exact path="/player" component={MusicPlayer} />
+        <Route exact path="/team" component={Team} />
+        <ProtectedRoute exact path="/dashboard" component={Dashboard} />
       </div>
     );
   }
