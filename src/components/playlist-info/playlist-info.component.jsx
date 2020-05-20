@@ -12,10 +12,15 @@ import {
   PlayH2,
   PlaylistButton
 } from "./playlist-info.styles";
+import { addToPlaylist } from "../../redux/spotify/spotify.actions";
 
 class PlaylistInfo extends React.Component {
   render() {
-    const { display_name } = this.props.currentUser;
+    const { display_name, id } = this.props.currentUser;
+    let spotifyUris = null;
+    if (this.props.spotifySongUris) {
+      spotifyUris = this.props.spotifySongUris.map(song => song.uri);
+    }
     return (
       <Container>
         <LeftSideDiv>
@@ -29,7 +34,9 @@ class PlaylistInfo extends React.Component {
           </div>
         </LeftSideDiv>
         <DivRight>
-          <PlaylistButton>Add This Playlist!</PlaylistButton>
+          <PlaylistButton onClick={addToPlaylist(spotifyUris, id)}>
+            Add This Playlist!
+          </PlaylistButton>
           <PlaylistButton onClick={() => this.props.postDSSong()}>
             Get New PlayList
           </PlaylistButton>
@@ -40,7 +47,8 @@ class PlaylistInfo extends React.Component {
 }
 
 const mapStateToProps = state => ({
-  currentUser: state.currentUser.currentUser
+  currentUser: state.currentUser.currentUser,
+  spotifySongUris: state.spotifyUris.spotifySongUris
 });
 
 export default connect(mapStateToProps, { postDSSong })(PlaylistInfo);

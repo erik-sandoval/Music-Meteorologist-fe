@@ -1,5 +1,6 @@
 import SpotifyActionTypes from "./spotify.types.js";
 import axios from "axios";
+import playlistSongComponent from "../../components/playlist-song/playlist-song.component.jsx";
 
 const spotifyBaseUrl = "https://api.spotify.com/v1";
 
@@ -115,7 +116,7 @@ export const toggleShuffle = shuffleState => dispatch => {
 
   axios
     .put(
-      `${spotifyBaseUrl}/me/player/shuffle?state=${!shuffleState}`,
+      `${spotifyBaseUrl}/me/player/shuffle?state=${shuffleState}`,
       {},
       config
     )
@@ -166,4 +167,37 @@ export const getChartTrackInfo = id => dispatch => {
 
 export const setLocalTrackTime = () => dispatch => {
   dispatch({ type: SpotifyActionTypes.SET_LOCAL_TRACK_TIME });
+};
+
+export const addToPlaylist = (tracksToAdd, spotifyId) => dispatch => {
+  const spotifyToken = localStorage.getItem("token");
+
+  console.log(tracksToAdd, spotifyId);
+  const config = {
+    headers: { Authorization: "Bearer " + spotifyToken }
+  };
+
+  axios.get("https://api.spotify.com/v1/me/playlists", config).then(res => {
+    const playlists = res.data.items;
+    console.log(playlists);
+    if (playlists.length > 0) {
+      const playlistIndex = playlists.indexOf(
+        playlist => playlist.name === "Sound Drip Playlist"
+      );
+      console.log(playlistIndex);
+      if (playlistIndex !== -1) {
+        axios.post(
+          `https://api.spotify.com/v1/playlists/${playlists[playlistIndex].id}/tracks`,
+          { uris: tracksToAdd },
+          config
+        );
+      } else {
+        axios.post(
+          `https://api.spotify.com/v1/users/${spotifyId}/playlists`,
+          { name: "Sound Drip Playlist" },
+          config
+        );
+      }
+    }
+  });
 };

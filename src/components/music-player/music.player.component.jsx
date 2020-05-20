@@ -25,6 +25,7 @@ import {
   PlaylistSongsContainer,
   PlayerBarAndControlsContainer
 } from "./music-player.styles";
+import { PlayerContext } from "../../pages/dashboard/dashboard.component";
 
 const MusicPlayer = props => {
   const { setLocalTrackTime, currentSong } = props;
@@ -57,7 +58,9 @@ const MusicPlayer = props => {
             <div>
               <PlayerBarAndControlsContainer>
                 <PlayerSeekBar></PlayerSeekBar>
-                <PlayerButtons />
+                <PlayerContext.Consumer>
+                  {player => <PlayerButtons player={player} />}
+                </PlayerContext.Consumer>
               </PlayerBarAndControlsContainer>
               <AudioDetails />
             </div>
