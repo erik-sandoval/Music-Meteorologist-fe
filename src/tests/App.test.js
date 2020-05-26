@@ -7,3 +7,4 @@ import * as rtl from '@testing-library/react';
 test('renders without crashing', () => {
   rtl.render(<BrowserRouter><App /></BrowserRouter>)
 });
+

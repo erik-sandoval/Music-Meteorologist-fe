@@ -1,11 +1,8 @@
 # Sound Drip Frontend
-[![Maintainability](https://api.codeclimate.com/v1/badges/6459996a0b5667ac7075/maintainability)](https://codeclimate.com/github/Lambda-School-Labs/Music-Meteorologist-fe/maintainability)
-
-
-View the new site at - https://www.sound-drip.com/
+View the current site at - https://www.sound-drip.com/
 View prior site at   - https://music-meteorologist.com/
 
-Sound Drip is a fullstack web application that has been a Green Build during the Labs20 (13th January 2020 - 6th March 2020) by
+Sound Drip is a web application that has been a Green Build during the Labs20 (13th January 2020 - 6th March 2020) by
 [LambdaSchool](https://lambdaschool.com/) students. Each student fulfills a role in the project to collectively build the application. (Roles listed below)
 
 Sound Drip provides music lovers with unique song recommendations based on Data Science functionality. Where A sophisticated Machine Learning model will try an predict songs you like better than the user could themselves; once a certain song is liked or not new songs will be populated for the user to listen and create a new playlist. For that to happen a lot of different characteristics of a songs are considered. 
@@ -33,6 +30,7 @@ Sound Drip provides music lovers with unique song recommendations based on Data 
 **Role: Team Lead**
 
 - **[Erik Sandoval](https://github.com/erik-sandoval)**
+- **[Steve Smodish](https://github.com/ssmodish)**
 
 **Role: UX/UI Designer**
 
