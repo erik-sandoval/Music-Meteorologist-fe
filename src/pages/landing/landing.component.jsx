@@ -12,7 +12,7 @@ import albums_background_mobile from "../../assets/albums-background-mobile.svg"
 
 //
 const authEndpoint = "https://accounts.spotify.com/authorize";
-const clientId = "28f8b522c3af41e6929c5054f333c924";
+const clientId = "256aebf9b04a4f5480a757f770864028";
 const redirectUri = process.env.REACT_APP_REDIRECT_URL;
 
 // gets the access token from the callback url paramaters
@@ -23,6 +23,7 @@ export class Landing extends Component {
   render() {
     const url = window.location;
     const accessToken = new URLSearchParams(url.hash).get("#access_token");
+    console.log("ClientID: ", clientId)
 
     if (accessToken) {
       localStorage.setItem("token", accessToken);
