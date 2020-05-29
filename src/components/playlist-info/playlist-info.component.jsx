@@ -5,7 +5,7 @@ import { connect } from "react-redux";
 import {
   Container,
   DivLeft,
-  DivRight,
+  // DivRight,
   PlayLogo,
   PlayInfo,
   PlayH1,

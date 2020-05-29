@@ -1,7 +1,7 @@
 import React from "react";
 import { connect } from "react-redux";
 import { Grid, Typography } from "@material-ui/core";
-import { Add as AddIcon, Check as CheckIcon } from "@material-ui/icons";
+// import { Add as AddIcon, Check as CheckIcon } from "@material-ui/icons";
 
 import "../../App.css";
 

@@ -3,13 +3,13 @@ import axios from "axios";
 const spotifyApiUrl = "https://api.spotify.com/v1/me/player";
 
 export const transferPlaybackHere = (accessToken, deviceId) => {
-  const token = localStorage.getItem("token");
+  // const token = localStorage.getItem("token");
 
-  const config = {
-    headers: {
-      Authorization: "Bearer " + token
-    }
-  };
+  // const config = {
+  //   headers: {
+  //     Authorization: "Bearer " + token
+  //   }
+  // };
 
   axios.put(
     `${spotifyApiUrl}`,
@@ -80,11 +80,11 @@ export const onNextClick = () => {
 export const saveLikedSong = (songId, liked) => {
   const token = localStorage.getItem("token");
 
-  const config = {
-    headers: {
-      Authorization: "Bearer " + token
-    }
-  };
+  // const config = {
+  //   headers: {
+  //     Authorization: "Bearer " + token
+  //   }
+  // };
 
   if (liked) {
     axios({

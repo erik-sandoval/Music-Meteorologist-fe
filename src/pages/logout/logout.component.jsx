@@ -36,15 +36,15 @@ const Logout = () => {
             We hate to see you leave but hope you’ll come back for more fun. If
             you change your mind, you can log back in below.
           </Sentence>
-          <AuthButton>
+          <AuthButton
             style={{ zIndex: "0" }}
             noAbsolute={true}
             noTransform={true}
             as="a" href=
             {`${authEndpoint}?client_id=${clientId}&redirect_uri=${redirectUri}&scope=${encodeURIComponent(
               scopes
-            )}&response_type=token&show_dialog=true`}
-            > Login With Spotify
+            )}&response_type=token&show_dialog=true`}>
+            Login With Spotify
           </AuthButton>
           <Return as="a" href={"/"}>
             Return to Homepage
