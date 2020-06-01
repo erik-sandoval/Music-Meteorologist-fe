@@ -1,7 +1,7 @@
 import React from 'react';
-import Dashboard from '../views/Dashboard.js';
+import Dashboard from '../pages/dashboard/dashboard.component';
 import { applyMiddleware, createStore } from "redux";
-import rootReducer from "../Redux/reducers";
+import rootReducer from "../redux/reducers";
 import { Provider } from "react-redux";
 import { logger } from "redux-logger";
 import thunk from "redux-thunk";

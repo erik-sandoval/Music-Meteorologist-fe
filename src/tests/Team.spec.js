@@ -1,6 +1,6 @@
 import React from 'react';
 import { render } from '@testing-library/react';
-import Team from '../components/Team';
+import Team from '../pages/team/team.component';
 
 
 describe('Team.js', () => {
